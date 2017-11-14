@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="500dp"
+    android:orientation="vertical"
+    android:descendantFocusability="blocksDescendants"
+
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:orientation="horizontal"
+        android:descendantFocusability="blocksDescendants">
+
+        <ImageView
+            android:id="@+id/ItemImage1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/adapter_btnText"
+            app:srcCompat="@drawable/plugoff25" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="80dp"
+            android:layout_alignParentTop="true"
+            android:layout_weight="7"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/ItemName1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:text="@string/plugname1"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/ItemInfo1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="80dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <Switch
+                android:id="@+id/ItemSwitch1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:text="" />
+
+            <Button
+                android:id="@+id/ItemButton1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="1dp"
+                android:contentDescription="@string/adapter_btnText"
+                android:onClick="pick_DateTime1"
+                android:text="排程"
+                android:textSize="24dp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:descendantFocusability="blocksDescendants">
+
+        <ImageView
+            android:id="@+id/ItemImage2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/adapter_btnText"
+            app:srcCompat="@drawable/plugoff25" />
+
+        <LinearLayout
+
+           android:layout_width="wrap_content"
+            android:layout_height="80dp"
+            android:layout_alignParentTop="true"
+            android:layout_weight="7"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/ItemName2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:text="@string/plugname2"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/ItemInfo2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="80dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <Switch
+                android:id="@+id/ItemSwitch2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:text="" />
+
+            <Button
+                android:id="@+id/ItemButton2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="1dp"
+                android:contentDescription="@string/adapter_btnText"
+                android:onClick="onClick"
+                android:text="排程"
+                android:textSize="24dp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:descendantFocusability="blocksDescendants">
+
+        <ImageView
+            android:id="@+id/ItemImage3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/adapter_btnText"
+            app:srcCompat="@drawable/plugoff25" />
+
+        <LinearLayout
+
+            android:layout_width="wrap_content"
+            android:layout_height="80dp"
+            android:layout_alignParentTop="true"
+            android:layout_weight="7"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/ItemName3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:text="@string/plugname3"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/ItemInfo3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="80dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <Switch
+                android:id="@+id/ItemSwitch3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:text="" />
+
+            <Button
+                android:id="@+id/ItemButton3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="1dp"
+                android:contentDescription="@string/adapter_btnText"
+                android:onClick="onClick"
+                android:text="排程"
+                android:textSize="24dp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="80dp"
+    android:descendantFocusability="blocksDescendants"
+    >
+
+        <ImageView
+            android:id="@+id/ItemImage4"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/adapter_btnText"
+            app:srcCompat="@drawable/plugoff25" />
+
+        <LinearLayout
+
+        android:layout_width="wrap_content"
+        android:layout_height="80dp"
+        android:orientation="vertical"
+        android:layout_weight="7"
+        android:layout_alignParentTop="true">
+
+        <TextView
+            android:id="@+id/ItemName4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:text="@string/plugname4"
+            android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/ItemInfo4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="80dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <Switch
+            android:id="@+id/ItemSwitch4"
+            android:layout_marginLeft="50dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="" />
+
+        <Button
+            android:id="@+id/ItemButton4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="1dp"
+            android:contentDescription="@string/adapter_btnText"
+            android:onClick="onClick"
+            android:text="排程"
+            android:textSize="24dp" />
+    </LinearLayout>
+
+</LinearLayout>
+
+</LinearLayout>

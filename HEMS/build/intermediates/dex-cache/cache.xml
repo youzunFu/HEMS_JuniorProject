@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="D:\user\Desktop\AndroidStudioProjects-master\AndroidStudioProjects-master\HEMS\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="1bfa5f348d12de4122ad290325db2045bff4b9b0">
+        <dex dex="D:\user\Desktop\AndroidStudioProjects-master\AndroidStudioProjects-master\HEMS\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_d3961e6ca7f157de27f057aa018d8b84d7cd32ea\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\user\Desktop\AndroidStudioProjects-master\AndroidStudioProjects-master\HEMS\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="3be78ebc2706b2e1fe2f12d5726887a92d6c183b">
+        <dex dex="D:\user\Desktop\AndroidStudioProjects-master\AndroidStudioProjects-master\HEMS\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_2c8105d3d33d2395c7dda8a4beb85ec8f6ac4cd7\classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\RED\.gradle\caches\modules-2\files-2.1\com.mcxiaoke.volley\library\1.0.19\a8f23f65fc1e522ee4a1a697ee569901a46741fa\library-1.0.19.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="a8f23f65fc1e522ee4a1a697ee569901a46741fa">
+        <dex dex="D:\user\Desktop\AndroidStudioProjects-master\AndroidStudioProjects-master\HEMS\app\build\intermediates\pre-dexed\debug\library-1.0.19_b2969568dbe53c42dc591a1f9997960eb55a5aa4.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Program Files\Android\Android Studio\gradle\m2repository\com\google\code\gson\gson\2.2.4\gson-2.2.4.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="a60a5e993c98c864010053cb901b7eab25306568">
+        <dex dex="D:\user\Desktop\AndroidStudioProjects-master\AndroidStudioProjects-master\HEMS\app\build\intermediates\pre-dexed\debug\gson-2.2.4_313aff129984a0a45e086871ec03bfcc02e7284e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\RED\.android\build-cache\517ab5d8d5d7d581f2aa1ca4a37c3bc7c69102e0\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="38789e20ace9ab7dbd00554bd2673ab424478d3b">
+        <dex dex="D:\user\Desktop\AndroidStudioProjects-master\AndroidStudioProjects-master\HEMS\app\build\intermediates\pre-dexed\debug\classes_fafe25bcb96634dd541045ed06ac0eb9bcc8b5ed.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\RED\.android\build-cache\673418869990071dbd119c704b559034ec287239\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="95519720620b553f63afc789beba9ad582807f7c">
+        <dex dex="D:\user\Desktop\AndroidStudioProjects-master\AndroidStudioProjects-master\HEMS\app\build\intermediates\pre-dexed\debug\classes_ce17477092af14ef3833a7e1b59e3ecdab2e6ab0.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\RED\.android\build-cache\ee68e8cbaf3f3a9d5c0e251a502ea17a5228985d\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="d4cf6227dd6a2ceff0f7dcf0c324380b7abf2c28">
+        <dex dex="D:\user\Desktop\AndroidStudioProjects-master\AndroidStudioProjects-master\HEMS\app\build\intermediates\pre-dexed\debug\classes_f991f6b75d35655f6e0d3bd850ced343517368bb.jar" />
+    </item>
+
+</items>

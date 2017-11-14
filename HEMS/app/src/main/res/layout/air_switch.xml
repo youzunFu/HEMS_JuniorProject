@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Switch_AirConditioner"
+    >
+
+
+    <Button
+        android:id="@+id/air4EnterButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="4樓冷氣" />
+
+    <Button
+        android:id="@+id/air505leftEnterButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="5樓冷氣左" />
+
+    <Button
+        android:id="@+id/air505rightEnterButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="5樓冷氣右" />
+
+</LinearLayout>

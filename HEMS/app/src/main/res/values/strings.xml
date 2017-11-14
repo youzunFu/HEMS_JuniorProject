@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">HEMS</string>
+    <string name="name">Name :</string>
+    <string name="country">Country :</string>
+    <string name="email">Email :</string>
+    <string name="comment">Comment</string>
+    <string name="favorite">Favorite</string>
+    <string name="account">Account</string>
+    <string name="smartphone">Smartphone</string>
+    <string name="place">Place</string>
+    <string name="friend">Friend</string>
+    <string name="setting">Setting</string>
+    <string name="contact">Contact us</string>
+    <string name="plugname1">插座001</string>
+    <string name="plugname2">插座002</string>
+    <string name="plugname3">插座003</string>
+    <string name="plugname4">插座004</string>
+    <string name="button_schedule_txtsize1">8dp</string>
+    <string name="button_schedule_txtsize2">8dp</string>
+    <string name="button_schedule_txtsize3">8dp</string>
+    <string name="button_schedule_txtsize4">8dp</string>
+
+
+    <string-array name="Control">
+        <item>職員辦公室1</item>
+        <item>主任辦公室</item>
+        <item>職員辦公室2</item>
+    </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_pluginfo">Pluginfo</string>
+    <string name="adapter_btnText">whatever</string>
+</resources>
