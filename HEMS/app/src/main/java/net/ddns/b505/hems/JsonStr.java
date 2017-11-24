@@ -28,6 +28,27 @@ public class JsonStr {
     @SerializedName("id")
     private String id;
 
+    @SerializedName("name")
+    private String name;
+
+    @SerializedName("office_id")
+    private String office_id;
+
+    @SerializedName("co2_upper_bound")
+    private String co2_upper_bound;
+
+    @SerializedName("co2_lower_bound")
+    private String co2_lower_bound;
+
+    @SerializedName("lux_upper_bound")
+    private String lux_upper_bound;
+
+    @SerializedName("lux_lower_bound")
+    private String lux_lower_bound;
+
+    @SerializedName("motion_off_waiting")
+    private String motion_off_waiting;
+
     @SerializedName("type")
     private String type;
 
@@ -66,6 +87,18 @@ public class JsonStr {
 
     @SerializedName("mode")
     private String mode;
+
+    @SerializedName("status")
+    private String status;
+
+    @SerializedName("schedule")
+    private String schedule;
+
+    @SerializedName("start")
+    private String start;
+
+    @SerializedName("end")
+    private String end;
 
     @SerializedName("remote_charging_setting")
     private String remote_charging_setting;
@@ -169,6 +202,34 @@ public class JsonStr {
         this.id = id;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setOffice_id(String office_id) {
+        this.office_id = office_id;
+    }
+
+    public void setCo2_upper_bound(String co2_upper_bound) {
+        this.co2_upper_bound = co2_upper_bound;
+    }
+
+    public void setCo2_lower_bound(String co2_lower_bound) {
+        this.co2_lower_bound = co2_lower_bound;
+    }
+
+    public void setLux_upper_bound(String lux_upper_bound) {
+        this.lux_upper_bound = lux_upper_bound;
+    }
+
+    public void setLux_lower_bound(String lux_lower_bound) {
+        this.lux_lower_bound = lux_lower_bound;
+    }
+
+    public void setMotion_off_waiting(String motion_off_waiting) {
+        this.motion_off_waiting = motion_off_waiting;
+    }
+
     public void setPlace_id(String place_id) {
         this.place_id = place_id;
     }
@@ -215,6 +276,25 @@ public class JsonStr {
 
     public void setMode(String mode) {
         this.mode = mode;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+
+    public void setSchedule(String schedule) {
+        this.schedule = schedule;
+    }
+
+
+    public void setStart(String start) {
+        this.start = start;
+    }
+
+
+    public void setEnd(String end) {
+        this.end = end;
     }
 
     public void setRemote_charging_setting(String remote_charging_setting) {

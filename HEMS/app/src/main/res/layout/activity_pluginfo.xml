@@ -65,7 +65,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
                 android:contentDescription="@string/adapter_btnText"
-                android:onClick="pick_DateTime1"
+                android:onClick="sendPlugNumber1"
                 android:text="排程"
                 android:textSize="24dp" />
         </LinearLayout>
@@ -128,7 +128,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
                 android:contentDescription="@string/adapter_btnText"
-                android:onClick="onClick"
+                android:onClick="sendPlugNumber2"
                 android:text="排程"
                 android:textSize="24dp" />
         </LinearLayout>
@@ -191,7 +191,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
                 android:contentDescription="@string/adapter_btnText"
-                android:onClick="onClick"
+                android:onClick="sendPlugNumber3"
                 android:text="排程"
                 android:textSize="24dp" />
         </LinearLayout>
@@ -255,7 +255,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="1dp"
             android:contentDescription="@string/adapter_btnText"
-            android:onClick="onClick"
+            android:onClick="sendPlugNumber4"
             android:text="排程"
             android:textSize="24dp" />
     </LinearLayout>

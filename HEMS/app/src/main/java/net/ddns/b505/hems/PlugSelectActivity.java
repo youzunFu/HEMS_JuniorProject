@@ -27,7 +27,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
-import java.util.concurrent.ExecutionException;
+//import java.util.concurrent.ExecutionException;
 
 public class PlugSelectActivity extends AppCompatActivity {
     String[] func = {"插座1", "插座2", "插座3","插座4"};
@@ -60,6 +60,7 @@ public class PlugSelectActivity extends AppCompatActivity {
                     }// onItemSelected
                 } //new OnItemClickListener
         ); //grid.setOnItemClickListener
+
     }
 
 

@@ -3,6 +3,7 @@ package net.ddns.b505.hems;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.Activity;
@@ -36,26 +37,11 @@ import java.util.logging.LogRecord;
 import static net.ddns.b505.hems.R.id.start;
 
 public class Pluginfo extends Activity {
-    private ImageView image1;
-    private Switch sw1;
-    private ImageView image2;
-    private ImageView image3;
-    private ImageView image4;
-    private TextView plugname1;
-    private TextView plugname2;
-    private TextView plugname3;
-    private TextView plugname4;
-    private TextView pluginfo1;
-    private TextView pluginfo2;
-    private TextView pluginfo3;
-    private TextView pluginfo4;
-    private Switch sw2;
-    private Switch sw3;
-    private Switch sw4;
-    private Button btn_schedule1;
-    private Button btn_schedule2;
-    private Button btn_schedule3;
-    private Button btn_schedule4;
+    private ImageView image1,image2,image3,image4;
+    private Switch sw1,sw2,sw3,sw4;
+    private TextView plugname1,plugname2,plugname3,plugname4,pluginfo1,pluginfo2,pluginfo3,pluginfo4;
+    private Button btn_schedule1,btn_schedule2,btn_schedule3,btn_schedule4;
+
     public String plugname = null,pluginfo = null,plugstatus = null,plugall = null;
     private CountDownTimer counterdowntimer ;
     private String PickDate_Time[] ,Date_Time;
@@ -80,14 +66,14 @@ public class Pluginfo extends Activity {
 
    private void start(){
       // timer1.setText("2");
-        counterdowntimer = new CountDownTimer(1*1000,1000){
+        counterdowntimer = new CountDownTimer(2*1000,1000){
             @Override
             public void onTick(long l) {
                 try {
-                    InitialPlug1();
-                    InitialPlug2();
-                    InitialPlug3();
-                    InitialPlug4();
+                   InitialPlug1();
+                   InitialPlug2();
+                   InitialPlug3();
+                   InitialPlug4();
                 } catch (ExecutionException e) {
                     e.printStackTrace();
                 } catch (InterruptedException e) {
@@ -222,6 +208,38 @@ public class Pluginfo extends Activity {
         }
     }
 
+    public void sendPlugNumber1(View view){
+        Intent intent = new Intent(Pluginfo.this,PlugSetActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putString("PlugNum","001");
+        intent.putExtras(bundle);
+        startActivity(intent);
+    }
+    public void sendPlugNumber2(View view){
+        Intent intent = new Intent(this,PlugSetActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putString("PlugNum","002");
+        intent.putExtras(bundle);
+        startActivity(intent);
+    }
+    public void sendPlugNumber3(View view){
+        Intent intent = new Intent(this,PlugSetActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putString("PlugNum","003");
+        intent.putExtras(bundle);
+        startActivity(intent);
+    }
+    public void sendPlugNumber4(View view){
+        Intent intent = new Intent(this,PlugSetActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putString("PlugNum","004");
+        intent.putExtras(bundle);
+        startActivity(intent);
+    }
+
+
+    //btnSchedule1 set YYYY-MM-DD HH:mm:ss
+    /*
     public void pick_DateTime1(View v){
         Date_Time = "";
         final Calendar c = Calendar.getInstance();
@@ -234,6 +252,7 @@ public class Pluginfo extends Activity {
         new TimePickerDialog(Pluginfo.this, new TimePickerDialog.OnTimeSetListener() {
             @Override
             public void onTimeSet(TimePicker timePicker, int hour, int minute) {
+                // if-else statement set calender data ex:2017-1-1 5:5  ---->2017-01-01 05:05:00 YYYY-MM-DD HH:mm:ss  Y-year M-month D-DAY H-hour m-minute s-second
                 if(hour < 10){Date_Time = Date_Time + "0" +String.valueOf(hour)+ " ";}
                 else{Date_Time = Date_Time + String.valueOf(hour)+ " ";}
                 if(minute < 10){Date_Time = Date_Time + "0" +String.valueOf(minute)+ " ";}
@@ -250,7 +269,7 @@ public class Pluginfo extends Activity {
             @Override
             public void onDateSet(DatePicker datePicker, int year, int month, int day) {
                 month = month +1 ;
-                // ex:2017
+                // if-else statement set calender data ex:2017-1-1 5:5  ---->2017-01-01 05:05:00 YYYY-MM-DD HH:mm:ss  Y-year M-month D-DAY H-hour m-minute s-second
                 if(year < 10){Date_Time = Date_Time + "000" +String.valueOf(year)+ " ";}
                 else{Date_Time = Date_Time + String.valueOf(year)+ " ";}
                 if(month < 10){Date_Time = Date_Time + "0" +String.valueOf(month)+ " ";}
@@ -262,7 +281,9 @@ public class Pluginfo extends Activity {
         }, years, months, days).show();
 
     }
+    */
 
+    //PlugSwitchClick 1 2 3 4
     public void SwitchClick(){
         sw1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -274,7 +295,7 @@ public class Pluginfo extends Activity {
                     plugall = null;
                     try {
                         ControlPlugStatusAsynctask ctrlPlugnameAsynctask = new ControlPlugStatusAsynctask(Pluginfo.this);
-                        plugall = ctrlPlugnameAsynctask .execute(plugname,plugstatus).get().toString();
+                        plugall = ctrlPlugnameAsynctask.execute(plugname,plugstatus).get().toString();
                         String plugresultSplit[] =plugall.split(" ");
                         plugstatus = plugresultSplit[1] ;
                         //plugresultSplit[0]->name～plugresultSplit[1]->status～plugresultSplit[2]->～
@@ -292,7 +313,7 @@ public class Pluginfo extends Activity {
                     image1.setImageResource(R.drawable.plugoff25);
                     try {
                         ControlPlugStatusAsynctask ctrlPlugnameAsynctask = new ControlPlugStatusAsynctask(Pluginfo.this);
-                        plugall = ctrlPlugnameAsynctask .execute(plugname,plugstatus).get().toString();
+                        plugall = ctrlPlugnameAsynctask.execute(plugname,plugstatus).get().toString();
                         String plugresultSplit[] =plugall.split(" ");
                             pluginfo1.setText("Power: " + plugresultSplit[4] +" W");
                     } catch (InterruptedException e) {
@@ -315,7 +336,7 @@ public class Pluginfo extends Activity {
                     plugstatus = "1" ;
                     try {
                         ControlPlugStatusAsynctask ctrlPlugnameAsynctask = new ControlPlugStatusAsynctask(Pluginfo.this);
-                        plugall = ctrlPlugnameAsynctask .execute(plugname,plugstatus).get().toString();
+                        plugall = ctrlPlugnameAsynctask.execute(plugname,plugstatus).get().toString();
                         String plugresultSplit[] =plugall.split(" ");
                         pluginfo2.setText("Power: " + plugresultSplit[4] +" W");
                     } catch (InterruptedException e) {
@@ -329,7 +350,7 @@ public class Pluginfo extends Activity {
                     image2.setImageResource(R.drawable.plugoff25);
                     try {
                         ControlPlugStatusAsynctask ctrlPlugnameAsynctask = new ControlPlugStatusAsynctask(Pluginfo.this);
-                        plugall = ctrlPlugnameAsynctask .execute(plugname,plugstatus).get().toString();
+                        plugall = ctrlPlugnameAsynctask.execute(plugname,plugstatus).get().toString();
                         String plugresultSplit[] =plugall.split(" ");
                         pluginfo2.setText("Power: " + plugresultSplit[4] +" W");
                     } catch (InterruptedException e) {
@@ -352,7 +373,7 @@ public class Pluginfo extends Activity {
                     plugstatus = "1" ;
                     try {
                         ControlPlugStatusAsynctask ctrlPlugnameAsynctask = new ControlPlugStatusAsynctask(Pluginfo.this);
-                        plugall = ctrlPlugnameAsynctask .execute(plugname,plugstatus).get().toString();
+                        plugall = ctrlPlugnameAsynctask.execute(plugname,plugstatus).get().toString();
                         String plugresultSplit[] =plugall.split(" ");
                         pluginfo3.setText("Power: " + plugresultSplit[4] +" W");
                     } catch (InterruptedException e) {
@@ -366,7 +387,7 @@ public class Pluginfo extends Activity {
                     image3.setImageResource(R.drawable.plugoff25);
                     try {
                         ControlPlugStatusAsynctask ctrlPlugnameAsynctask = new ControlPlugStatusAsynctask(Pluginfo.this);
-                        plugall = ctrlPlugnameAsynctask .execute(plugname,plugstatus).get().toString();
+                        plugall = ctrlPlugnameAsynctask.execute(plugname,plugstatus).get().toString();
                         String plugresultSplit[] =plugall.split(" ");
                         pluginfo3.setText("Power: " + plugresultSplit[4]);
                     } catch (InterruptedException e) {
@@ -390,7 +411,7 @@ public class Pluginfo extends Activity {
                     plugstatus = "1" ;
                     try {
                         ControlPlugStatusAsynctask ctrlPlugnameAsynctask = new ControlPlugStatusAsynctask(Pluginfo.this);
-                        plugall = ctrlPlugnameAsynctask .execute(plugname,plugstatus).get().toString();
+                        plugall = ctrlPlugnameAsynctask.execute(plugname,plugstatus).get().toString();
                         String plugresultSplit[] =plugall.split(" ");
                         pluginfo4.setText("Power: " + plugresultSplit[4]);
                     } catch (InterruptedException e) {
@@ -404,7 +425,7 @@ public class Pluginfo extends Activity {
                     image4.setImageResource(R.drawable.plugoff25);
                     try {
                         ControlPlugStatusAsynctask ctrlPlugnameAsynctask = new ControlPlugStatusAsynctask(Pluginfo.this);
-                        plugall = ctrlPlugnameAsynctask .execute(plugname,plugstatus).get().toString();
+                        plugall = ctrlPlugnameAsynctask.execute(plugname,plugstatus).get().toString();
                         String plugresultSplit[] =plugall.split(" ");
                         pluginfo4.setText("Power: " + plugresultSplit[4]);
                     } catch (InterruptedException e) {
