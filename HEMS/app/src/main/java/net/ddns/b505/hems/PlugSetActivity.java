@@ -143,7 +143,6 @@ public class PlugSetActivity extends AppCompatActivity {
         return true;
     }
 
-
     public void Saveset(View view) {
         String start = edstart.getText().toString();
         String end = edend.getText().toString();
@@ -202,7 +201,7 @@ public class PlugSetActivity extends AppCompatActivity {
         mJsonStr.setToken(token);
         Gson gson = new Gson();
         String json = gson.toJson(mJsonStr);
-        ArrayRequest = new JsonArrayRequest(Request.Method.POST, Plug/*"http://163.18.57.43/qrcode/plug.php"*/, json,
+        ArrayRequest = new JsonArrayRequest(Request.Method.POST, Plug/*"http://163.18.57.43/HEMSphp/plugschedule.php"*/, json,
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {

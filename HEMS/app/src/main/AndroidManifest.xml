@@ -28,7 +28,6 @@
         <activity android:name=".PlugSelectActivity" />
         <activity android:name=".Switch_AirConditioner" />
         <activity android:name=".Air505leftControlActivity" />
-        <activity android:name=".Air505rightControlActivity" />
         <activity
             android:name=".Pluginfo"
             android:label="@string/title_activity_pluginfo">

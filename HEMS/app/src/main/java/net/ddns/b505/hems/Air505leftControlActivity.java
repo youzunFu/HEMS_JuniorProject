@@ -159,7 +159,7 @@ public class Air505leftControlActivity extends AppCompatActivity {
             public void onClick(View v) {
                 try{
                     int temp = Integer.parseInt(tvTemp.getText().toString());
-                    if(on_off == 1 && temp != 16){
+                    if(on_off == 1 && temp != 18){
                         temp--;
                         ctrltype = String.valueOf(temp);
                         tvTemp.setText(ctrltype);
@@ -190,7 +190,7 @@ public class Air505leftControlActivity extends AppCompatActivity {
         @Override
         protected String doInBackground(String... params) {
             String ctrltype = params[0];
-            String login_url = "http://192.168.0.102/b505left.php" ; //http://163.18.57.42:81/b505left.php          //http://192.168.0.110/b505left.php
+            String login_url = "http://192.168.0.102/b505left_v2.php" ; //http://163.18.57.42:81/b505left_v2.php          //http://192.168.0.110/b505left.php
 
 
             try {

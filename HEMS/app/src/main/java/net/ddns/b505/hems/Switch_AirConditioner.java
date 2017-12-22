@@ -40,14 +40,6 @@ public class Switch_AirConditioner extends AppCompatActivity {
             }
         });
 
-        air5rightBtn.setOnClickListener(new Button.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent();
-                intent.setClass(Switch_AirConditioner.this,Air505rightControlActivity.class);
-                startActivity(intent);
-            }
-        });
 
 
     }

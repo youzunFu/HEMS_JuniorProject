@@ -197,39 +197,42 @@
                                 android:layout_height="wrap_content"
                                 android:background="@color/white"
                                 android:orientation="horizontal">
+
                                 <LinearLayout
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
                                     android:layout_weight="1"
                                     android:background="@color/white"
-                                    android:layout_gravity="center"
                                     android:orientation="vertical">
 
                                     <ImageView
-                                        android:layout_marginTop="10dp"
-                                        android:layout_marginLeft="10dp"
-                                        android:layout_marginRight="10dp"
-                                        android:layout_marginBottom="10dp"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
+                                        android:layout_marginBottom="10dp"
+                                        android:layout_marginLeft="10dp"
+                                        android:layout_marginRight="10dp"
+                                        android:layout_marginTop="10dp"
                                         android:visibility="invisible"
                                         app:srcCompat="@drawable/left" />
+
                                     <ImageView
-                                        android:layout_marginTop="10dp"
-                                        android:layout_marginLeft="10dp"
-                                        android:layout_marginRight="10dp"
-                                        android:layout_marginBottom="10dp"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
+                                        android:layout_marginBottom="10dp"
+                                        android:layout_marginLeft="10dp"
+                                        android:layout_marginRight="10dp"
+                                        android:layout_marginTop="10dp"
                                         android:visibility="invisible"
                                         app:srcCompat="@drawable/left" />
+
                                     <ImageView
-                                        android:layout_marginTop="10dp"
-                                        android:layout_marginLeft="10dp"
-                                        android:layout_marginRight="10dp"
-                                        android:layout_marginBottom="10dp"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
+                                        android:layout_marginBottom="10dp"
+                                        android:layout_marginLeft="10dp"
+                                        android:layout_marginRight="10dp"
+                                        android:layout_marginTop="10dp"
                                         android:visibility="invisible"
                                         app:srcCompat="@drawable/left" />
                                 </LinearLayout>
@@ -240,6 +243,7 @@
                                     android:background="@color/white"
                                     android:orientation="horizontal">
                                     <TextView
+                                        android:id="@+id/tv_TimeSet"
                                         android:layout_width="0dp"
                                         android:layout_height="match_parent"
                                         android:layout_weight="2"/>
@@ -341,12 +345,13 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"/>
                         <ImageButton
-                            android:id="@+id/imgbtn_temp_sub"
+                            android:id="@+id/btn_sub"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="5dp"
                             android:layout_weight="1"
                             android:background="@null"
+                            android:onClick="TempSubClick"
                             app:srcCompat="@drawable/triangle_down" />
                         <TextView
                             android:layout_width="0dp"
@@ -356,13 +361,13 @@
                             android:textSize="23dp"
                             android:text="溫度"/>
                         <ImageButton
-                            android:id="@+id/imgbtn_temp_add"
+                            android:id="@+id/btn_add"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="5dp"
                             android:layout_weight="1"
                             android:background="@null"
-                            android:onClick="activeadd"
+                            android:onClick="TempAddClick"
                             app:srcCompat="@drawable/triangle_up" />
                         <TextView
                             android:layout_width="0dp"
@@ -385,6 +390,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
+                    android:onClick="PowerClick"
                     android:gravity="center"
                     android:background="@drawable/button_rounde"
                     android:text="I / O"
@@ -446,6 +452,8 @@
                             android:layout_gravity="center"
                             android:textSize="20dp"/>
                         <Button
+                            android:id="@+id/btn_timeset"
+                            android:onClick="TimeSetBtnClick"
                             android:layout_width="wrap_content"
                             android:layout_height="40dp"
                             android:layout_gravity="center"
@@ -466,7 +474,8 @@
                             android:layout_gravity="center"
                             android:textSize="20dp"/>
                         <Button
-                            android:id="@+id/btn_fan_set"
+                            android:id="@+id/btn_fan"
+                            android:onClick="FansetClick"
                             android:layout_width="wrap_content"
                             android:layout_height="40dp"
                             android:layout_gravity="center"
@@ -608,6 +617,8 @@
                             android:layout_gravity="center"
                             android:textSize="20dp"/>
                         <Button
+                            android:id="@+id/btn_mode"
+                            android:onClick="ModeBtnClick"
                             android:layout_width="wrap_content"
                             android:layout_height="40dp"
                             android:layout_gravity="center"

@@ -49,7 +49,7 @@ public class IndexFragment extends Fragment {
                         switch ((int) id){
                             //點擊電網
                             case R.drawable.air_large:
-                                intent = new Intent(getActivity(), Switch_AirConditioner.class);
+                                intent = new Intent(getActivity(), AirControlActivity.class);
                                 startActivity(intent);
                                 break;
                             case R.drawable.plug:
