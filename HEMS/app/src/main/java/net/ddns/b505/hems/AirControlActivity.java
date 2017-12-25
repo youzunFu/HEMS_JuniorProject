@@ -1,6 +1,14 @@
 package net.ddns.b505.hems;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffXfermode;
+import android.graphics.Rect;
+import android.graphics.RectF;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -28,7 +36,26 @@ import java.net.URLEncoder;
 import java.util.concurrent.ExecutionException;
 
 public class AirControlActivity extends AppCompatActivity {
+/*
+    private  ImageButton btnOnoff,btnMode,btnWindSpeed,btnTimeSet,btnTempAdd,btnTempSub;
+    private Button Fanset, Funcset, Power;
+    private ImageButton btnTempadd, btnTempsub;
+    private TextView tvTempStr,tvAirInfo;
+    private int on_off = 0;
+    public  String ctrltype,ctrlresultonoff,ctrlresultup,ctrlresultdown,ctrlresultauto;
 
+        //imageButton ok
+        btnOnoff = (ImageButton) findViewById(R.id.btnOnoff); //TempeartureUp
+        btnMode = (ImageButton) findViewById(R.id.btnMode);
+        btnWindSpeed = (ImageButton) findViewById(R.id.btnWindSpeed);
+        btnTimeSet = (ImageButton) findViewById(R.id.btnTimeSet);
+        btnTempAdd = (ImageButton) findViewById(R.id.btnTempAdd);
+        btnTempSub = (ImageButton) findViewById(R.id.btnTempSub);
+
+        tvAirInfo  = (TextView) findViewById(R.id.tvAirInfo);
+        tvTempStr = (TextView) findViewById(R.id.tvTempStr); //TemperatureTextView
+
+*/
     private ImageView fan_low, fan_normal, fan_large, func_auto, func_ac, func_humi, func_fan, func_heat;
     private Button Fanset, Funcset, Power, ModeBtn, TimeSetBtn;
     private ImageButton btnTempadd, btnTempsub;
@@ -63,6 +90,33 @@ public class AirControlActivity extends AppCompatActivity {
         tvTimeSet = (TextView) findViewById(R.id.tv_TimeSet);
         tvTemp = (TextView) findViewById(R.id.tv_temp); //
 
+        /*ImageView mImg1 = (ImageView) findViewById(R.id.);
+
+        //將圖片及圓角數值帶入getRoundedCornerBitmap()並放入mImg1內
+        mImg1.setImageBitmap(getRoundedCornerBitmap(
+                BitmapFactory.decodeResource(
+                        getResources(), R.drawable.plugoff25),50.0f)); */
+
+    }
+    // set image Roundcorner
+    public static Bitmap getRoundedCornerBitmap(Bitmap bitmap, float roundPx)
+    {
+        Bitmap output = Bitmap.createBitmap(bitmap.getWidth(),
+                bitmap.getHeight(),
+                Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(output);
+        final int color = 0xff424242;
+        final Paint paint = new Paint();
+        final Rect rect = new Rect(0, 0, bitmap.getWidth(),
+                bitmap.getHeight());
+        final RectF rectF = new RectF(rect);
+        paint.setAntiAlias(true);
+        canvas.drawARGB(0, 0, 0, 0);
+        paint.setColor(color);
+        canvas.drawRoundRect(rectF, roundPx, roundPx, paint);
+        paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
+        canvas.drawBitmap(bitmap, rect, rect, paint);
+        return output;
     }
 
     public void PowerClick(View v) {
