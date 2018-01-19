@@ -1,19 +1,211 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/backgroud">
+    android:background="@drawable/backgroud"
+    android:orientation="vertical"
+    tools:context=".airb505left" >
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="308dp"
-        android:layout_height="173dp"
-        app:srcCompat="@drawable/airicon" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="" />
+
+        <ImageView
+            android:id="@+id/airicon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="15"
+            app:srcCompat="@drawable/airicon" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvTempStr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:textColor="@android:color/white"
+            android:text=" 28 ℃"
+            android:textSize="100dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="30"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvAirMode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="20dp"
+                android:textColor="@android:color/black"
+                android:text="模式 : " />
+
+            <TextView
+                android:id="@+id/tvAirFan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="20dp"
+                android:textColor="@android:color/black"
+                android:text="風量 : " />
+
+            <TextView
+                android:id="@+id/tvAirTimeSet"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="20dp"
+                android:textColor="@android:color/black"
+                android:text="定時 : " />
+
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/btnOnoff"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginRight="10dp"
+                android:layout_gravity="right"
+                android:background="@drawable/round_air"
+                android:onClick="PowerClick"
+                app:srcCompat="@drawable/onoff" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/btnMode"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:background="@drawable/round_air"
+                android:layout_marginTop="15dp"
+                android:layout_marginLeft="10dp"
+                android:onClick="ModeBtnClick"
+                android:textColor="@android:color/white"
+                android:text="模式" />
+
+            <Button
+                android:id="@+id/btnWindSpeed"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:background="@drawable/round_air"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="10dp"
+                android:onClick="FansetClick"
+                android:textColor="@android:color/white"
+                android:text="風量" />
+
+            <Button
+                android:id="@+id/btnTimeSet"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:background="@drawable/round_air"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="10dp"
+                android:onClick="TimeSetBtnClick"
+                android:textColor="@android:color/white"
+                android:text="定時" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:orientation="vertical">
+
+
+<!-- ▼▲△▽ -->
+
+            <Button
+                android:id="@+id/btnTempAdd"
+                android:layout_width="50dp"
+                android:layout_height="100dp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/round_air"
+                android:onClick="TempAddClick"
+                android:text="△"
+                android:textColor="@android:color/black"
+                android:textSize="40dp" />
+
+            <Button
+                android:id="@+id/btnTempSub"
+                android:layout_width="50dp"
+                android:layout_height="100dp"
+                android:background="@drawable/round_air"
+                android:layout_marginBottom="15dp"
+                android:layout_marginLeft="25dp"
+                android:onClick="TempSubClick"
+                android:textSize="40dp"
+                android:textColor="@android:color/black"
+                android:text="▽" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
 
 
 </LinearLayout>
 
-    <!--xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-         tools:context=".AirControlActivity"  -->

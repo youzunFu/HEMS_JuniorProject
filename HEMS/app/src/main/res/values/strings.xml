@@ -8,6 +8,7 @@
     <string name="account">Account</string>
     <string name="smartphone">Smartphone</string>
     <string name="place">Place</string>
+    <string name="toolbar1"></string>
     <string name="friend">Friend</string>
     <string name="setting">Setting</string>
     <string name="contact">Contact us</string>
@@ -15,6 +16,10 @@
     <string name="plugname2">插座002</string>
     <string name="plugname3">插座003</string>
     <string name="plugname4">插座004</string>
+    <string name="lightname1">燈具001</string>
+    <string name="lightname2">燈具002</string>
+    <string name="lightname3">燈具003</string>
+    <string name="lightname4">燈具004</string>
     <string name="button_schedule_txtsize1">8dp</string>
     <string name="button_schedule_txtsize2">8dp</string>
     <string name="button_schedule_txtsize3">8dp</string>

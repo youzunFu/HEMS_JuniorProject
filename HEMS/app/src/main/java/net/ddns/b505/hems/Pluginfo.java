@@ -40,7 +40,7 @@ public class Pluginfo extends Activity {
     private ImageView image1,image2,image3,image4;
     private Switch sw1,sw2,sw3,sw4;
     private TextView plugname1,plugname2,plugname3,plugname4,pluginfo1,pluginfo2,pluginfo3,pluginfo4;
-    private Button btn_schedule1,btn_schedule2,btn_schedule3,btn_schedule4;
+    private Button btn_schedule1,btn_schedule2,btn_schedule3,btn_schedule4,btn_history1,btn_history2,btn_history3,btn_history4;
 
     public String plugname = null,pluginfo = null,plugstatus = null,plugall = null;
     private CountDownTimer counterdowntimer ;
@@ -113,6 +113,10 @@ public class Pluginfo extends Activity {
         btn_schedule2 = (Button) findViewById(R.id.ItemButton2);
         btn_schedule3 = (Button) findViewById(R.id.ItemButton3);
         btn_schedule4 = (Button) findViewById(R.id.ItemButton4);
+        btn_history1 = (Button) findViewById(R.id.ItemButton5);
+        btn_history2 = (Button) findViewById(R.id.ItemButton6);
+        btn_history3 = (Button) findViewById(R.id.ItemButton7);
+        btn_history4 = (Button) findViewById(R.id.ItemButton8);
 
         InitialPlug1();
         InitialPlug2();
@@ -208,6 +212,7 @@ public class Pluginfo extends Activity {
         }
     }
 
+    //schedule
     public void sendPlugNumber1(View view){
         Intent intent = new Intent(Pluginfo.this,PlugSetActivity.class);
         Bundle bundle = new Bundle();
@@ -236,7 +241,35 @@ public class Pluginfo extends Activity {
         intent.putExtras(bundle);
         startActivity(intent);
     }
-
+    //history chart
+    public void sendPlugNumberChart1(View view ){
+        Intent intent = new Intent(Pluginfo.this,MPchartActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putString("PlugNum","001");
+        intent.putExtras(bundle);
+        startActivity(intent);
+    }
+    public void sendPlugNumberChart2(View view ){
+        Intent intent = new Intent(Pluginfo.this,MPchartActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putString("PlugNum","002");
+        intent.putExtras(bundle);
+        startActivity(intent);
+    }
+    public void sendPlugNumberChart3(View view ){
+        Intent intent = new Intent(Pluginfo.this,MPchartActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putString("PlugNum","003");
+        intent.putExtras(bundle);
+        startActivity(intent);
+    }
+    public void sendPlugNumberChart4(View view ){
+        Intent intent = new Intent(Pluginfo.this,MPchartActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putString("PlugNum","004");
+        intent.putExtras(bundle);
+        startActivity(intent);
+    }
 
     //btnSchedule1 set YYYY-MM-DD HH:mm:ss
     /*

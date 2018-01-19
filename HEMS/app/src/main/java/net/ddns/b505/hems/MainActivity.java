@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
     private TabLayout tabLayout;
     private Toolbar toolbar;
     private int[] IconResID = {R.drawable.selector_home,R.drawable.selector_two,R.drawable.selector_three};
-    private int[] TollBarTitle = {R.string.friend,R.string.setting,R.string.contact};
+    private int[] TollBarTitle = {R.string.toolbar1,R.string.setting,R.string.contact};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

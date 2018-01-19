@@ -16,6 +16,7 @@
             android:focusable="true"
             android:focusableInTouchMode="true"
             android:marqueeRepeatLimit="marquee_forever"
+            android:layout_marginTop="0dp"
             android:textAlignment="center"
             android:textColor="@android:color/holo_green_light"
             android:textSize="40sp" />
