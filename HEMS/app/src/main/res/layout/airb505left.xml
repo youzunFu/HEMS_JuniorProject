@@ -6,7 +6,11 @@
     android:layout_height="match_parent"
     android:background="@drawable/backgroud"
     android:orientation="vertical"
+<<<<<<< HEAD
     tools:context=".airb505left" >
+=======
+    tools:context=".airb505leftActivity" >
+>>>>>>> f3f4c3d3c026bded8fd139d4100741fe9e0c34be
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -21,7 +25,11 @@
             android:text="" />
 
         <ImageView
+<<<<<<< HEAD
             android:id="@+id/airicon"
+=======
+            android:id="@+id/imageView"
+>>>>>>> f3f4c3d3c026bded8fd139d4100741fe9e0c34be
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="15"
@@ -47,6 +55,7 @@
             android:layout_gravity="center"
             android:layout_weight="1"
             android:gravity="center_horizontal"
+<<<<<<< HEAD
             android:textColor="@android:color/white"
             android:text=" 28 ℃"
             android:textSize="100dp" />
@@ -88,6 +97,18 @@
         </LinearLayout>
 
 
+=======
+            android:text="28"
+            android:textSize="100dp" />
+
+        <TextView
+            android:id="@+id/tvAirInfo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="30"
+            android:textSize="20dp"
+            android:text="TextView" />
+>>>>>>> f3f4c3d3c026bded8fd139d4100741fe9e0c34be
 
     </LinearLayout>
 
@@ -97,6 +118,15 @@
         android:layout_weight="1"
         android:orientation="horizontal">
 
+<<<<<<< HEAD
+=======
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:text="" />
+>>>>>>> f3f4c3d3c026bded8fd139d4100741fe9e0c34be
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -104,6 +134,7 @@
             android:layout_weight="2"
             android:orientation="vertical">
 
+<<<<<<< HEAD
             <ImageView
                 android:id="@+id/btnOnoff"
                 android:layout_width="100dp"
@@ -116,6 +147,15 @@
                 app:srcCompat="@drawable/onoff" />
 
 
+=======
+            <ImageButton
+                android:id="@+id/btnOnoff"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:baselineAligned="false"
+                android:onClick="PowerClick"
+                app:srcCompat="@drawable/onoff" />
+>>>>>>> f3f4c3d3c026bded8fd139d4100741fe9e0c34be
         </LinearLayout>
 
         <LinearLayout
@@ -124,6 +164,7 @@
             android:layout_weight="2"
             android:orientation="vertical">
 
+<<<<<<< HEAD
             <Button
                 android:id="@+id/btnMode"
                 android:layout_width="wrap_content"
@@ -158,6 +199,31 @@
                 android:text="定時" />
 
 
+=======
+            <ImageButton
+                android:id="@+id/btnMode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="ModeBtnClick"
+                app:srcCompat="@drawable/cold" />
+
+            <ImageButton
+                android:id="@+id/btnWindSpeed"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:onClick="FansetClick"
+                app:srcCompat="@drawable/windspeed" />
+
+            <ImageButton
+                android:id="@+id/btnTimeSet"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:onClick="TimeSetBtnClick"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/timingset" />
+>>>>>>> f3f4c3d3c026bded8fd139d4100741fe9e0c34be
         </LinearLayout>
 
         <LinearLayout
@@ -167,6 +233,7 @@
             android:orientation="vertical">
 
 
+<<<<<<< HEAD
 <!-- ▼▲△▽ -->
 
             <Button
@@ -204,6 +271,32 @@
 
 
 
+=======
+            <ImageButton
+                android:id="@+id/btnTempAdd"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:onClick="TempAddClick"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/triangle_up" />
+
+            <ImageButton
+                android:id="@+id/btnTempSub"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:onClick="TempSubClick"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/triangle_down" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:text="" />
+>>>>>>> f3f4c3d3c026bded8fd139d4100741fe9e0c34be
     </LinearLayout>
 
 

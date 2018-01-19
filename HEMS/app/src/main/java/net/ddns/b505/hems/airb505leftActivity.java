@@ -2,10 +2,7 @@ package net.ddns.b505.hems;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-<<<<<<< HEAD
-=======
 import android.graphics.BitmapFactory;
->>>>>>> f3f4c3d3c026bded8fd139d4100741fe9e0c34be
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.PorterDuff;
@@ -13,13 +10,15 @@ import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.os.AsyncTask;
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.util.Log;
+import android.view.Display;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,14 +35,24 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.util.concurrent.ExecutionException;
 
-public class AirControlActivity extends AppCompatActivity {
-/*
+public class airb505leftActivity extends AppCompatActivity {
+
     private  ImageButton btnOnoff,btnMode,btnWindSpeed,btnTimeSet,btnTempAdd,btnTempSub;
     private Button Fanset, Funcset, Power;
     private ImageButton btnTempadd, btnTempsub;
     private TextView tvTempStr,tvAirInfo;
-    private int on_off = 0;
-    public  String ctrltype,ctrlresultonoff,ctrlresultup,ctrlresultdown,ctrlresultauto;
+    private String FanStr, ModeStr, TempStr,TimeSetStr,m;
+    private int i = 1, on_off = 0,TimeSetNum = 0,TempNum; //switch case variable
+     public  String ctrltype,ctrlresultonoff,ctrlresultup,ctrlresultdown,ctrlresultauto;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_air_control);
+
+        Fanset = (Button) findViewById(R.id.btn_fan);//FanSpeedButton
+        Funcset = (Button) findViewById(R.id.btn_func_set);//FuncButton
+        Power = (Button) findViewById(R.id.btn_power);  //Ｉ／Ｏ
 
         //imageButton ok
         btnOnoff = (ImageButton) findViewById(R.id.btnOnoff); //TempeartureUp
@@ -56,47 +65,32 @@ public class AirControlActivity extends AppCompatActivity {
         tvAirInfo  = (TextView) findViewById(R.id.tvAirInfo);
         tvTempStr = (TextView) findViewById(R.id.tvTempStr); //TemperatureTextView
 
-*/
-    private ImageView fan_low, fan_normal, fan_large, func_auto, func_ac, func_humi, func_fan, func_heat;
-    private Button Fanset, Funcset, Power, ModeBtn, TimeSetBtn;
-    private ImageButton btnTempadd, btnTempsub;
-    private TextView tvTemp, tvTimeSet;
-    private int i = 1, on_off = 0, m = 1; //switch case variable
-    private String FanStr, ModeStr, TempStr, TimeSetStr;
-    public String ctrltype, ctrlresultonoff, ctrlresultup, ctrlresultdown, ctrlresultauto;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_air_control);
-        //fan3 types  little middle large  (ＮＯ Function)
-        fan_low = (ImageView) findViewById(R.id.img_fan_low);
-        fan_normal = (ImageView) findViewById(R.id.img_fan_nor);
-        fan_large = (ImageView) findViewById(R.id.img_fan_large);
-        // func 5 types auto～air conditioner～dehumidificational～fanout～heat　ｏｎｌｙ　ａｉｒ　ｃｏｎｄｉｃｔｉｏｎｅｒ
-        func_auto = (ImageView) findViewById(R.id.img_func_auto);
-        func_ac = (ImageView) findViewById(R.id.img_func_ac);
-        func_humi = (ImageView) findViewById(R.id.img_func_humi);
-        func_fan = (ImageView) findViewById(R.id.img_func_fan);
-        func_heat = (ImageView) findViewById(R.id.img_func_heat);
-
-        TimeSetBtn = (Button) findViewById(R.id.btn_timeset);
-        ModeBtn = (Button) findViewById(R.id.btn_mode);
-        Fanset = (Button) findViewById(R.id.btn_fan);//FanSpeedButton
-        Funcset = (Button) findViewById(R.id.btn_func_set);//FuncButton
-        Power = (Button) findViewById(R.id.btn_power);  //Ｉ／Ｏ
-
-        btnTempadd = (ImageButton) findViewById(R.id.btn_add); //TempeartureUp
-        btnTempsub = (ImageButton) findViewById(R.id.btn_sub); //TempeartureDown
-        tvTimeSet = (TextView) findViewById(R.id.tv_TimeSet);
-        tvTemp = (TextView) findViewById(R.id.tv_temp); //
-
-        /*ImageView mImg1 = (ImageView) findViewById(R.id.);
+        ImageView mImg1 = (ImageView) findViewById(R.id.btnOnoff);
+        ImageView mImg2 = (ImageView) findViewById(R.id.btnMode);
+        ImageView mImg3 = (ImageView) findViewById(R.id.btnWindSpeed);
+        ImageView mImg4 = (ImageView) findViewById(R.id.btnTimeSet);
+        ImageView mImg5 = (ImageView) findViewById(R.id.btnTempAdd);
+        ImageView mImg6 = (ImageView) findViewById(R.id.btnTempSub);
 
         //將圖片及圓角數值帶入getRoundedCornerBitmap()並放入mImg1內
         mImg1.setImageBitmap(getRoundedCornerBitmap(
                 BitmapFactory.decodeResource(
-                        getResources(), R.drawable.plugoff25),50.0f)); */
+                        getResources(), R.drawable.onoff),180.0f));
+        mImg2.setImageBitmap(getRoundedCornerBitmap(
+                BitmapFactory.decodeResource(
+                        getResources(), R.drawable.cold),180.0f));
+        mImg3.setImageBitmap(getRoundedCornerBitmap(
+                BitmapFactory.decodeResource(
+                        getResources(), R.drawable.windspeed),180.0f));
+        mImg4.setImageBitmap(getRoundedCornerBitmap(
+                BitmapFactory.decodeResource(
+                        getResources(), R.drawable.timingset),180.0f));
+        mImg5.setImageBitmap(getRoundedCornerBitmap(
+                BitmapFactory.decodeResource(
+                        getResources(), R.drawable.triangle_up),180.0f));
+        mImg6.setImageBitmap(getRoundedCornerBitmap(
+                BitmapFactory.decodeResource(
+                        getResources(), R.drawable.triangle_down),180.0f));
 
     }
     // set image Roundcorner
@@ -124,77 +118,67 @@ public class AirControlActivity extends AppCompatActivity {
         try {
             if (on_off == 0) {
                 ctrltype = "on";
-                tvTemp.setText("28");
+                TempNum = 28 ;
+                tvTempStr.setText("28");
                 on_off = 1;
             } else if (on_off == 1) {
                 ctrltype = "off";
-                tvTemp.setText(null);
+                TempNum = 0 ;
+                tvTempStr.setText(null);
                 on_off = 0;
             }
-            CtrlpageAsynctask ctrlpageAsynctaskonoff = new CtrlpageAsynctask(AirControlActivity.this);
+            CtrlpageAsynctask ctrlpageAsynctaskonoff = new CtrlpageAsynctask(airb505leftActivity.this);
             ctrlresultonoff = ctrlpageAsynctaskonoff.execute(ctrltype).get().toString();
-            Toast.makeText(AirControlActivity.this, ctrltype, Toast.LENGTH_SHORT).show();
+            Toast.makeText(airb505leftActivity.this, ctrltype, Toast.LENGTH_SHORT).show();
 
+            tvAirInfo.setText("模式 : " + ModeStr + "風量 : " + FanStr + "定時 開/關 : " + TimeSetStr);
             //ctrlresultonoff = ctrlpageAsynctaskonoff.execute(ctrltype).get().toString();
-            //Toast.makeText(AirControlActivity.this,String.valueOf(ctrlresultonoff),Toast.LENGTH_SHORT);
+            //Toast.makeText(airb505leftActivity.this,String.valueOf(ctrlresultonoff),Toast.LENGTH_SHORT);
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
     public void ModeBtnClick(View v) throws ExecutionException, InterruptedException {
-        switch (m % 5) {
-            case 1://auto
-                func_heat.setVisibility(View.INVISIBLE);
-                func_auto.setVisibility(View.VISIBLE);
-                ModeBtn.setText("自動");
+        switch (m) {
+            case "1"://auto
                 ModeStr = "auto";
-                m++;
+                FanStr = "Auto";
+                m = "2" ;
                 break;
-            case 2:  //cold
-                func_auto.setVisibility(View.INVISIBLE);
-                func_ac.setVisibility(View.VISIBLE);
+            case "2":  //cold
                 ModeStr = "cold";
-                ModeBtn.setText("冷氣");
+                TempNum = 28 ;
                 TempStr = "28";
-                tvTemp.setText("28");
+                TimeSetNum = 0;
+                TimeSetStr = "null";
+                tvTempStr.setText("28");
                 FanStr = "Auto";
                 i = 1;
-                TimeSetStr = "0";
-                tvTimeSet.setText("0");
-                m++;
+              // TimeSetStr = "0";
+                TimeSetNum = 0;
+                m = "3" ;
                 break;
-            case 3:  //wet
-                func_ac.setVisibility(View.INVISIBLE);
-                func_humi.setVisibility(View.VISIBLE);
+            case "3":  //wet
                 ModeStr = "wet";
-                ModeBtn.setText("除濕");
+                TimeSetNum = 0;
                 TimeSetStr = "null";
-                tvTimeSet.setText("0");
-                FanStr = "Auto";
-                Fanset.setText("自動");
-                m++;
+                m = "4" ;
                 break;
-            case 4:  //wind
-                func_humi.setVisibility(View.INVISIBLE);
-                func_fan.setVisibility(View.VISIBLE);
-                ModeBtn.setText("送風");
+            case "4":  //wind
                 ModeStr = "wind";
                 FanStr = "Small";
                 i = 2;
-                Fanset.setText("自動");
-                m++;
+                m = "5" ;
                 break;
-            case 0:  //warm
-                func_fan.setVisibility(View.INVISIBLE);
-                func_heat.setVisibility(View.VISIBLE);
-                ModeBtn.setText("暖氣");
+            case "5":  //warm
                 ModeStr = "warm";
+                TempNum = 28 ;
                 TempStr = "28";
-                tvTemp.setText("28");
                 FanStr = "Auto";
-                i = 1;
-                m = 1;
+                tvTempStr.setText("28");
+                i = 0 ;
+                m = "0" ;
                 break;
         }
         callDatabase();
@@ -203,29 +187,18 @@ public class AirControlActivity extends AppCompatActivity {
     public void FansetClick(View v) throws ExecutionException, InterruptedException {
         switch (i % 4) {
             case 1:
-                fan_large.setVisibility(View.INVISIBLE);
-                fan_low.setVisibility(View.VISIBLE);
-                Fanset.setText("低");
                 FanStr = "Small";
                 i++;
                 break;
             case 2:
-                fan_low.setVisibility(View.INVISIBLE);
-                fan_normal.setVisibility(View.VISIBLE);
-                Fanset.setText("中");
                 FanStr = "Middle";
                 i++;
                 break;
             case 3:
-                fan_normal.setVisibility(View.INVISIBLE);
-                fan_large.setVisibility(View.VISIBLE);
-                Fanset.setText("高");
                 FanStr = "Big";
                 i++;
                 break;
             case 0:
-                fan_large.setVisibility(View.INVISIBLE);
-                Fanset.setText("自動");
                 FanStr = "Auto";
                 i = 1;
                 break;
@@ -235,24 +208,27 @@ public class AirControlActivity extends AppCompatActivity {
 
     //時間設定待修正  wet /cold 分開
     public void TimeSetBtnClick(View v) throws ExecutionException, InterruptedException {
-        int temp = Integer.parseInt(tvTimeSet.getText().toString());
-        if (on_off == 0 && temp != 12) {
-            temp++;
-            TimeSetStr = toString().valueOf(temp);
-        } else if (on_off == 0 && temp == 12) {
-            temp = 0;
-            TimeSetStr = toString().valueOf(temp);
-        }
         switch (ModeStr) {
             case "wet":  //如果0_open ctrltype=wetnullAuto   or wetnullSmall
-                tvTimeSet.setText(TimeSetStr + "\n" + "Hr開");
+                if (on_off == 0 && TimeSetNum != 12) {
+                    TimeSetNum++;
+                    TimeSetStr = toString().valueOf(TimeSetNum);
+                } else if (on_off == 0 && TimeSetNum == 12) {
+                    TimeSetNum = 0;
+                    TimeSetStr = toString().valueOf(TimeSetNum);
+                }
                 break;
-
             case "cold":
-                tvTimeSet.setText(TimeSetStr + "\n" + "Hr關");
+                if (on_off == 1 && TimeSetNum != 12) {
+                    TimeSetNum++;
+                    TimeSetStr = toString().valueOf(TimeSetNum);
+                } else if (on_off == 1 && TimeSetNum == 12) {
+                    TimeSetNum = 0;
+                    TimeSetStr = toString().valueOf(TimeSetNum);
+                }
                 break;
-
-            default://be continue...
+            default:
+                Toast.makeText(airb505leftActivity.this,"This situation don't support this",Toast.LENGTH_SHORT).show();
                 break;
 
         }
@@ -261,15 +237,14 @@ public class AirControlActivity extends AppCompatActivity {
 
     public void TempAddClick(View v) {
         try {
-            int temp = Integer.parseInt(tvTemp.getText().toString());
-            if (on_off == 1 && temp != 32) {
-                temp++;
-                TempStr = toString().valueOf(temp);
-                tvTemp.setText(TempStr);
+            if (on_off == 1 && TimeSetNum != 32) {
+                TimeSetNum++;
+                TempStr = toString().valueOf(TimeSetNum);
+                tvTempStr.setText(TempStr);
                 callDatabase();
             }
             //ctrlresultup = ctrlpageAsynctaskup.execute(ctrltype).get().toString();
-            //Toast.makeText(AirControlActivity.this,String.valueOf(ctrlresultup),Toast.LENGTH_SHORT).show();
+            //Toast.makeText(airb505leftActivity.this,String.valueOf(ctrlresultup),Toast.LENGTH_SHORT).show();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -277,15 +252,14 @@ public class AirControlActivity extends AppCompatActivity {
 
     public void TempSubClick(View v) {
         try {
-            int temp = Integer.parseInt(tvTemp.getText().toString());
-            if (on_off == 1 && temp != 18) {
-                temp--;
-                TempStr = toString().valueOf(temp);
-                tvTemp.setText(TempStr);
+            if (on_off == 1 && TimeSetNum != 18) {
+                TimeSetNum--;
+                TempStr = toString().valueOf(TimeSetNum);
+                tvTempStr.setText(TempStr);
                 callDatabase();
             }
             //ctrlresultdown = ctrlpageAsynctaskdown.execute(ctrltype).get().toString();
-            //Toast.makeText(AirControlActivity.this,String.valueOf(ctrlresultdown),Toast.LENGTH_SHORT).show();
+            //Toast.makeText(airb505leftActivity.this,String.valueOf(ctrlresultdown),Toast.LENGTH_SHORT).show();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -299,60 +273,65 @@ public class AirControlActivity extends AppCompatActivity {
                 //mode:a uto ,wind:Auto ;
                 if (FanStr != "Auto") {
                     FanStr = "Auto";
+                    i = 1;
+                    Toast.makeText(airb505leftActivity.this,"自動模式中 風量只有自動選項",Toast.LENGTH_SHORT).show();
                 }
-                Fanset.setText("自動");
                 ctrltype = "autoAuto";
                 break;
             case "cold":   //still need to check
                 if (TimeSetStr == "0") {
                     ctrltype = ModeStr + TempStr + FanStr;
+                    tvAirInfo.setText("模式 : " + ModeStr + "  風量 : " + FanStr + "  定時 關 : " + "");
                 } else {
                     ctrltype = ModeStr + TempStr + FanStr + TimeSetStr + "Close";
+                    tvAirInfo.setText("模式 : " + ModeStr + "  風量 : " + FanStr + "  定時 關 : " + TimeSetStr + "小時");
                 }
-                TimeSetBtn.setText(TimeSetStr + "Hr關");
                 break;
             case "wet":
-                if (TimeSetStr != "null") {
-                    TimeSetBtn.setText(TimeSetStr + "Hr開");
+                if (TimeSetStr != "0") {
                     ctrltype = ModeStr + TimeSetStr + "Open";
+                    tvAirInfo.setText("模式 : " + ModeStr + "  風量 : " + FanStr + "  定時 開 : " + TimeSetStr + "小時");
                 } else {
-                    ctrltype = ModeStr + TimeSetStr + FanStr;
+                    ctrltype = ModeStr + "null" + FanStr;
+                    tvAirInfo.setText("模式 : " + ModeStr + "  風量 : " + FanStr + "  定時 開 : " + "");
                 }
 
                 break;
             case "wind":
-            if (FanStr == "Auto") {
-                FanStr = "Small";
-                i = 2;
-            }
-            Fanset.setText("低");
-            ctrltype = ModeStr + FanStr;
+                if (FanStr == "Auto") {
+                    FanStr = "Small";
+                    i = 2;
+                }
+                ctrltype = ModeStr + FanStr;
+                tvAirInfo.setText("模式 : " + ModeStr + "  風量 : " + FanStr + "  定時 開 : " + "");
                 break;
             case "warm":
-            if (FanStr != "Auto") {
-                FanStr = "Auto";
-                i = 1;
-            }
-            Fanset.setText("自動");
-            ctrltype = ModeStr + TempStr + FanStr;
+                if (FanStr != "Auto") {
+                    FanStr = "Auto";
+                    i = 1;
+                }
+                Fanset.setText("自動");
+                ctrltype = ModeStr + TempStr + FanStr;
+                tvAirInfo.setText("模式 : " + ModeStr + "  風量 : " + FanStr + "  定時 開 : " + "");
                 break;
 
             default:
-            Log.d("ModeStr:", ModeStr);
+                Log.d("ModeStr:", ModeStr);
                 break;
         }
 
         //ctrltype = ModeStr + TempStr + FanStr ;
         CtrlpageAsynctask ctrlpageAsynctaskauto = new CtrlpageAsynctask(this);
         ctrlresultauto = ctrlpageAsynctaskauto.execute(ctrltype).get().toString();
-        Toast.makeText(AirControlActivity.this,"ctrltype :" + ctrltype,Toast.LENGTH_SHORT).show();
+        Toast.makeText(airb505leftActivity.this,"ctrltype :" + ctrltype,Toast.LENGTH_SHORT).show();
+
     }
 
     public void autoclick(View v)throws ExecutionException, InterruptedException{
         ctrltype = "auto";
         CtrlpageAsynctask ctrlpageAsynctaskauto = new CtrlpageAsynctask(this);
         ctrlresultauto = ctrlpageAsynctaskauto.execute(ctrltype).get().toString();
-        Toast.makeText(AirControlActivity.this,String.valueOf(ctrlresultauto),Toast.LENGTH_SHORT).show();
+        Toast.makeText(airb505leftActivity.this,String.valueOf(ctrlresultauto),Toast.LENGTH_SHORT).show();
     }
 
 
