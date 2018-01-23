@@ -67,9 +67,11 @@ public class LoginActivity extends AppCompatActivity {
         file = new File("/data/data/net.ddns.b505.hems/shared_prefs","auto.xml");
         if(file.exists() && autoisRemember){ //如果自動登入有被勾選
             ReadValue();
+
             if(!user.equals("")){
                 SendIntent();
             }
+
         }
         //查看app中是否已經儲存過帳號密碼，有的話直接顯示出來
         boolean memoryisRemember = pref.getBoolean("login_check",false);
@@ -137,7 +139,8 @@ public class LoginActivity extends AppCompatActivity {
         try {
             String user_name = params[0];
             String password = params[1];
-            URL url = new URL("http://192.168.2.110/login.php");
+            URL url = new URL("http://163.18.57.43/HEMSphp/login.php");
+            //URL url = new URL("http://192.168.2.110/login.php");
             HttpURLConnection httpURLConnection = (HttpURLConnection)url.openConnection();
             httpURLConnection.setRequestMethod("POST");
             httpURLConnection.setDoOutput(true);
@@ -178,12 +181,14 @@ public class LoginActivity extends AppCompatActivity {
         setting = getSharedPreferences("auto",0);
         user = setting.getString("USER","");
     }
+
     public void SendIntent(){
         Intent it = new Intent();
         it.setClass(LoginActivity.this,MainActivity.class);
         startActivity(it);
         LoginActivity.this.finish();
     }
+
     //結束
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         // TODO Auto-generated method stub

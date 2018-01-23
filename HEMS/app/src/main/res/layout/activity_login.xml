@@ -4,29 +4,37 @@
     android:id="@+id/activity_login"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/holo_blue_bright"
     android:paddingBottom="16dp"
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
     android:paddingTop="16dp"
     tools:context=".LoginActivity">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp" />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="電能管理系統"
+            android:fontFamily="monospace"
+            android:text="家庭電能管理系統"
             android:textAlignment="center"
             android:textColor="#000000"
-            android:textSize="20sp" />
+            android:textSize="25dp"
+            android:typeface="normal" />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
+
         <LinearLayout
             android:id="@+id/account"
             android:layout_width="match_parent"
@@ -34,101 +42,100 @@
 
             <EditText
                 android:id="@+id/et_username"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="40dp"
-                android:layout_marginRight="40dp"
-                android:layout_weight="1"
+                android:background="@android:color/white"
+                android:paddingTop="10dp"
+                android:layout_marginLeft="60dp"
+                android:layout_marginRight="60dp"
                 android:hint="Username"
                 android:inputType="textPersonName" />
         </LinearLayout>
+
         <LinearLayout
             android:id="@+id/password"
+            android:layout_marginTop="15dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
             <EditText
                 android:id="@+id/et_password"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="40dp"
-                android:layout_marginRight="40dp"
-                android:layout_weight="1"
+                android:background="@android:color/white"
+                android:paddingTop="10dp"
+                android:layout_marginLeft="60dp"
+                android:layout_marginRight="60dp"
                 android:hint="Password"
                 android:inputType="textPassword" />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp">
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1" />
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp">
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal">
+
             <Button
                 android:id="@+id/btn_reate"
-                android:background="@drawable/button_rounde"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
+                android:layout_marginLeft="60dp"
+                android:layout_marginRight="60dp"
                 android:layout_weight="1"
+                android:layout_gravity="center_vertical"
+                android:backgroundTint="@android:color/white"
+                android:textColor="@android:color/holo_blue_bright"
                 android:onClick="OnLogin"
-                android:text="Login"
+                android:text="登入"
                 android:textSize="20dp" />
+
+
         </LinearLayout>
+
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp">
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="-OR-"
-                android:textAlignment="center"
-                android:textColor="#000"
-                android:textSize="15dp"
-                android:textStyle="bold" />
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp">
+
             <Button
                 android:id="@+id/btn_guest"
-                android:background="@drawable/button_rounde"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
+                android:layout_marginLeft="60dp"
+                android:layout_marginRight="60dp"
                 android:layout_weight="1"
+                android:backgroundTint="@android:color/white"
+                android:textColor="@android:color/holo_blue_bright"
                 android:onClick="OnSignup"
-                android:text="Login As Guest"
-                android:textSize="20dp"/>
+                android:text="註冊"
+                android:textSize="20dp" />
         </LinearLayout>
+
         <LinearLayout
             android:id="@+id/check"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp">
+
             <CheckBox
                 android:id="@+id/check_auto"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="60dp"
                 android:layout_weight="1"
                 android:text="自動登入" />
+
             <CheckBox
                 android:id="@+id/check_login"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginRight="60dp"
                 android:layout_weight="1"
                 android:checked="false"
                 android:text="記住密碼" />
         </LinearLayout>
+
     </LinearLayout>
 </LinearLayout>

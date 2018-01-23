@@ -1,21 +1,132 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-android:orientation="horizontal" android:layout_width="match_parent"
-android:layout_height="match_parent">
-
-<TextView
-    android:text="@string/country"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_weight="5"
-    />
+    android:layout_height="match_parent">
 
-<EditText
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_weight="1"
-    android:inputType="textPersonName"
-    android:ems="10"
-    android:id="@+id/edtCountry"
-    style="@style/Widget.AppCompat.EditText" />
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="40sp"
+        android:text="" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <!--> 插座<-->
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:background="@color/gray"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/HistoryPlug1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="HistoryPlug1Click"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:paddingLeft="20dp"
+                android:text="插座1"
+                android:textSize="25sp" />
+
+            <TextView
+                android:id="@+id/HistoryPlug2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="HistoryPlug2Click"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:paddingLeft="20dp"
+                android:text="插座2"
+                android:textSize="25sp" />
+            <TextView
+                android:id="@+id/HistoryPlug3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="HistoryPlug3Click"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:paddingLeft="20dp"
+                android:text="插座3"
+                android:textSize="25sp" />
+
+            <TextView
+                android:id="@+id/HistoryPlug4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="HistoryPlug4Click"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:paddingLeft="20dp"
+                android:text="插座4"
+                android:textSize="25sp"/>
+
+            <!--> 燈具<-->
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:background="@color/gray"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/HistoryLight1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="HistoryLight1Click"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:paddingLeft="20dp"
+                android:text="燈具1"
+                android:textSize="25sp"/>
+
+            <TextView
+                android:id="@+id/HistoryLight2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="HistoryLight2Click"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:paddingLeft="20dp"
+                android:text="燈具2"
+                android:textSize="25sp" />
+
+            <TextView
+                android:id="@+id/HistoryLight3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="HistoryLight3Click"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:paddingLeft="20dp"
+                android:text="燈具3"
+                android:textSize="25sp"/>
+
+            <TextView
+                android:id="@+id/HistoryLight4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="HistoryLight4Click"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:paddingLeft="20dp"
+                android:text="燈具4"
+                android:textSize="25sp" />
+
+        </LinearLayout>
+    </ScrollView>
+
+
 </LinearLayout>

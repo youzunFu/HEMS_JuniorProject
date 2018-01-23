@@ -46,7 +46,7 @@ public class MPchartActivity extends AppCompatActivity implements OnChartGesture
     private int mYear, mMonth, mDay;
     private EditText txtTime, txtdayTime;
     private SharedPreferences setting;
-    private String user, token, PlugNum;
+    private String user, token, PlugNum,Equipment;
     private float[] p = new float[96], w = new float[96], sun = new float[96], temp1 = new float[96], temp2 = new float[96];
     private RequestQueue requestQueue;
     //private static final String ESS = "http://192.168.1.100/sl_demo_api/ess.php";
@@ -75,8 +75,9 @@ public class MPchartActivity extends AppCompatActivity implements OnChartGesture
        // Bundle bundle = getIntent().getExtras();
        // PlugNum = bundle.getString("PlugNum");
         Bundle bundle = getIntent().getExtras();
-        PlugNum = bundle.getString("PlugNum");
-        Toast.makeText(this, "插座編號"+PlugNum, Toast.LENGTH_LONG).show();
+        PlugNum = bundle.getString("Num");
+        Equipment = bundle.getString("Equipment");
+        Toast.makeText(this, "設備編號 : "+PlugNum +"  "+"設備名稱 : "+ Equipment, Toast.LENGTH_LONG).show();
 
         powerChart = (LineChart) findViewById(R.id.chart_sch_power);
         txtTime = (EditText) findViewById(R.id.tv_w_time);
@@ -202,6 +203,7 @@ public class MPchartActivity extends AppCompatActivity implements OnChartGesture
         JsonStr mJsonStr = new JsonStr();
         mJsonStr.setAction(button);
         mJsonStr.setName(PlugNum);
+        mJsonStr.setEquipment(Equipment);
         switch (button){
             case "getPlugInformationInYear":
                 mJsonStr.setYear(String.valueOf(year));

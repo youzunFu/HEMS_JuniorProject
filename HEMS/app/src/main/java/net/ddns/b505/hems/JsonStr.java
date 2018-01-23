@@ -154,6 +154,9 @@ public class JsonStr {
     @SerializedName("light_dimmer_ch6")
     private String light_dimmer_ch6;
 
+    @SerializedName("equipment")
+    private String equipment;
+
     public String getAction() {
         return action;
     }
@@ -205,6 +208,11 @@ public class JsonStr {
     public void setName(String name) {
         this.name = name;
     }
+
+    public void setEquipment(String equipment) {
+        this.equipment = equipment;
+    }
+
 
     public void setOffice_id(String office_id) {
         this.office_id = office_id;

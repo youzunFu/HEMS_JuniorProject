@@ -24,7 +24,9 @@
     <string name="button_schedule_txtsize2">8dp</string>
     <string name="button_schedule_txtsize3">8dp</string>
     <string name="button_schedule_txtsize4">8dp</string>
-
+    <string name="tabhost1">控制電器</string>
+    <string name="tabhost2">歷史用量</string>
+    <string name="tabhost3">需量反應</string>
 
     <string-array name="Control">
         <item>職員辦公室1</item>

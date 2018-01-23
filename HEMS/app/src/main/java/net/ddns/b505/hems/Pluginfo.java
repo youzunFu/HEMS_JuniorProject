@@ -53,7 +53,10 @@ public class Pluginfo extends Activity {
         setContentView(R.layout.activity_pluginfo);
         try {
             InitialComponents();  // InitialComponents()＆＆＆InitialPlug()
-            start();
+            InitialPlug1();
+            InitialPlug2();
+            InitialPlug3();
+            InitialPlug4();
         } catch (ExecutionException e) {
             e.printStackTrace();
         } catch (InterruptedException e) {
@@ -63,7 +66,7 @@ public class Pluginfo extends Activity {
 
 
     }
-
+/* 計時器
    private void start(){
       // timer1.setText("2");
         counterdowntimer = new CountDownTimer(2*1000,1000){
@@ -90,7 +93,7 @@ public class Pluginfo extends Activity {
         };
         counterdowntimer.start();
     }
-
+*/
     //initial compents
     public void InitialComponents() throws ExecutionException, InterruptedException {
         image1 = (ImageView) findViewById(R.id.ItemImage1);
@@ -132,13 +135,13 @@ public class Pluginfo extends Activity {
             plugstatus = plugresultSplit[1] ;
             switch (plugresultSplit[1]){
                 case "0" :
-                    image1.setImageResource(R.drawable.plugoff25);
-                    pluginfo1.setText("Power: " + plugresultSplit[4] +" W");
+                    image1.setImageResource(R.drawable.icon_plugoff);
+                    pluginfo1.setText("即時用電量 : " + plugresultSplit[4] +" W");
                     sw1.setChecked(false);
                     break;
                 case "1" :
-                    image1.setImageResource(R.drawable.plugon25);
-                    pluginfo1.setText("Power: " + plugresultSplit[4] +" W");
+                    image1.setImageResource(R.drawable.icon_plugon);
+                    pluginfo1.setText("即時用電量 : " + plugresultSplit[4] +" W");
                     sw1.setChecked(true);
                     break;
                 default:
@@ -154,13 +157,13 @@ public class Pluginfo extends Activity {
         plugstatus = plugresultSplit[1];
         switch (plugresultSplit[1]) {
             case "0":
-                image2.setImageResource(R.drawable.plugoff25);
-                pluginfo2.setText("Power: " + plugresultSplit[4] + " W");
+                image2.setImageResource(R.drawable.icon_plugoff);
+                pluginfo2.setText("即時用電量 : " + plugresultSplit[4] + " W");
                 sw2.setChecked(false);
                 break;
             case "1":
-                image2.setImageResource(R.drawable.plugon25);
-                pluginfo2.setText("Power: " + plugresultSplit[4] + " W");
+                image2.setImageResource(R.drawable.icon_plugon);
+                pluginfo2.setText("即時用電量 : " + plugresultSplit[4] + " W");
                 sw2.setChecked(true);
                 break;
             default:
@@ -176,13 +179,13 @@ public class Pluginfo extends Activity {
         plugstatus = plugresultSplit[1];
         switch (plugresultSplit[1]) {
             case "0":
-                image3.setImageResource(R.drawable.plugoff25);
-                pluginfo3.setText("Power: " + plugresultSplit[4] + " W");
+                image3.setImageResource(R.drawable.icon_plugoff);
+                pluginfo3.setText("即時用電量 : " + plugresultSplit[4] + " W");
                 sw3.setChecked(false);
                 break;
             case "1":
-                image3.setImageResource(R.drawable.plugon25);
-                pluginfo3.setText("Power: " + plugresultSplit[4] + " W");
+                image3.setImageResource(R.drawable.icon_plugon);
+                pluginfo3.setText("即時用電量 : " + plugresultSplit[4] + " W");
                 sw3.setChecked(true);
                 break;
             default:
@@ -198,13 +201,13 @@ public class Pluginfo extends Activity {
         plugstatus = plugresultSplit[1];
         switch (plugresultSplit[1]) {
             case "0":
-                image4.setImageResource(R.drawable.plugoff25);
-                pluginfo4.setText("Power: " + plugresultSplit[4] + " W");
+                image4.setImageResource(R.drawable.icon_plugoff);
+                pluginfo4.setText("即時用電量 : " + plugresultSplit[4] + " W");
                 sw4.setChecked(false);
                 break;
             case "1":
-                image4.setImageResource(R.drawable.plugon25);
-                pluginfo4.setText("Power: " + plugresultSplit[4] + " W");
+                image4.setImageResource(R.drawable.icon_plugon);
+                pluginfo4.setText("即時用電量 : " + plugresultSplit[4] + " W");
                 sw4.setChecked(true);
                 break;
             default:
@@ -216,57 +219,65 @@ public class Pluginfo extends Activity {
     public void sendPlugNumber1(View view){
         Intent intent = new Intent(Pluginfo.this,PlugSetActivity.class);
         Bundle bundle = new Bundle();
-        bundle.putString("PlugNum","001");
+        bundle.putString("Num","001");
+        bundle.putString("Equipment","Plug");
         intent.putExtras(bundle);
         startActivity(intent);
     }
     public void sendPlugNumber2(View view){
         Intent intent = new Intent(this,PlugSetActivity.class);
         Bundle bundle = new Bundle();
-        bundle.putString("PlugNum","002");
+        bundle.putString("Num","002");
+        bundle.putString("Equipment","Plug");
         intent.putExtras(bundle);
         startActivity(intent);
     }
     public void sendPlugNumber3(View view){
         Intent intent = new Intent(this,PlugSetActivity.class);
         Bundle bundle = new Bundle();
-        bundle.putString("PlugNum","003");
+        bundle.putString("Num","003");
+        bundle.putString("Equipment","Plug");
         intent.putExtras(bundle);
         startActivity(intent);
     }
     public void sendPlugNumber4(View view){
         Intent intent = new Intent(this,PlugSetActivity.class);
         Bundle bundle = new Bundle();
-        bundle.putString("PlugNum","004");
+        bundle.putString("Num","004");
+        bundle.putString("Equipment","Plug");
         intent.putExtras(bundle);
         startActivity(intent);
     }
     //history chart
     public void sendPlugNumberChart1(View view ){
-        Intent intent = new Intent(Pluginfo.this,MPchartActivity.class);
+        Intent intent = new Intent(this,MPchartActivity.class);
         Bundle bundle = new Bundle();
-        bundle.putString("PlugNum","001");
+        bundle.putString("Num","001");
+        bundle.putString("Equipment","Plug");
         intent.putExtras(bundle);
         startActivity(intent);
     }
     public void sendPlugNumberChart2(View view ){
         Intent intent = new Intent(Pluginfo.this,MPchartActivity.class);
         Bundle bundle = new Bundle();
-        bundle.putString("PlugNum","002");
+        bundle.putString("Num","002");
+        bundle.putString("Equipment","Plug");
         intent.putExtras(bundle);
         startActivity(intent);
     }
     public void sendPlugNumberChart3(View view ){
         Intent intent = new Intent(Pluginfo.this,MPchartActivity.class);
         Bundle bundle = new Bundle();
-        bundle.putString("PlugNum","003");
+        bundle.putString("Num","003");
+        bundle.putString("Equipment","Plug");
         intent.putExtras(bundle);
         startActivity(intent);
     }
     public void sendPlugNumberChart4(View view ){
         Intent intent = new Intent(Pluginfo.this,MPchartActivity.class);
         Bundle bundle = new Bundle();
-        bundle.putString("PlugNum","004");
+        bundle.putString("Num","004");
+        bundle.putString("Equipment","Plug");
         intent.putExtras(bundle);
         startActivity(intent);
     }
@@ -322,7 +333,7 @@ public class Pluginfo extends Activity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (sw1.isChecked()) {
-                    image1.setImageResource(R.drawable.plugon25);
+                    image1.setImageResource(R.drawable.icon_plugon);
                     plugname = "001";
                     plugstatus = "1" ;
                     plugall = null;
@@ -332,7 +343,7 @@ public class Pluginfo extends Activity {
                         String plugresultSplit[] =plugall.split(" ");
                         plugstatus = plugresultSplit[1] ;
                         //plugresultSplit[0]->name～plugresultSplit[1]->status～plugresultSplit[2]->～
-                        pluginfo1.setText("Power: " + plugresultSplit[4] +" W");
+                        pluginfo1.setText("即時用電量 : " + plugresultSplit[4] +" W");
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     } catch (ExecutionException e) {
@@ -343,12 +354,12 @@ public class Pluginfo extends Activity {
                     plugname = "001";
                     plugstatus = "0" ;
                     plugall = null;
-                    image1.setImageResource(R.drawable.plugoff25);
+                    image1.setImageResource(R.drawable.icon_plugoff);
                     try {
                         ControlPlugStatusAsynctask ctrlPlugnameAsynctask = new ControlPlugStatusAsynctask(Pluginfo.this);
                         plugall = ctrlPlugnameAsynctask.execute(plugname,plugstatus).get().toString();
                         String plugresultSplit[] =plugall.split(" ");
-                            pluginfo1.setText("Power: " + plugresultSplit[4] +" W");
+                            pluginfo1.setText("即時用電量 : " + plugresultSplit[4] +" W");
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     } catch (ExecutionException e) {
@@ -363,7 +374,7 @@ public class Pluginfo extends Activity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (sw2.isChecked()) {
-                    image2.setImageResource(R.drawable.plugon25);
+                    image2.setImageResource(R.drawable.icon_plugon);
                     plugname2.setText("插座002");
                     plugname = "002";
                     plugstatus = "1" ;
@@ -371,7 +382,7 @@ public class Pluginfo extends Activity {
                         ControlPlugStatusAsynctask ctrlPlugnameAsynctask = new ControlPlugStatusAsynctask(Pluginfo.this);
                         plugall = ctrlPlugnameAsynctask.execute(plugname,plugstatus).get().toString();
                         String plugresultSplit[] =plugall.split(" ");
-                        pluginfo2.setText("Power: " + plugresultSplit[4] +" W");
+                        pluginfo2.setText("即時用電量 : " + plugresultSplit[4] +" W");
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     } catch (ExecutionException e) {
@@ -380,12 +391,12 @@ public class Pluginfo extends Activity {
                 } else {
                     plugname = "002";
                     plugstatus = "0" ;
-                    image2.setImageResource(R.drawable.plugoff25);
+                    image2.setImageResource(R.drawable.icon_plugoff);
                     try {
                         ControlPlugStatusAsynctask ctrlPlugnameAsynctask = new ControlPlugStatusAsynctask(Pluginfo.this);
                         plugall = ctrlPlugnameAsynctask.execute(plugname,plugstatus).get().toString();
                         String plugresultSplit[] =plugall.split(" ");
-                        pluginfo2.setText("Power: " + plugresultSplit[4] +" W");
+                        pluginfo2.setText("即時用電量 : " + plugresultSplit[4] +" W");
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     } catch (ExecutionException e) {
@@ -400,7 +411,7 @@ public class Pluginfo extends Activity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (sw3.isChecked()) {
-                    image3.setImageResource(R.drawable.plugon25);
+                    image3.setImageResource(R.drawable.icon_plugon);
                     plugname3.setText("插座003");
                     plugname = "003";
                     plugstatus = "1" ;
@@ -408,7 +419,7 @@ public class Pluginfo extends Activity {
                         ControlPlugStatusAsynctask ctrlPlugnameAsynctask = new ControlPlugStatusAsynctask(Pluginfo.this);
                         plugall = ctrlPlugnameAsynctask.execute(plugname,plugstatus).get().toString();
                         String plugresultSplit[] =plugall.split(" ");
-                        pluginfo3.setText("Power: " + plugresultSplit[4] +" W");
+                        pluginfo3.setText("即時用電量 : " + plugresultSplit[4] +" W");
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     } catch (ExecutionException e) {
@@ -417,12 +428,12 @@ public class Pluginfo extends Activity {
                 } else {
                     plugname = "003";
                     plugstatus = "0" ;
-                    image3.setImageResource(R.drawable.plugoff25);
+                    image3.setImageResource(R.drawable.icon_plugoff);
                     try {
                         ControlPlugStatusAsynctask ctrlPlugnameAsynctask = new ControlPlugStatusAsynctask(Pluginfo.this);
                         plugall = ctrlPlugnameAsynctask.execute(plugname,plugstatus).get().toString();
                         String plugresultSplit[] =plugall.split(" ");
-                        pluginfo3.setText("Power: " + plugresultSplit[4]);
+                        pluginfo3.setText("即時用電量 : " + plugresultSplit[4]);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     } catch (ExecutionException e) {
@@ -438,7 +449,7 @@ public class Pluginfo extends Activity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (sw4.isChecked()) {
-                    image4.setImageResource(R.drawable.plugon25);
+                    image4.setImageResource(R.drawable.icon_plugon);
                     plugname4.setText("插座004");
                     plugname = "004";
                     plugstatus = "1" ;
@@ -446,7 +457,7 @@ public class Pluginfo extends Activity {
                         ControlPlugStatusAsynctask ctrlPlugnameAsynctask = new ControlPlugStatusAsynctask(Pluginfo.this);
                         plugall = ctrlPlugnameAsynctask.execute(plugname,plugstatus).get().toString();
                         String plugresultSplit[] =plugall.split(" ");
-                        pluginfo4.setText("Power: " + plugresultSplit[4]);
+                        pluginfo4.setText("即時用電量 : " + plugresultSplit[4]);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     } catch (ExecutionException e) {
@@ -455,12 +466,12 @@ public class Pluginfo extends Activity {
                 } else {
                     plugname = "004";
                     plugstatus = "0" ;
-                    image4.setImageResource(R.drawable.plugoff25);
+                    image4.setImageResource(R.drawable.icon_plugoff);
                     try {
                         ControlPlugStatusAsynctask ctrlPlugnameAsynctask = new ControlPlugStatusAsynctask(Pluginfo.this);
                         plugall = ctrlPlugnameAsynctask.execute(plugname,plugstatus).get().toString();
                         String plugresultSplit[] =plugall.split(" ");
-                        pluginfo4.setText("Power: " + plugresultSplit[4]);
+                        pluginfo4.setText("即時用電量 : " + plugresultSplit[4]);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     } catch (ExecutionException e) {

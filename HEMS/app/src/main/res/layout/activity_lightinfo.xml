@@ -16,21 +16,23 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="120dp"
         android:descendantFocusability="blocksDescendants"
         android:orientation="horizontal">
 
         <ImageView
             android:id="@+id/ItemImageL1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="20dp"
             android:contentDescription="@string/adapter_btnText"
-            app:srcCompat="@drawable/lampoff" />
+            app:srcCompat="@drawable/lightoff" />
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="80dp"
             android:layout_alignParentTop="true"
+            android:layout_marginTop="20dp"
             android:layout_weight="7"
             android:orientation="vertical">
 
@@ -38,9 +40,11 @@
                 android:id="@+id/ItemNameL1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+
                 android:layout_weight="3"
                 android:text="@string/lightname1"
-                android:textSize="24sp" />
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/ItemInfoL1"
@@ -54,49 +58,40 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="80dp"
-            android:layout_weight="1"
+            android:layout_marginTop="20dp"
             android:orientation="vertical">
 
             <Switch
                 android:id="@+id/ItemSwitchL1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="50dp"
+                android:paddingLeft="40dp"
+                android:paddingBottom="20dp"
+                android:paddingRight="15dp"
                 android:text="" />
-
-            <ScrollView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
 
                     <Button
                         android:id="@+id/ItemButtonL1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="1dp"
-                        android:layout_weight="1"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="10dp"
                         android:contentDescription="@string/adapter_btnText"
-                        android:onClick="sendPlugNumber1"
+                        android:onClick="sendLightNumber1"
                         android:text="排程"
-                        android:textSize="24dp" />
+                        android:background="@drawable/round_plug"
+                        android:textSize="18dp" />
 
+                    <!--> hide<-->
                     <Button
                         android:id="@+id/ItemButtonL5"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
-                        android:layout_weight="1"
-                        android:onClick="sendPlugNumberChart1"
+                        android:onClick="sendLightNumberChart1"
                         android:text="歷史"
+                        android:visibility="invisible"
                         android:textSize="24dp" />
-
-
-                </LinearLayout>
-            </ScrollView>
 
         </LinearLayout>
 
@@ -104,21 +99,24 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="120dp"
         android:descendantFocusability="blocksDescendants">
 
         <ImageView
             android:id="@+id/ItemImageL2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="20dp"
             android:contentDescription="@string/adapter_btnText"
-            app:srcCompat="@drawable/lampoff" />
+            app:srcCompat="@drawable/lightoff" />
 
         <LinearLayout
 
            android:layout_width="wrap_content"
             android:layout_height="80dp"
             android:layout_alignParentTop="true"
+            android:layout_marginTop="20dp"
+
             android:layout_weight="7"
             android:orientation="vertical">
 
@@ -126,9 +124,11 @@
                 android:id="@+id/ItemNameL2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+
                 android:layout_weight="3"
                 android:text="@string/lightname2"
-                android:textSize="24sp" />
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/ItemInfoL2"
@@ -142,47 +142,41 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="80dp"
-            android:layout_weight="1"
+            android:layout_marginTop="20dp"
             android:orientation="vertical">
 
             <Switch
                 android:id="@+id/ItemSwitchL2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="50dp"
+                android:paddingLeft="40dp"
+                android:paddingBottom="20dp"
+                android:paddingRight="15dp"
                 android:text="" />
 
-            <ScrollView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical" >
 
                     <Button
                         android:id="@+id/ItemButtonL2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="1dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="10dp"
                         android:contentDescription="@string/adapter_btnText"
-                        android:layout_weight="1"
-                        android:onClick="sendPlugNumber2"
+                        android:onClick="sendLightNumber2"
                         android:text="排程"
-                        android:textSize="24dp" />
+                        android:background="@drawable/round_plug"
+                        android:textSize="18dp" />
 
+                    <!--> hide<-->
                     <Button
                         android:id="@+id/ItemButtonL6"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
-                        android:layout_weight="1"
-                        android:onClick="sendPlugNumberChart2"
+                        android:onClick="sendLightNumberChart2"
                         android:text="歷史"
+                        android:visibility="invisible"
                         android:textSize="24dp" />
-                </LinearLayout>
-            </ScrollView>
 
         </LinearLayout>
 
@@ -190,21 +184,24 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="120dp"
         android:descendantFocusability="blocksDescendants">
 
         <ImageView
             android:id="@+id/ItemImageL3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="20dp"
             android:contentDescription="@string/adapter_btnText"
-            app:srcCompat="@drawable/lampoff" />
+            app:srcCompat="@drawable/lightoff" />
 
         <LinearLayout
 
             android:layout_width="wrap_content"
             android:layout_height="80dp"
             android:layout_alignParentTop="true"
+            android:layout_marginTop="20dp"
+
             android:layout_weight="7"
             android:orientation="vertical">
 
@@ -212,9 +209,11 @@
                 android:id="@+id/ItemNameL3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+
                 android:layout_weight="3"
                 android:text="@string/lightname3"
-                android:textSize="24sp" />
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/ItemInfoL3"
@@ -228,47 +227,42 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="80dp"
-            android:layout_weight="1"
+            android:layout_marginTop="20dp"
             android:orientation="vertical">
 
             <Switch
                 android:id="@+id/ItemSwitchL3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="50dp"
-                android:text="" />
+                android:paddingLeft="40dp"
+                android:paddingBottom="20dp"
+                android:paddingRight="15dp"                android:text="" />
 
-            <ScrollView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical" >
 
                     <Button
                         android:id="@+id/ItemButtonL3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="1dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="10dp"
                         android:contentDescription="@string/adapter_btnText"
-                        android:layout_weight="1"
-                        android:onClick="sendPlugNumber3"
+                        android:onClick="sendLightNumber3"
                         android:text="排程"
-                        android:textSize="24dp" />
+                        android:background="@drawable/round_plug"
+                        android:textSize="18dp"/>
 
+                    <!--> hide<-->
                     <Button
                         android:id="@+id/ItemButtonL7"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
-                        android:layout_weight="1"
-                        android:onClick="sendPlugNumberChart3"
+                        android:onClick="sendLightNumberChart3"
                         android:text="歷史"
+                        android:visibility="invisible"
                         android:textSize="24dp" />
-                </LinearLayout>
-            </ScrollView>
+
 
         </LinearLayout>
 
@@ -276,20 +270,23 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="120dp"
         android:descendantFocusability="blocksDescendants">
 
         <ImageView
             android:id="@+id/ItemImageL4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="20dp"
             android:contentDescription="@string/adapter_btnText"
-            app:srcCompat="@drawable/lampoff" />
+            app:srcCompat="@drawable/lightoff" />
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="80dp"
             android:layout_alignParentTop="true"
+            android:layout_marginTop="20dp"
+
             android:layout_weight="7"
             android:orientation="vertical">
 
@@ -297,9 +294,10 @@
                 android:id="@+id/ItemNameL4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
                 android:layout_weight="3"
                 android:text="@string/lightname4"
-                android:textSize="24sp" />
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/ItemInfoL4"
@@ -313,47 +311,41 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="80dp"
-            android:layout_weight="1"
+            android:layout_marginTop="20dp"
             android:orientation="vertical">
 
             <Switch
                 android:id="@+id/ItemSwitchL4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="50dp"
+                android:paddingLeft="40dp"
+                android:paddingBottom="20dp"
+                android:paddingRight="15dp"
                 android:text="" />
-
-            <ScrollView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical" >
 
                     <Button
                         android:id="@+id/ItemButtonL4"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="1dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="10dp"
                         android:contentDescription="@string/adapter_btnText"
-                        android:layout_weight="1"
-                        android:onClick="sendPlugNumber4"
+                        android:onClick="sendLightNumber4"
                         android:text="排程"
-                        android:textSize="24dp" />
+                        android:background="@drawable/round_plug"
+                        android:textSize="18dp" />
 
+                    <!--> hide<-->
                     <Button
                         android:id="@+id/ItemButtonL8"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
-                        android:layout_weight="1"
-                        android:onClick="sendPlugNumberChart4"
+                        android:onClick="sendLightNumberChart4"
                         android:text="歷史"
+                        android:visibility="invisible"
                         android:textSize="24dp" />
-                </LinearLayout>
-            </ScrollView>
+
 
         </LinearLayout>
 

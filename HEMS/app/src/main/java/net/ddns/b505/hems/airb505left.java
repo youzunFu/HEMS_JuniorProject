@@ -17,6 +17,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -35,9 +36,10 @@ import java.util.concurrent.ExecutionException;
 
 public class airb505left extends AppCompatActivity {
 
-    private  ImageView btnOnoff;
-    private Button btnMode, btnWindSpeed, btnTimeSet,btnTempSub,btnTempAdd;
-    private ImageButton btnTempadd, btnTempsub;
+    private LinearLayout BackgroundAirconditioner;
+    private  ImageView btnOnoff,airicon;
+    private Button btnMode, btnWindSpeed, btnTimeSet;
+    private ImageButton btnTempadd, btnTempsub,btnTempSub,btnTempAdd;
     private TextView tvTempStr,tvAirMode,tvAirFan,tvAirTimeSet;
     private String FanStr, ModeStr, TempStr,TimeSetStr,m = "1";
     private int i = 1, on_off = 0,TimeSetNum = 0,TempNum = 28 ; //switch case variable
@@ -48,7 +50,8 @@ public class airb505left extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.airb505left);
 
-        ImageView airicon = (ImageView) findViewById(R.id.airicon);
+        airicon = (ImageView) findViewById(R.id.airicon);
+        BackgroundAirconditioner = (LinearLayout) findViewById(R.id.BackgroundAirconditioner);
 
 
         //imageButton ok
@@ -56,8 +59,8 @@ public class airb505left extends AppCompatActivity {
         btnMode = (Button) findViewById(R.id.btnMode);
         btnWindSpeed = (Button) findViewById(R.id.btnWindSpeed);
         btnTimeSet = (Button) findViewById(R.id.btnTimeSet);
-        btnTempAdd = (Button) findViewById(R.id.btnTempAdd);
-        btnTempSub = (Button) findViewById(R.id.btnTempSub);
+        btnTempAdd = (ImageButton) findViewById(R.id.btnTempAdd);
+        btnTempSub = (ImageButton) findViewById(R.id.btnTempSub);
 
         tvAirMode  = (TextView) findViewById(R.id.tvAirMode);
         tvAirFan  = (TextView) findViewById(R.id.tvAirFan);
@@ -76,6 +79,18 @@ public class airb505left extends AppCompatActivity {
         btnOnoff.setImageBitmap(getRoundedCornerBitmap(
                 BitmapFactory.decodeResource(
                         getResources(), R.drawable.onoff),180.0f));
+
+        ///-------------------外關冷氣初始化----------
+        airicon.setImageResource(R.drawable.icon_airoff);
+        btnOnoff.setImageResource(R.drawable.icon_poweroff);
+        getWindow().setBackgroundDrawableResource(R.drawable.backgroundgray);
+        btnMode.setBackgroundResource(R.drawable.round_airoff);
+        btnWindSpeed.setBackgroundResource(R.drawable.round_airoff);
+        btnTimeSet.setBackgroundResource(R.drawable.round_airoff);
+
+        tvTempStr.setText("");
+
+
 
     }
     // set image Roundcorner
@@ -107,18 +122,33 @@ public class airb505left extends AppCompatActivity {
                 tvTempStr.setText("28"+" ℃");
                 on_off = 1;
 
-                tvAirMode.setText("模式 : ");
-                tvAirFan.setText("風量 : ") ;
-                tvAirTimeSet.setText("定時  : " + "無");
+                airicon.setImageResource(R.drawable.icon_airon);
+                btnOnoff.setImageResource(R.drawable.icon_poweron);
+                BackgroundAirconditioner.setBackgroundResource(R.drawable.background);
+                btnMode.setBackgroundResource(R.drawable.round_air);
+                btnWindSpeed.setBackgroundResource(R.drawable.round_air);
+                btnTimeSet.setBackgroundResource(R.drawable.round_air);
+
+                tvAirMode.setText("模式 : 自動");
+                tvAirFan.setText("風量 : 自動") ;
+                tvAirTimeSet.setText("定時  : " + "關");
             } else if (on_off == 1) {
                 ctrltype = "off";
                 TempNum = 0 ;
+                tvTempStr.setText("");
                 tvTempStr.setText(null);
                 on_off = 0;
 
+                airicon.setImageResource(R.drawable.icon_airoff);
+                btnOnoff.setImageResource(R.drawable.icon_poweroff);
+                BackgroundAirconditioner.setBackgroundResource(R.drawable.backgroundgray);
+                btnMode.setBackgroundResource(R.drawable.round_airoff);
+                btnWindSpeed.setBackgroundResource(R.drawable.round_airoff);
+                btnTimeSet.setBackgroundResource(R.drawable.round_airoff);
+
                 tvAirMode.setText("模式 : ");
                 tvAirFan.setText("風量 : ") ;
-                tvAirTimeSet.setText("定時  : " + "無");
+                tvAirTimeSet.setText("定時  : " + "關");
             }
             CtrlpageAsynctask ctrlpageAsynctaskonoff = new CtrlpageAsynctask(airb505left.this);
             ctrlresultonoff = ctrlpageAsynctaskonoff.execute(ctrltype).get().toString();
@@ -180,6 +210,8 @@ public class airb505left extends AppCompatActivity {
                     break;
             }
             callDatabase();
+        }else { //AirConditioner is turn off now.
+            Toast.makeText(airb505left.this, "Please turn on the air conditioner  first.", Toast.LENGTH_SHORT).show();
         }
         } catch (Exception e) {
             e.printStackTrace();
@@ -209,6 +241,9 @@ if (ModeStr.equals("cold")|ModeStr.equals("wet")|ModeStr.equals("wind")){
                     break;
             }
             callDatabase();
+        }
+        else { //AirConditioner is turn off now.
+            Toast.makeText(airb505left.this, "Please turn on the air conditioner  first.", Toast.LENGTH_SHORT).show();
         }
 }else {
     Toast.makeText(airb505left.this,"目前模式 風量無法改變",Toast.LENGTH_SHORT).show();
@@ -251,6 +286,9 @@ if (ModeStr.equals("cold")|ModeStr.equals("wet")|ModeStr.equals("wind")){
             }
             callDatabase();
         }
+        else { //AirConditioner is turn off now.
+            Toast.makeText(airb505left.this, "Please turn on the air conditioner  first.", Toast.LENGTH_SHORT).show();
+        }
 
     }else {
             Toast.makeText(airb505left.this,"目前模式 不支援定時設定",Toast.LENGTH_SHORT).show();
@@ -278,6 +316,9 @@ if (ModeStr.equals("cold")|ModeStr.equals("wet")|ModeStr.equals("wind")){
                     e.printStackTrace();
                 }
             }
+            else { //AirConditioner is turn off now.
+                Toast.makeText(airb505left.this, "Please turn on the air conditioner  first.", Toast.LENGTH_SHORT).show();
+            }
 
         }else {
             Toast.makeText(airb505left.this,"目前模式 溫度無法改變",Toast.LENGTH_SHORT).show();
@@ -304,6 +345,9 @@ if (ModeStr.equals("cold")|ModeStr.equals("wet")|ModeStr.equals("wind")){
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+            }
+            else { //AirConditioner is turn off now.
+                Toast.makeText(airb505left.this, "Please turn on the air conditioner  first.", Toast.LENGTH_SHORT).show();
             }
 
         }else {

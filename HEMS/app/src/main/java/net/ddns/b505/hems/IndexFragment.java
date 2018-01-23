@@ -16,9 +16,9 @@ import android.widget.BaseAdapter;
 public class IndexFragment extends Fragment {
     private TextView Date, Weather, Probability, txtUser;
     String[] func = {"冷氣控制", "智慧插座", "燈具"};
-    int[] icons = {R.drawable.air_large,
-            R.drawable.plug,
-            R.drawable.lampoff};
+    int[] icons = {R.drawable.icon_aircondictioner,
+            R.drawable.icon_plug,
+            R.drawable.icon_light};
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -33,7 +33,7 @@ public class IndexFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         txtUser = (TextView) getView().findViewById(R.id.tv_username);
         txtUser.setSingleLine();
-        txtUser.setText("Welcome HEMS!!");
+        txtUser.setText("");
         txtUser.setSelected(true);  //跑馬燈動起來動起來！
         GridView grid = (GridView) getView().findViewById(R.id.grid);
         IconAdapter gAdapter = new IconAdapter();
@@ -46,15 +46,15 @@ public class IndexFragment extends Fragment {
                         Intent intent;
                         switch ((int) id){
                             //點擊電網
-                            case R.drawable.air_large:
+                            case R.drawable.icon_aircondictioner:
                                 intent = new Intent(getActivity(), airb505left.class);
                                 startActivity(intent);
                                 break;
-                            case R.drawable.plug:
+                            case R.drawable.icon_plug:
                                 intent = new Intent(getActivity(), Pluginfo.class);
                                 startActivity(intent);
                                 break;
-                            case R.drawable.lampoff:
+                            case R.drawable.icon_light:
                                 intent = new Intent(getActivity(), Lightinfo.class);
                                 startActivity(intent);
                                 break;
@@ -93,6 +93,9 @@ public class IndexFragment extends Fragment {
                 ImageView image = (ImageView) row.findViewById(R.id.item_image);
                 TextView text = (TextView) row.findViewById(R.id.item_text);
                 image.setImageResource(icons[position]);
+                image.setMinimumHeight(50);
+                image.setMinimumWidth(50);
+
                 text.setText(func[position]);
             }
             return row;

@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -49,13 +50,13 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 
 public class PlugSetActivity extends AppCompatActivity {
-    private String Plug = "http://163.18.57.43/HEMSphp/plugschedule.php";
+    private String url = "http://163.18.57.43/HEMSphp/plugschedule.php";
     private JsonArrayRequest ArrayRequest;
     private JsonObjectRequest ObjectRequest;
     private RequestQueue requestQueue;
     private int mYear, mMonth, mDay;
     private SharedPreferences setting;
-    private String user, token, PlugNum;
+    private String user, token, PlugNum,Equipment;
     private EditText edstart, edend;
     private DatePickerDialog datePickerDialog;
     private TimePickerDialog sttimePickerDialog, endtimePickerDialog;
@@ -63,6 +64,7 @@ public class PlugSetActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN); //進入含有EditText的Activity時，不自動彈出虛擬鍵盤
         requestQueue = Volley.newRequestQueue(this);
        // super.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setContentView(R.layout.activity_plug_set);
@@ -83,7 +85,8 @@ public class PlugSetActivity extends AppCompatActivity {
         edend = (EditText) findViewById(R.id.ed_endtime);
         txtRemind = (TextView) findViewById(R.id.tv_remind);
         Bundle bundle = getIntent().getExtras();
-        PlugNum = bundle.getString("PlugNum");
+        PlugNum = bundle.getString("Num");
+        Equipment = bundle.getString("Equipment");
         Toast.makeText(this, "插座編號"+PlugNum, Toast.LENGTH_LONG).show();
         GregorianCalendar calendar = new GregorianCalendar();
 
@@ -121,6 +124,8 @@ public class PlugSetActivity extends AppCompatActivity {
                 false);
 //        new PlugSetActivity.Select().execute("http://192.168.1.100/sl_demo_api/plugscheduleView.php");
         getPlug(PlugNum);
+
+
     }
     //ActionBar返回鍵功能
     @Override
@@ -199,9 +204,10 @@ public class PlugSetActivity extends AppCompatActivity {
         mJsonStr.setAction("getPlug");
         mJsonStr.setName(name);
         mJsonStr.setToken(token);
+        mJsonStr.setEquipment(Equipment);
         Gson gson = new Gson();
         String json = gson.toJson(mJsonStr);
-        ArrayRequest = new JsonArrayRequest(Request.Method.POST, Plug/*"http://163.18.57.43/HEMSphp/plugschedule.php"*/, json,
+        ArrayRequest = new JsonArrayRequest(Request.Method.POST, url/*"http://163.18.57.43/HEMSphp/plugschedule.php"*/, json,
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
@@ -263,13 +269,14 @@ public class PlugSetActivity extends AppCompatActivity {
         JsonStr mJsonStr = new JsonStr();
         mJsonStr.setAction("setPlugSchedule");
         mJsonStr.setToken(token);
+        mJsonStr.setEquipment(Equipment);
         mJsonStr.setName(params[0]);
         mJsonStr.setSchedule(params[1]);
         mJsonStr.setStart(params[2]);
         mJsonStr.setEnd(params[3]);
         Gson gson = new Gson();
         String json = gson.toJson(mJsonStr);
-        ObjectRequest = new JsonObjectRequest(Request.Method.POST, Plug, json, new Response.Listener<JSONObject>() {
+        ObjectRequest = new JsonObjectRequest(Request.Method.POST, url, json, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 try {
