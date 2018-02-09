@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,13 +20,14 @@ import junit.framework.Test;
 
 public class FragmentList_Two extends Fragment {
     private TextView tvHistoryPlug1,tvHistoryPlug2,tvHistoryPlug3,tvHistoryPlug4,tvHistoryLight1,tvHistoryLight2,tvHistoryLight3,tvHistoryLight4;
-
+    private LinearLayout LayoutHistoryPlug1,LayoutHistoryPlug2,LayoutHistoryPlug3,LayoutHistoryPlug4,LayoutHistoryLight1,LayoutHistoryLight2,LayoutHistoryLight3,LayoutHistoryLight4;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragmentlist_two, container, false);
-        tvHistoryPlug1 = (TextView) view.findViewById(R.id.HistoryPlug1);
+
+       /* tvHistoryPlug1 = (TextView) view.findViewById(R.id.HistoryPlug1);
         tvHistoryPlug2 = (TextView) view.findViewById(R.id.HistoryPlug2);
         tvHistoryPlug3 = (TextView) view.findViewById(R.id.HistoryPlug3);
         tvHistoryPlug4 = (TextView) view.findViewById(R.id.HistoryPlug4);
@@ -33,31 +35,40 @@ public class FragmentList_Two extends Fragment {
         tvHistoryLight2 = (TextView) view.findViewById(R.id.HistoryLight2);
         tvHistoryLight3 = (TextView) view.findViewById(R.id.HistoryLight3);
         tvHistoryLight4 = (TextView) view.findViewById(R.id.HistoryLight4);
+*/
 
+        LayoutHistoryPlug1=(LinearLayout) view.findViewById(R.id.LayoutHistoryPlug1);
+        LayoutHistoryPlug2=(LinearLayout) view.findViewById(R.id.LayoutHistoryPlug2);
+        LayoutHistoryPlug3=(LinearLayout) view.findViewById(R.id.LayoutHistoryPlug3);
+        LayoutHistoryPlug4=(LinearLayout) view.findViewById(R.id.LayoutHistoryPlug4);
+        LayoutHistoryLight1=(LinearLayout) view.findViewById(R.id.LayoutHistoryLight1);
+        LayoutHistoryLight2=(LinearLayout) view.findViewById(R.id.LayoutHistoryLight2);
+        LayoutHistoryLight3=(LinearLayout) view.findViewById(R.id.LayoutHistoryLight3);
+        LayoutHistoryLight4=(LinearLayout) view.findViewById(R.id.LayoutHistoryLight4);
 
         //Plug Click
-        tvHistoryPlug1.setOnClickListener(new View.OnClickListener() {
+        LayoutHistoryPlug1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 HistoryPlug1Click(view);
             }
         });
 
-        tvHistoryPlug2.setOnClickListener(new View.OnClickListener() {
+        LayoutHistoryPlug2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 HistoryPlug2Click(view);
             }
         });
 
-        tvHistoryPlug3.setOnClickListener(new View.OnClickListener() {
+        LayoutHistoryPlug3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 HistoryPlug3Click(view);
             }
         });
 
-        tvHistoryPlug4.setOnClickListener(new View.OnClickListener() {
+        LayoutHistoryPlug4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 HistoryPlug4Click(view);
@@ -66,25 +77,25 @@ public class FragmentList_Two extends Fragment {
 
 
         //Light Click
-        tvHistoryLight1.setOnClickListener(new View.OnClickListener() {
+        LayoutHistoryLight1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 HistoryLight1Click(view);
             }
         });
-        tvHistoryLight2.setOnClickListener(new View.OnClickListener() {
+        LayoutHistoryLight2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 HistoryLight2Click(view);
             }
         });
-        tvHistoryLight3.setOnClickListener(new View.OnClickListener() {
+        LayoutHistoryLight3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 HistoryLight3Click(view);
             }
         });
-        tvHistoryLight4.setOnClickListener(new View.OnClickListener() {
+        LayoutHistoryLight4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 HistoryLight4Click(view);
@@ -198,5 +209,6 @@ public class FragmentList_Two extends Fragment {
         intent.putExtras(bundle);
         startActivity(intent);
     }
+
 
 }

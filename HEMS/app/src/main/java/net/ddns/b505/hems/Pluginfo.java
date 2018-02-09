@@ -433,7 +433,7 @@ public class Pluginfo extends Activity {
                         ControlPlugStatusAsynctask ctrlPlugnameAsynctask = new ControlPlugStatusAsynctask(Pluginfo.this);
                         plugall = ctrlPlugnameAsynctask.execute(plugname,plugstatus).get().toString();
                         String plugresultSplit[] =plugall.split(" ");
-                        pluginfo3.setText("即時用電量 : " + plugresultSplit[4]);
+                        pluginfo3.setText("即時用電量 : " + plugresultSplit[4] +" W");
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     } catch (ExecutionException e) {
@@ -457,7 +457,7 @@ public class Pluginfo extends Activity {
                         ControlPlugStatusAsynctask ctrlPlugnameAsynctask = new ControlPlugStatusAsynctask(Pluginfo.this);
                         plugall = ctrlPlugnameAsynctask.execute(plugname,plugstatus).get().toString();
                         String plugresultSplit[] =plugall.split(" ");
-                        pluginfo4.setText("即時用電量 : " + plugresultSplit[4]);
+                        pluginfo4.setText("即時用電量 : " + plugresultSplit[4] +" W");
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     } catch (ExecutionException e) {
@@ -471,7 +471,7 @@ public class Pluginfo extends Activity {
                         ControlPlugStatusAsynctask ctrlPlugnameAsynctask = new ControlPlugStatusAsynctask(Pluginfo.this);
                         plugall = ctrlPlugnameAsynctask.execute(plugname,plugstatus).get().toString();
                         String plugresultSplit[] =plugall.split(" ");
-                        pluginfo4.setText("即時用電量 : " + plugresultSplit[4]);
+                        pluginfo4.setText("即時用電量 : " + plugresultSplit[4] +" W");
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     } catch (ExecutionException e) {

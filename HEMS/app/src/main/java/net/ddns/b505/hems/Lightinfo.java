@@ -428,7 +428,7 @@ public class Lightinfo extends Activity {
                         ControlLightStatusAsynctask ctrlLightStatusAsynctask = new ControlLightStatusAsynctask(Lightinfo.this);
                         lightall = ctrlLightStatusAsynctask.execute(lightname,lightstatus).get().toString();
                         String plugresultSplit[] =lightall.split(" ");
-                        lampinfo3.setText("即時用電量 : " + plugresultSplit[4]);
+                        lampinfo3.setText("即時用電量 : " + plugresultSplit[4] +" W");
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     } catch (ExecutionException e) {
@@ -452,7 +452,7 @@ public class Lightinfo extends Activity {
                         ControlLightStatusAsynctask ctrlLightStatusAsynctask = new ControlLightStatusAsynctask(Lightinfo.this);
                         lightall = ctrlLightStatusAsynctask.execute(lightname,lightstatus).get().toString();
                         String plugresultSplit[] =lightall.split(" ");
-                        lampinfo4.setText("即時用電量 : " + plugresultSplit[4]);
+                        lampinfo4.setText("即時用電量 : " + plugresultSplit[4] +" W");
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     } catch (ExecutionException e) {
@@ -466,7 +466,7 @@ public class Lightinfo extends Activity {
                         ControlLightStatusAsynctask ctrlLightStatusAsynctask = new ControlLightStatusAsynctask(Lightinfo.this);
                         lightall = ctrlLightStatusAsynctask.execute(lightname,lightstatus).get().toString();
                         String plugresultSplit[] =lightall.split(" ");
-                        lampinfo4.setText("即時用電量 : " + plugresultSplit[4]);
+                        lampinfo4.setText("即時用電量 : " + plugresultSplit[4] +" W");
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     } catch (ExecutionException e) {

@@ -218,28 +218,28 @@ public class PlugSetActivity extends AppCompatActivity {
                             switch (name) {
                                 case "001":
                                     if(response.getJSONObject(0).getString("schedule").equals("1")) {
-                                        txtRemind.setText("排程已設定");
+                                        txtRemind.setText("排程狀態 ： 開啟");
                                         edstart.setText(response.getJSONObject(0).getString("start"));
                                         edend.setText(response.getJSONObject(0).getString("end"));
                                     }
                                     break;
                                 case "002":
                                     if(response.getJSONObject(0).getString("schedule").equals("1")) {
-                                        txtRemind.setText("排程已設定");
+                                        txtRemind.setText("排程狀態 ： 開啟");
                                         edstart.setText(response.getJSONObject(0).getString("start"));
                                         edend.setText(response.getJSONObject(0).getString("end"));
                                     }
                                     break;
                                 case "003":
                                     if(response.getJSONObject(0).getString("schedule").equals("1")) {
-                                        txtRemind.setText("排程已設定");
+                                        txtRemind.setText("排程狀態 ： 開啟");
                                         edstart.setText(response.getJSONObject(0).getString("start"));
                                         edend.setText(response.getJSONObject(0).getString("end"));
                                     }
                                     break;
                                 case "004":
                                     if(response.getJSONObject(0).getString("schedule").equals("1")) {
-                                        txtRemind.setText("排程已設定");
+                                        txtRemind.setText("排程狀態 ： 開啟");
                                         edstart.setText(response.getJSONObject(0).getString("start"));
                                         edend.setText(response.getJSONObject(0).getString("end"));
                                     }

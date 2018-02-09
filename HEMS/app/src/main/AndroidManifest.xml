@@ -27,11 +27,6 @@
 
         <activity android:name=".MainActivity"/>
         <activity android:name=".PlugSelectActivity" />
-        <!-->
-        <activity android:name=".AirControlActivity" />
-        <activity android:name=".Switch_AirConditioner" />
-        <activity android:name=".Air505leftControlActivity" />
-        <-->
         <activity android:name=".airb505left" />
         <activity
             android:name=".Pluginfo"
@@ -40,6 +35,7 @@
                 android:label="Lightinfo"/>
         <activity android:name=".PlugSetActivity" />
         <activity android:name=".MPchartActivity" />
+        <activity android:name=".DRset"/>
 
 
     </application>

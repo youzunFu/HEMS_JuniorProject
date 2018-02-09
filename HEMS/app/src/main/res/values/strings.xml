@@ -28,6 +28,9 @@
     <string name="tabhost2">歷史用量</string>
     <string name="tabhost3">需量反應</string>
 
+    <string name="drawer_open">DrawerOpen</string>
+    <string name="drawer_close">DrawerClose</string>
+
     <string-array name="Control">
         <item>職員辦公室1</item>
         <item>主任辦公室</item>

@@ -2,12 +2,12 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/BackgroundAirconditioner"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/backgroundgray"
+    android:background="@android:color/holo_blue_bright"
     android:orientation="vertical"
-    android:id="@+id/BackgroundAirconditioner"
-    tools:context=".airb505left" >
+    tools:context=".airb505left">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -16,11 +16,11 @@
 
         <ImageView
             android:id="@+id/airicon"
-            android:layout_width="175dp"
-            android:layout_height="100dp"
+            android:layout_width="200dp"
+            android:layout_height="125dp"
             android:layout_marginTop="30dp"
             android:layout_weight="15"
-            app:srcCompat="@drawable/airicongray" />
+            app:srcCompat="@drawable/airicon2" />
 
     </LinearLayout>
 
@@ -37,7 +37,7 @@
             android:layout_gravity="center"
             android:gravity="center_horizontal"
             android:text=" 28 ℃"
-            android:textColor="@android:color/white"
+            android:textColor="@android:color/black"
             android:textSize="90dp" />
 
         <LinearLayout
@@ -50,10 +50,10 @@
                 android:id="@+id/tvAirMode"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingLeft="15dp"
                 android:layout_weight="1"
+                android:paddingLeft="15dp"
                 android:text="模式 : "
-                android:textColor="@android:color/white"
+                android:textColor="@android:color/black"
                 android:textSize="20dp" />
 
             <TextView
@@ -64,7 +64,7 @@
 
                 android:layout_weight="1"
                 android:text="風量 : "
-                android:textColor="@android:color/white"
+                android:textColor="@android:color/black"
                 android:textSize="20dp" />
 
             <TextView
@@ -74,7 +74,7 @@
                 android:layout_marginLeft="5dp"
                 android:layout_weight="1"
                 android:text="定時 : "
-                android:textColor="@android:color/white"
+                android:textColor="@android:color/black"
                 android:textSize="20dp" />
 
 
@@ -101,10 +101,8 @@
                 android:layout_gravity="right"
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="40dp"
-                android:background="@drawable/round_air"
                 android:onClick="PowerClick"
-                app:srcCompat="@drawable/onoffgray"
-                />
+                app:srcCompat="@drawable/onoffgray" />
 
         </LinearLayout>
 
@@ -124,29 +122,29 @@
                 android:background="@drawable/round_air"
                 android:onClick="ModeBtnClick"
                 android:text="模式"
-                android:textColor="@android:color/white" />
+                android:textColor="@color/black" />
 
             <Button
                 android:id="@+id/btnWindSpeed"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
-                android:background="@drawable/round_air"
-                android:layout_marginTop="20dp"
                 android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/round_air"
                 android:onClick="FansetClick"
-                android:textColor="@android:color/white"
-                android:text="風量" />
+                android:text="風量"
+                android:textColor="@android:color/black" />
 
             <Button
                 android:id="@+id/btnTimeSet"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
-                android:background="@drawable/round_air"
-                android:layout_marginTop="20dp"
                 android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/round_air"
                 android:onClick="TimeSetBtnClick"
-                android:textColor="@android:color/white"
-                android:text="定時" />
+                android:text="定時"
+                android:textColor="@android:color/black" />
 
         </LinearLayout>
 
@@ -157,7 +155,7 @@
             android:orientation="vertical">
 
 
-<!-- ▼▲△▽ -->
+            <!-- ▼▲△▽ -->
 
             <!-->
                         <ImageButton
@@ -187,32 +185,33 @@
  <-->
 
 
-
-
-            <ImageButton
+            <Button
                 android:id="@+id/btnTempAdd"
                 android:layout_width="70dp"
                 android:layout_height="78dp"
-                android:layout_marginTop="15dp"
                 android:layout_marginLeft="15dp"
-                android:background="@android:color/transparent"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/upbutton"
+                android:text="+"
+                android:textSize="50dp"
                 android:onClick="TempAddClick"
                 app:srcCompat="@drawable/upbutton" />
 
-            <ImageButton
+            <Button
                 android:id="@+id/btnTempSub"
                 android:layout_width="70dp"
                 android:layout_height="78dp"
                 android:layout_marginBottom="10dp"
                 android:layout_marginLeft="15dp"
-                android:background="@android:color/transparent"
-                android:onClick="TempSubClick"
-                app:srcCompat="@drawable/downbutton" />
+                android:background="@drawable/downbutton"
+                android:text="-"
+                android:textSize="50dp"
+                android:onClick="TempSubClick" />
 
 
         </LinearLayout>
 
-        </LinearLayout>
+    </LinearLayout>
 
 
 </LinearLayout>

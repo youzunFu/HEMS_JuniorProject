@@ -1,30 +1,473 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/Layout_reaction"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/textView2"
+    <Button
+        android:id="@+id/btn_drequipment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="40sp"
-        android:text="" />
+        android:background="@drawable/round_plug"
+        android:text="需量反應設備設定" />
 
-    <TextView
-        android:text="@string/email"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="5"
-        />
+        android:layout_height="match_parent"
+        android:layout_marginBottom="15dp"
+        android:layout_marginTop="10dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:id="@+id/layout_event"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
 
-    <!-->
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:inputType="textPersonName"
-        android:ems="10"
-        android:id="@+id/edtEmail"
-        style="@style/Widget.AppCompat.EditText" />
-    <-->
+                        <LinearLayout
+                            android:id="@+id/歡迎使用者"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:visibility="gone">
+                            <TextView
+                                android:id="@+id/tv_Winningprice"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="marquee"
+                                android:focusable="true"
+                                android:focusableInTouchMode="true"
+                                android:marqueeRepeatLimit="marquee_forever"
+                                android:textAlignment="center"
+                                android:textColor="@android:color/holo_green_light"
+                                android:textSize="40sp" />
+                        </LinearLayout>
+                        <TextView
+                            android:id="@+id/tv_btn_nowevent"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
+                            android:layout_marginLeft="15dp"
+                            android:layout_marginTop="10dp"
+                            android:text="當前事件"
+                            android:textSize="18dp" />
+                        <LinearLayout
+                            android:id="@+id/layout_nowevent"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:visibility="gone">
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="4dp"
+                                android:background="@drawable/shadow" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="50sp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1.37"
+                                    android:text="日期："
+                                    android:textAlignment="viewEnd"
+                                    android:gravity="end"
+                                    android:textColor="@android:color/black"
+                                    android:textSize="15sp"
+                                     />
+
+                                <TextView
+                                    android:id="@+id/tv_now_date"
+                                    android:layout_width="50sp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text=""
+                                    android:textAlignment="center"
+                                    android:textColor="@color/colorPrimaryDark"
+                                    android:textSize="15sp" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/darker_gray"
+                                android:layout_marginTop="5dp">
+
+                                <TextView
+                                    android:layout_width="50sp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1.37"
+                                    android:text="開始時間："
+                                    android:textAlignment="viewEnd"
+                                    android:gravity="end"                                    android:textColor="@android:color/black"
+                                    android:textSize="15sp" />
+
+                                <TextView
+                                    android:id="@+id/tv_now_start"
+                                    android:layout_width="50sp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text=""
+                                    android:textAlignment="center"
+                                    android:textColor="@color/colorPrimaryDark"
+                                    android:textSize="15sp" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="50sp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1.37"
+                                    android:text="結束時間："
+                                    android:textAlignment="viewEnd"
+                                    android:gravity="end"                                    android:textColor="@android:color/black"
+                                    android:textSize="15sp" />
+
+                                <TextView
+                                    android:id="@+id/tv_now_stop"
+                                    android:layout_width="50sp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text=""
+                                    android:textAlignment="center"
+                                    android:textColor="@color/colorPrimaryDark"
+                                    android:textSize="15sp" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/darker_gray"
+                                android:layout_marginTop="5dp">
+
+                                <TextView
+                                    android:layout_width="50sp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1.37"
+                                    android:text="預計抑低負載量 (kW)："
+                                    android:textAlignment="viewEnd"
+                                    android:gravity="end"                                    android:textColor="@android:color/black"
+                                    android:textSize="15sp" />
+
+                                <TextView
+                                    android:id="@+id/tv_now_p"
+                                    android:layout_width="50sp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text=""
+                                    android:textAlignment="center"
+                                    android:textColor="@color/colorPrimaryDark"
+                                    android:textSize="15sp" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp">
+
+                                <TextView
+                                    android:layout_width="50sp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1.37"
+                                    android:text="抑低負載量時間長度："
+                                    android:textAlignment="viewEnd"
+                                    android:gravity="end"                                    android:textColor="@android:color/black"
+                                    android:textSize="15sp" />
+
+                                <TextView
+                                    android:id="@+id/tv_now_time"
+                                    android:layout_width="50sp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text=""
+                                    android:textAlignment="center"
+                                    android:textColor="@color/colorPrimaryDark"
+                                    android:textSize="15sp" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/darker_gray"
+                                android:layout_marginTop="5dp">
+
+                                <TextView
+                                    android:layout_width="50sp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1.37"
+                                    android:text="預估補償金額："
+                                    android:textAlignment="viewEnd"
+                                    android:gravity="end"                                    android:textColor="@android:color/black"
+                                    android:textSize="15sp" />
+
+                                <TextView
+                                    android:id="@+id/tv_now_cost"
+                                    android:layout_width="50sp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text=""
+                                    android:textAlignment="center"
+                                    android:textColor="@color/colorPrimaryDark"
+                                    android:textSize="15sp" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="4dp"
+                        android:background="@drawable/shadow" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tv_btn_futureevent"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
+                            android:layout_marginLeft="15dp"
+                            android:layout_marginTop="10dp"
+                            android:text="未來事件"
+                            android:textSize="18dp" />
+
+                        <LinearLayout
+                            android:id="@+id/layout_futureevent"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:visibility="gone">
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="4dp"
+                                android:background="@drawable/shadow" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="50sp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1.37"
+                                    android:text="日期："
+                                    android:textAlignment="viewEnd"
+                                    android:gravity="end"
+                                    android:textColor="@android:color/black"
+                                    android:textSize="15sp" />
+
+                                <TextView
+                                    android:id="@+id/tv_future_date"
+                                    android:layout_width="50sp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text=""
+                                    android:textAlignment="center"
+                                    android:textColor="@color/colorPrimaryDark"
+                                    android:textSize="15sp" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/vieww_gray"
+                                android:layout_marginTop="5dp">
+
+                                <TextView
+                                    android:layout_width="50sp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1.37"
+                                    android:text="開始時間："
+                                    android:textAlignment="viewEnd"
+                                    android:gravity="end"
+                                    android:textColor="@android:color/black"
+                                    android:textSize="15sp" />
+
+                                <TextView
+                                    android:id="@+id/tv_future_start"
+                                    android:layout_width="50sp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text=""
+                                    android:textAlignment="center"
+                                    android:textColor="@color/colorPrimaryDark"
+                                    android:textSize="15sp" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="50sp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1.37"
+                                    android:text="結束時間："
+                                    android:textAlignment="viewEnd"
+                                    android:gravity="end"
+                                    android:textColor="@android:color/black"
+                                    android:textSize="15sp" />
+
+                                <TextView
+                                    android:id="@+id/tv_future_stop"
+                                    android:layout_width="50sp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text=""
+                                    android:textAlignment="center"
+                                    android:textColor="@color/colorPrimaryDark"
+                                    android:textSize="15sp" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/vieww_gray"
+                                android:layout_marginTop="5dp">
+
+                                <TextView
+                                    android:layout_width="50sp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1.37"
+                                    android:text="預計抑低負載量 (kW)："
+                                    android:textAlignment="viewEnd"
+                                    android:gravity="end"
+                                    android:textColor="@android:color/black"
+                                    android:textSize="15sp" />
+
+                                <TextView
+                                    android:id="@+id/tv_future_p"
+                                    android:layout_width="50sp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text=""
+                                    android:textAlignment="center"
+                                    android:textColor="@color/colorPrimaryDark"
+                                    android:textSize="15sp" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp">
+
+                                <TextView
+                                    android:layout_width="50sp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1.37"
+                                    android:text="抑低負載量時間長度："
+                                    android:textAlignment="viewEnd"
+                                    android:gravity="end"
+                                    android:textColor="@android:color/black"
+                                    android:textSize="15sp" />
+
+                                <TextView
+                                    android:id="@+id/tv_future_time"
+                                    android:layout_width="50sp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text=""
+                                    android:textAlignment="center"
+                                    android:textColor="@color/colorPrimaryDark"
+                                    android:textSize="15sp" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/vieww_gray"
+                                android:layout_marginTop="5dp">
+
+                                <TextView
+                                    android:layout_width="50sp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1.37"
+                                    android:text="預估補償金額："
+                                    android:textAlignment="viewEnd"
+                                    android:gravity="end"
+                                    android:textColor="@android:color/black"
+                                    android:textSize="15sp" />
+
+                                <TextView
+                                    android:id="@+id/tv_future_cost"
+                                    android:layout_width="50sp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text=""
+                                    android:textAlignment="center"
+                                    android:textColor="@color/colorPrimaryDark"
+                                    android:textSize="15sp" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="4dp"
+                        android:background="@drawable/shadow" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="398dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tv_btn_historyevent"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
+                            android:layout_marginLeft="15dp"
+                            android:layout_marginTop="10dp"
+                            android:text="歷史事件"
+                            android:textSize="18dp" />
+
+                        <LinearLayout
+                            android:id="@+id/layout_historyevent"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:visibility="gone">
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="4dp"
+                                android:background="@drawable/shadow" />
+
+                            <ListView
+                                android:id="@+id/lv_products"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"/>
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
 </LinearLayout>

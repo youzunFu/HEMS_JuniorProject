@@ -29,8 +29,8 @@
 
     <!-- 畫面顏色漸層，開始色碼與結束色碼進行漸層，角度為315度 -->
     <gradient
-        android:startColor="@android:color/holo_blue_bright"
-        android:endColor="@android:color/holo_blue_bright"
+        android:startColor="@color/white"
+        android:endColor="@color/white"
         android:angle="315"
         />
 

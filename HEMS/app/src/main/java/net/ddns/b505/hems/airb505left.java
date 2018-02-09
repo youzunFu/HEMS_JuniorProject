@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
@@ -38,8 +39,8 @@ public class airb505left extends AppCompatActivity {
 
     private LinearLayout BackgroundAirconditioner;
     private  ImageView btnOnoff,airicon;
-    private Button btnMode, btnWindSpeed, btnTimeSet;
-    private ImageButton btnTempadd, btnTempsub,btnTempSub,btnTempAdd;
+    private Button btnMode, btnWindSpeed, btnTimeSet,btnTempSub,btnTempAdd;
+    private ImageButton btnTempadd, btnTempsub;
     private TextView tvTempStr,tvAirMode,tvAirFan,tvAirTimeSet;
     private String FanStr, ModeStr, TempStr,TimeSetStr,m = "1";
     private int i = 1, on_off = 0,TimeSetNum = 0,TempNum = 28 ; //switch case variable
@@ -59,13 +60,14 @@ public class airb505left extends AppCompatActivity {
         btnMode = (Button) findViewById(R.id.btnMode);
         btnWindSpeed = (Button) findViewById(R.id.btnWindSpeed);
         btnTimeSet = (Button) findViewById(R.id.btnTimeSet);
-        btnTempAdd = (ImageButton) findViewById(R.id.btnTempAdd);
-        btnTempSub = (ImageButton) findViewById(R.id.btnTempSub);
+        btnTempAdd = (Button) findViewById(R.id.btnTempAdd);
+        btnTempSub = (Button) findViewById(R.id.btnTempSub);
 
         tvAirMode  = (TextView) findViewById(R.id.tvAirMode);
         tvAirFan  = (TextView) findViewById(R.id.tvAirFan);
         tvAirTimeSet  = (TextView) findViewById(R.id.tvAirTimeSet);
         tvTempStr = (TextView) findViewById(R.id.tvTempStr); //TemperatureTextView
+
 
 /*        tvTempStr.setTextColor(Color.parseColor("#aaa"));
         btnMode.setTextColor(Color.parseColor("#aaa"));
@@ -81,12 +83,15 @@ public class airb505left extends AppCompatActivity {
                         getResources(), R.drawable.onoff),180.0f));
 
         ///-------------------外關冷氣初始化----------
-        airicon.setImageResource(R.drawable.icon_airoff);
+        airicon.setImageResource(R.drawable.airicon2);
         btnOnoff.setImageResource(R.drawable.icon_poweroff);
-        getWindow().setBackgroundDrawableResource(R.drawable.backgroundgray);
+
         btnMode.setBackgroundResource(R.drawable.round_airoff);
         btnWindSpeed.setBackgroundResource(R.drawable.round_airoff);
         btnTimeSet.setBackgroundResource(R.drawable.round_airoff);
+        BackgroundAirconditioner.setBackgroundColor(0x808080);
+        //tvAirMode.setTextColor(0xaaa);
+
 
         tvTempStr.setText("");
 
@@ -119,19 +124,34 @@ public class airb505left extends AppCompatActivity {
             if (on_off == 0) {
                 ctrltype = "on";
                 TempNum = 28 ;
-                tvTempStr.setText("28"+" ℃");
+
                 on_off = 1;
 
-                airicon.setImageResource(R.drawable.icon_airon);
+                airicon.setImageResource(R.drawable.airicon2);
                 btnOnoff.setImageResource(R.drawable.icon_poweron);
-                BackgroundAirconditioner.setBackgroundResource(R.drawable.background);
+
+
                 btnMode.setBackgroundResource(R.drawable.round_air);
                 btnWindSpeed.setBackgroundResource(R.drawable.round_air);
                 btnTimeSet.setBackgroundResource(R.drawable.round_air);
 
+                ModeStr = "auto";
+                FanStr = "auto";
+                TimeSetStr = "0";
+
+                tvTempStr.setText("28"+" ℃");
                 tvAirMode.setText("模式 : 自動");
                 tvAirFan.setText("風量 : 自動") ;
                 tvAirTimeSet.setText("定時  : " + "關");
+
+                BackgroundAirconditioner.setBackgroundColor(getResources().getColor(R.color.brightblue));
+                tvAirMode.setTextColor(getResources().getColor(R.color.black));
+                tvAirFan.setTextColor(getResources().getColor(R.color.black));
+                tvAirTimeSet.setTextColor(getResources().getColor(R.color.black));
+
+                btnTempAdd.setTextColor(getResources().getColor(R.color.black));
+                btnTempSub.setTextColor(getResources().getColor(R.color.black));
+
             } else if (on_off == 1) {
                 ctrltype = "off";
                 TempNum = 0 ;
@@ -139,25 +159,28 @@ public class airb505left extends AppCompatActivity {
                 tvTempStr.setText(null);
                 on_off = 0;
 
-                airicon.setImageResource(R.drawable.icon_airoff);
+                airicon.setImageResource(R.drawable.airicon2);
                 btnOnoff.setImageResource(R.drawable.icon_poweroff);
-                BackgroundAirconditioner.setBackgroundResource(R.drawable.backgroundgray);
+                BackgroundAirconditioner.setBackgroundColor(getResources().getColor(R.color.darker_gray));
+
+                tvAirMode.setText(null);
+                tvAirFan.setText(null);
+                tvAirTimeSet.setText(null);
+                tvTempStr.setText(null);
                 btnMode.setBackgroundResource(R.drawable.round_airoff);
                 btnWindSpeed.setBackgroundResource(R.drawable.round_airoff);
                 btnTimeSet.setBackgroundResource(R.drawable.round_airoff);
 
-                tvAirMode.setText("模式 : ");
-                tvAirFan.setText("風量 : ") ;
-                tvAirTimeSet.setText("定時  : " + "關");
+                btnTempAdd.setTextColor(getResources().getColor(R.color.darker_gray));
+                btnTempSub.setTextColor(getResources().getColor(R.color.darker_gray));
+
             }
             CtrlpageAsynctask ctrlpageAsynctaskonoff = new CtrlpageAsynctask(airb505left.this);
             ctrlresultonoff = ctrlpageAsynctaskonoff.execute(ctrltype).get().toString();
             Toast.makeText(airb505left.this, ctrltype, Toast.LENGTH_SHORT).show();
 
 
-            tvAirMode.setText("模式 : " + ModeStr );
-            tvAirFan.setText("風量 : " + FanStr);
-            tvAirTimeSet.setText("定時  : " + TimeSetStr);
+
 
             //ctrlresultonoff = ctrlpageAsynctaskonoff.execute(ctrltype).get().toString();
             //Toast.makeText(airb505left.this,String.valueOf(ctrlresultonoff),Toast.LENGTH_SHORT);

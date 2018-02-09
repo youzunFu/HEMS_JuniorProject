@@ -23,7 +23,7 @@
 
     <!-- 外框，框線粗細，框線顏色 -->
     <stroke
-        android:width="2.5dp"
+        android:width="1.5dp"
         android:color="@android:color/holo_blue_dark"
         />
 

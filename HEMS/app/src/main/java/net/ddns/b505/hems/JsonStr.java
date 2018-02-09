@@ -13,10 +13,16 @@ public class JsonStr {
     @SerializedName("token")
     private String token;
 
+    @SerializedName("nickname")  //nickname
+    private String nickname;
+
+    @SerializedName("username")  //username
+    private String username;
+
     @SerializedName("account")
     private String account;
 
-    @SerializedName("password")
+    @SerializedName("password") //password
     private String password;
 
     @SerializedName("cluster")
@@ -171,6 +177,16 @@ public class JsonStr {
 
     public void setToken(String token) {
         this.token = token;
+    }
+
+    public String getNickname() {return nickname;}
+
+    public void setNickname(String nickname) {this.nickname= nickname;}
+
+    public String getUsername() {return username;}
+
+    public void setUsername(String username) {
+        this.username= username;
     }
 
     public String getAccount() {
