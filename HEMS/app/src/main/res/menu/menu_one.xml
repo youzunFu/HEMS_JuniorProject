@@ -1,12 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:app="http://schemas.android.com/apk/res-auto"
 xmlns:android="http://schemas.android.com/apk/res/android">
-<item
-    android:title="@string/account"
-    app:showAsAction="always"
-    android:icon="@drawable/logout"
-    android:orderInCategory="20"
-    android:id="@+id/ItemAccount"/>
 
+    <item
+        android:id="@+id/ItemControlAir"
+        android:icon="@drawable/toolbar_point"
+        android:orderInCategory="20"
+        android:title="@string/account"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/ItemControlPlug"
+        android:icon="@drawable/toolbar_point"
+        android:orderInCategory="20"
+        android:title="@string/account"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/ItemControlLight"
+        android:icon="@drawable/toolbar_point"
+        android:orderInCategory="20"
+        android:title="@string/account"
+        app:showAsAction="always" />
 
 </menu>

@@ -13,6 +13,9 @@ public class JsonStr {
     @SerializedName("token")
     private String token;
 
+    @SerializedName("eqtype")  //plug , ac ,light
+    private String eqtype;
+
     @SerializedName("nickname")  //nickname
     private String nickname;
 
@@ -178,6 +181,10 @@ public class JsonStr {
     public void setToken(String token) {
         this.token = token;
     }
+
+    public String getEqtype() {return eqtype;}
+
+    public void setEqtype(String eqtype) {this.eqtype= eqtype;}
 
     public String getNickname() {return nickname;}
 

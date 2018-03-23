@@ -15,7 +15,7 @@ import android.widget.BaseAdapter;
 
 public class IndexFragment extends Fragment {
     private TextView Date, Weather, Probability, txtUser;
-    String[] func = {"冷氣控制", "智慧插座", "燈具"};
+    String[] func = {"冷氣控制", "智慧插座", "智慧燈具"};
     int[] icons = {R.drawable.icon_aircondictioner,
             R.drawable.icon_plug,
             R.drawable.icon_light};
@@ -51,7 +51,7 @@ public class IndexFragment extends Fragment {
                                 startActivity(intent);
                                 break;
                             case R.drawable.icon_plug:
-                                intent = new Intent(getActivity(), Pluginfo.class);
+                                intent = new Intent(getActivity(), PluginfoV2.class);
                                 startActivity(intent);
                                 break;
                             case R.drawable.icon_light:

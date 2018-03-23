@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/layout_showArea"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp" >
+
+        <TextView
+            android:id="@+id/tv_history_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:textColor="#162834"
+            android:textSize="17sp" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/layoutPlugInfo"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:descendantFocusability="blocksDescendants"
+        android:orientation="horizontal">
+
+        <!-->ItemImage1 <-->
+        <ImageView
+            android:id="@+id/imgctrlPlug"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="20dp"
+            android:contentDescription="@string/adapter_btnText"
+            android:src="@drawable/icon_plugoff"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="80dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="20dp"
+
+            android:layout_weight="7"
+            android:orientation="vertical">
+
+            <!-->ItemName1 <-->
+            <TextView
+                android:id="@+id/tvctrlName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_weight="3"
+                android:text="@string/plugname1"
+                android:textSize="20sp" />
+
+            <!-->ItemInfo1 <-->
+            <TextView
+                android:id="@+id/tvctrlInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="80dp"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical">
+
+            <!-->ItemSwitch1 <-->
+            <Switch
+                android:id="@+id/swctrl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="40dp"
+                android:paddingBottom="20dp"
+                android:paddingRight="15dp"
+                android:text="" />
+
+            <!-->
+            ItemButton1
+            android:onClick="sendPlugNumber1"
+            <-->
+            <Button
+                android:id="@+id/btnctrlSchedule"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="10dp"
+                android:contentDescription="@string/adapter_btnText"
+                android:text="排程"
+                android:background="@drawable/round_plug"
+                android:textSize="18dp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

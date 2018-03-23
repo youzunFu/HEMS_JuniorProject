@@ -177,18 +177,17 @@ public class FragmentList_Three extends Fragment {
         mJsonStr.setToken(token);
         Gson gson = new Gson();
         String json = gson.toJson(mJsonStr);
-        Log.d("getDREvents","1");
+
         request = new JsonArrayRequest(Request.Method.POST, getDREvents, json, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
                 try {
-                    Log.d("response",response.toString());
+                    Log.d("DREvents response",response.toString());
                     try{
-                        Log.d("getDREvents","3");
+
                         while(response.getJSONObject(num).getString("start_at") != null){
                             num++;
-                            Log.d("In~~~num",""+num);
-                            Log.d("getDREvents","4");
+
                         }
 
                         Log.d("num",""+num);
@@ -201,7 +200,7 @@ public class FragmentList_Three extends Fragment {
                     SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                     formatter.setLenient(false);
                     Date now = new Date() ; // 獲取當前時間
-                    Log.d("getDREvents","5");
+
                     for(int i = 0; i < num; i++){
                         Log.d("getDREvents","6");
                         Log.d("for i =",""+i);
@@ -214,7 +213,7 @@ public class FragmentList_Three extends Fragment {
                         Long dr_start1 = dr_start.getTime();
                         Long dr_end1 = dr_end.getTime();  //相減獲得兩個時間差距的毫秒
                         Long End_Now = dr_end1 - now1;  //毫秒差
-                        Log.d("getDREvents","666");
+
                         if (End_Now > 0) {  //結束時間大於現在時間
                             Long Start_Now = dr_start1 - now1;  //毫秒差
                             if (Start_Now > 0) {  //開始時間大於現在時間，把事件歸類未來事件
@@ -233,7 +232,7 @@ public class FragmentList_Three extends Fragment {
                                 tv_now_cost.setText(response.getJSONObject(i).getString("expected_reward"));
                             }
                         } else {  //結束時間小於現在時間，把事件歸類到歷史事件
-                            Log.d("getDREvents66","666");
+
 
                             String result = "";
                             if(response.getJSONObject(i).getString("result").equals("1")) result = "成功";
@@ -251,17 +250,17 @@ public class FragmentList_Three extends Fragment {
                            // item.put("history_p3", response.getJSONObject(i).getString("baseline"));
                             datas.add(item);
                         }
-                        Log.d("getDREvents","7");
+
                     }
                     OneExpandAdapter adapter = new OneExpandAdapter(getActivity(), datas);
 
                     lvProduct.setAdapter(adapter);
-                    Log.d("getDREvents","8");
+
 
                 } catch (Exception  e) {
                     e.printStackTrace();
                 }
-                Log.d("getDREvents","9");
+
 
             }
         }, new Response.ErrorListener() {

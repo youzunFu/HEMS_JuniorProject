@@ -73,9 +73,12 @@ public class OneExpandAdapter extends BaseAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
 
-        HashMap<String, String> item = list.get(position);
 
-        //注意：我們在此給響應點擊事件的區域 (目前以 showArea 的線性布局) 加入Tag。為了紀錄點擊的position。使用position設置Tag
+
+
+        HashMap<String, String> item = list.get(position);
+        //注意：我們在此給響應點擊事件的區域 (目前以 showArea 的線性布局) 加入Tag。
+        // 為了紀錄點擊的position。使用position設置Tag
         holder.showArea.setTag(position);
         holder.tv_history_date.setText(item.get("history_date"));
         holder.tv_history_start.setText(item.get("history_start"));
@@ -117,8 +120,10 @@ public class OneExpandAdapter extends BaseAdapter {
         private LinearLayout showArea;
 
         private TextView
-                tv_history_date, tv_history_start, tv_history_stop, tv_history_p1, tv_history_time, tv_history_cost,
-                tv_history_p2, tv_history_p3, tv_history_result, tv_history_cost2;
+                tv_history_date, tv_history_start, tv_history_stop,
+                tv_history_p1, tv_history_time, tv_history_cost,
+                tv_history_p2, tv_history_p3, tv_history_result,
+                tv_history_cost2;
 
         private LinearLayout hideArea;
     }

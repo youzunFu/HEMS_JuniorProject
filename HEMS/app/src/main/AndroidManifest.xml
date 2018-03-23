@@ -35,6 +35,7 @@
                 android:label="Lightinfo"/>
         <activity android:name=".PlugSetActivity" />
         <activity android:name=".MPchartActivity" />
+        <activity android:name=".PluginfoV2"/>
         <activity android:name=".DRset"/>
 
 

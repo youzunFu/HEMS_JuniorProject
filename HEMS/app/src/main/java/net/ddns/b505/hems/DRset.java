@@ -705,6 +705,7 @@ public class DRset extends AppCompatActivity {
         });
         requestQueue.add(requestArray);
     }
+
     public void setAppliances(String... params){
         JsonStr mJsonStr = new JsonStr();
         mJsonStr.setAction(params[0]);

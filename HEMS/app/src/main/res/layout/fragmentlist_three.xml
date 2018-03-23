@@ -15,21 +15,25 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="15dp"
-        android:layout_marginTop="10dp">
+        android:layout_marginTop="10dp"
+        android:scrollbars="vertical">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
+
                 <LinearLayout
                     android:id="@+id/layout_event"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -40,6 +44,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:visibility="gone">
+
                             <TextView
                                 android:id="@+id/tv_Winningprice"
                                 android:layout_width="match_parent"
@@ -52,6 +57,7 @@
                                 android:textColor="@android:color/holo_green_light"
                                 android:textSize="40sp" />
                         </LinearLayout>
+
                         <TextView
                             android:id="@+id/tv_btn_nowevent"
                             android:layout_width="match_parent"
@@ -61,6 +67,7 @@
                             android:layout_marginTop="10dp"
                             android:text="當前事件"
                             android:textSize="18dp" />
+
                         <LinearLayout
                             android:id="@+id/layout_nowevent"
                             android:layout_width="match_parent"
@@ -83,12 +90,11 @@
                                     android:layout_width="50sp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1.37"
+                                    android:gravity="end"
                                     android:text="日期："
                                     android:textAlignment="viewEnd"
-                                    android:gravity="end"
                                     android:textColor="@android:color/black"
-                                    android:textSize="15sp"
-                                     />
+                                    android:textSize="15sp" />
 
                                 <TextView
                                     android:id="@+id/tv_now_date"
@@ -104,16 +110,17 @@
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:background="@color/darker_gray"
-                                android:layout_marginTop="5dp">
+                                android:layout_marginTop="5dp"
+                                android:background="@color/darker_gray">
 
                                 <TextView
                                     android:layout_width="50sp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1.37"
+                                    android:gravity="end"
                                     android:text="開始時間："
                                     android:textAlignment="viewEnd"
-                                    android:gravity="end"                                    android:textColor="@android:color/black"
+                                    android:textColor="@android:color/black"
                                     android:textSize="15sp" />
 
                                 <TextView
@@ -137,9 +144,10 @@
                                     android:layout_width="50sp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1.37"
+                                    android:gravity="end"
                                     android:text="結束時間："
                                     android:textAlignment="viewEnd"
-                                    android:gravity="end"                                    android:textColor="@android:color/black"
+                                    android:textColor="@android:color/black"
                                     android:textSize="15sp" />
 
                                 <TextView
@@ -156,16 +164,17 @@
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:background="@color/darker_gray"
-                                android:layout_marginTop="5dp">
+                                android:layout_marginTop="5dp"
+                                android:background="@color/darker_gray">
 
                                 <TextView
                                     android:layout_width="50sp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1.37"
+                                    android:gravity="end"
                                     android:text="預計抑低負載量 (kW)："
                                     android:textAlignment="viewEnd"
-                                    android:gravity="end"                                    android:textColor="@android:color/black"
+                                    android:textColor="@android:color/black"
                                     android:textSize="15sp" />
 
                                 <TextView
@@ -188,9 +197,10 @@
                                     android:layout_width="50sp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1.37"
+                                    android:gravity="end"
                                     android:text="抑低負載量時間長度："
                                     android:textAlignment="viewEnd"
-                                    android:gravity="end"                                    android:textColor="@android:color/black"
+                                    android:textColor="@android:color/black"
                                     android:textSize="15sp" />
 
                                 <TextView
@@ -207,16 +217,17 @@
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:background="@color/darker_gray"
-                                android:layout_marginTop="5dp">
+                                android:layout_marginTop="5dp"
+                                android:background="@color/darker_gray">
 
                                 <TextView
                                     android:layout_width="50sp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1.37"
+                                    android:gravity="end"
                                     android:text="預估補償金額："
                                     android:textAlignment="viewEnd"
-                                    android:gravity="end"                                    android:textColor="@android:color/black"
+                                    android:textColor="@android:color/black"
                                     android:textSize="15sp" />
 
                                 <TextView
@@ -274,9 +285,9 @@
                                     android:layout_width="50sp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1.37"
+                                    android:gravity="end"
                                     android:text="日期："
                                     android:textAlignment="viewEnd"
-                                    android:gravity="end"
                                     android:textColor="@android:color/black"
                                     android:textSize="15sp" />
 
@@ -294,16 +305,16 @@
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:background="@color/vieww_gray"
-                                android:layout_marginTop="5dp">
+                                android:layout_marginTop="5dp"
+                                android:background="@color/vieww_gray">
 
                                 <TextView
                                     android:layout_width="50sp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1.37"
+                                    android:gravity="end"
                                     android:text="開始時間："
                                     android:textAlignment="viewEnd"
-                                    android:gravity="end"
                                     android:textColor="@android:color/black"
                                     android:textSize="15sp" />
 
@@ -328,9 +339,9 @@
                                     android:layout_width="50sp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1.37"
+                                    android:gravity="end"
                                     android:text="結束時間："
                                     android:textAlignment="viewEnd"
-                                    android:gravity="end"
                                     android:textColor="@android:color/black"
                                     android:textSize="15sp" />
 
@@ -348,16 +359,16 @@
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:background="@color/vieww_gray"
-                                android:layout_marginTop="5dp">
+                                android:layout_marginTop="5dp"
+                                android:background="@color/vieww_gray">
 
                                 <TextView
                                     android:layout_width="50sp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1.37"
+                                    android:gravity="end"
                                     android:text="預計抑低負載量 (kW)："
                                     android:textAlignment="viewEnd"
-                                    android:gravity="end"
                                     android:textColor="@android:color/black"
                                     android:textSize="15sp" />
 
@@ -381,9 +392,9 @@
                                     android:layout_width="50sp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1.37"
+                                    android:gravity="end"
                                     android:text="抑低負載量時間長度："
                                     android:textAlignment="viewEnd"
-                                    android:gravity="end"
                                     android:textColor="@android:color/black"
                                     android:textSize="15sp" />
 
@@ -401,16 +412,16 @@
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:background="@color/vieww_gray"
-                                android:layout_marginTop="5dp">
+                                android:layout_marginTop="5dp"
+                                android:background="@color/vieww_gray">
 
                                 <TextView
                                     android:layout_width="50sp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1.37"
+                                    android:gravity="end"
                                     android:text="預估補償金額："
                                     android:textAlignment="viewEnd"
-                                    android:gravity="end"
                                     android:textColor="@android:color/black"
                                     android:textSize="15sp" />
 
@@ -462,7 +473,7 @@
                             <ListView
                                 android:id="@+id/lv_products"
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content"/>
+                                android:layout_height="wrap_content" />
                         </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>
