@@ -120,6 +120,8 @@ public class MainActivity extends AppCompatActivity {
         for (int i = 0; i < 3; i++) {
             tabLayout.getTabAt(i).setIcon(IconResID[i]);
         }
+
+
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {

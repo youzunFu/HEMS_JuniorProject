@@ -9,6 +9,9 @@
     android:orientation="vertical"
     tools:context=".airb505left">
 
+
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -18,7 +21,7 @@
             android:id="@+id/airicon"
             android:layout_width="200dp"
             android:layout_height="125dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="10dp"
             android:layout_weight="15"
             app:srcCompat="@drawable/airicon2" />
 
@@ -27,7 +30,6 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
         android:orientation="vertical">
 
         <TextView
@@ -85,7 +87,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="15dp"
         android:orientation="horizontal">
 
         <LinearLayout

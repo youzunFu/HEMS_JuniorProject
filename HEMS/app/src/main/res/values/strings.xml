@@ -40,4 +40,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_pluginfo">Pluginfo</string>
     <string name="adapter_btnText">whatever</string>
+
+    <string name="toolbarabout">說明</string>
+
 </resources>

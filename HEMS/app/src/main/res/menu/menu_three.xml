@@ -3,9 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:title="@string/smartphone"
+        android:title="@string/toolbarabout"
         app:showAsAction="always"
-        android:icon="@drawable/toolbar_point"
         android:orderInCategory="30"
         android:id="@+id/ItemDR"/>
 

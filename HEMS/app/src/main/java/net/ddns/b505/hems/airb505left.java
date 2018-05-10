@@ -1,10 +1,11 @@
 package net.ddns.b505.hems;
 
+import android.app.DialogFragment;
+import android.app.FragmentTransaction;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
@@ -13,7 +14,11 @@ import android.graphics.RectF;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -21,6 +26,12 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import net.ddns.b505.hems.AboutFragment.ControlAirAboutFragment;
+import net.ddns.b505.hems.AboutFragment.ControlLightAboutFragment;
+import net.ddns.b505.hems.AboutFragment.ControlPlugAboutFragment;
+import net.ddns.b505.hems.AboutFragment.DRAboutFragment;
+import net.ddns.b505.hems.AboutFragment.HistoryAboutFragment;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -45,7 +56,12 @@ public class airb505left extends AppCompatActivity {
     private String FanStr, ModeStr, TempStr,TimeSetStr,m = "1";
     private int i = 1, on_off = 0,TimeSetNum = 0,TempNum = 28 ; //switch case variable
      public  String ctrltype,ctrlresultonoff,ctrlresultup,ctrlresultdown,ctrlresultauto;
+    // private Toolbar toolbarair;
 
+    public String  URL[] = {"http://192.168.0.102/b505leftv2.php","http://163.18.57.43/HEMSphp/WINb505left.php"};
+
+ㄒ　
+    //163.18.57.42:92 固定ip Raspberry Pi (加try catch 解決 網路問題)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,7 +69,6 @@ public class airb505left extends AppCompatActivity {
 
         airicon = (ImageView) findViewById(R.id.airicon);
         BackgroundAirconditioner = (LinearLayout) findViewById(R.id.BackgroundAirconditioner);
-
 
         //imageButton ok
         btnOnoff = (ImageView) findViewById(R.id.btnOnoff); //TempeartureUp
@@ -69,14 +84,7 @@ public class airb505left extends AppCompatActivity {
         tvTempStr = (TextView) findViewById(R.id.tvTempStr); //TemperatureTextView
 
 
-/*        tvTempStr.setTextColor(Color.parseColor("#aaa"));
-        btnMode.setTextColor(Color.parseColor("#aaa"));
-        btnWindSpeed.setTextColor(Color.parseColor("#aaa"));
-        btnTimeSet.setTextColor(Color.parseColor("#aaa"));
-        btnTempAdd.setTextColor(Color.parseColor("#aaa"));
-        btnTempSub.setTextColor(Color.parseColor("#aaa"));
-        */
-
+        //toolbarair.setclic
         //將圖片及圓角數值帶入getRoundedCornerBitmap()並放入mImg1內
         btnOnoff.setImageBitmap(getRoundedCornerBitmap(
                 BitmapFactory.decodeResource(
@@ -95,9 +103,32 @@ public class airb505left extends AppCompatActivity {
 
         tvTempStr.setText("");
 
-
-
     }
+/*
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int item_id = item.getItemId();
+
+                FragmentTransaction ft1 = getFragmentManager().beginTransaction();
+                android.app.Fragment prev1 = getFragmentManager().findFragmentByTag("AirAbout");
+                if (prev1 != null) {
+                    ft1.remove(prev1);
+                }
+                ft1.addToBackStack(null);
+                // Create and show the dialog.
+                DialogFragment newFragment1 = new ControlAirAboutFragment();
+                newFragment1.show(ft1, "AirAbout");
+
+        return true;
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_one, menu);
+        return true;
+    }
+*/
+
     // set image Roundcorner
     public static Bitmap getRoundedCornerBitmap(Bitmap bitmap, float roundPx)
     {
@@ -175,12 +206,11 @@ public class airb505left extends AppCompatActivity {
                 btnTempSub.setTextColor(getResources().getColor(R.color.darker_gray));
 
             }
-            CtrlpageAsynctask ctrlpageAsynctaskonoff = new CtrlpageAsynctask(airb505left.this);
-            ctrlresultonoff = ctrlpageAsynctaskonoff.execute(ctrltype).get().toString();
-            Toast.makeText(airb505left.this, ctrltype, Toast.LENGTH_SHORT).show();
-
-
-
+            for(int j = 0 ; j<2 ;j++){
+                CtrlpageAsynctask ctrlpageAsynctaskonoff = new CtrlpageAsynctask(airb505left.this);
+                ctrlresultonoff = ctrlpageAsynctaskonoff.execute(ctrltype,URL[j]).get().toString();
+            }
+           //Toast.makeText(airb505left.this, ctrltype, Toast.LENGTH_SHORT).show();
 
             //ctrlresultonoff = ctrlpageAsynctaskonoff.execute(ctrltype).get().toString();
             //Toast.makeText(airb505left.this,String.valueOf(ctrlresultonoff),Toast.LENGTH_SHORT);
@@ -234,7 +264,7 @@ public class airb505left extends AppCompatActivity {
             }
             callDatabase();
         }else { //AirConditioner is turn off now.
-            Toast.makeText(airb505left.this, "Please turn on the air conditioner  first.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(airb505left.this, "請先開啟冷氣", Toast.LENGTH_SHORT).show();
         }
         } catch (Exception e) {
             e.printStackTrace();
@@ -266,7 +296,7 @@ if (ModeStr.equals("cold")|ModeStr.equals("wet")|ModeStr.equals("wind")){
             callDatabase();
         }
         else { //AirConditioner is turn off now.
-            Toast.makeText(airb505left.this, "Please turn on the air conditioner  first.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(airb505left.this, "請先開啟冷氣", Toast.LENGTH_SHORT).show();
         }
 }else {
     Toast.makeText(airb505left.this,"目前模式 風量無法改變",Toast.LENGTH_SHORT).show();
@@ -303,14 +333,14 @@ if (ModeStr.equals("cold")|ModeStr.equals("wet")|ModeStr.equals("wind")){
                     }
                     break;
                 default:
-                    Toast.makeText(airb505left.this, "This situation don't support this", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(airb505left.this, "目前模式 不支援定時設定", Toast.LENGTH_SHORT).show();
                     break;
 
             }
             callDatabase();
         }
         else { //AirConditioner is turn off now.
-            Toast.makeText(airb505left.this, "Please turn on the air conditioner  first.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(airb505left.this, "請先開啟冷氣", Toast.LENGTH_SHORT).show();
         }
 
     }else {
@@ -340,7 +370,7 @@ if (ModeStr.equals("cold")|ModeStr.equals("wet")|ModeStr.equals("wind")){
                 }
             }
             else { //AirConditioner is turn off now.
-                Toast.makeText(airb505left.this, "Please turn on the air conditioner  first.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(airb505left.this, "請先開啟冷氣", Toast.LENGTH_SHORT).show();
             }
 
         }else {
@@ -461,19 +491,22 @@ if (ModeStr.equals("cold")|ModeStr.equals("wet")|ModeStr.equals("wind")){
         }
 
         //ctrltype = ModeStr + TempStr + FanStr ;
-        CtrlpageAsynctask ctrlpageAsynctaskauto = new CtrlpageAsynctask(this);
-        ctrlresultauto = ctrlpageAsynctaskauto.execute(ctrltype).get().toString();
-        Toast.makeText(airb505left.this,"ctrltype :" + ctrltype,Toast.LENGTH_SHORT).show();
+        for(int j = 0 ; j<2 ;j++){
+            CtrlpageAsynctask ctrlpageAsynctaskauto = new CtrlpageAsynctask(this);
+            ctrlresultauto = ctrlpageAsynctaskauto.execute(ctrltype,URL[j]).get().toString();
+        }
+       // Toast.makeText(airb505left.this,"ctrltype :" + ctrltype,Toast.LENGTH_SHORT).show();
 
     }
 
     public void autoclick(View v)throws ExecutionException, InterruptedException{
         ctrltype = "auto";
-        CtrlpageAsynctask ctrlpageAsynctaskauto = new CtrlpageAsynctask(this);
-        ctrlresultauto = ctrlpageAsynctaskauto.execute(ctrltype).get().toString();
-        Toast.makeText(airb505left.this,String.valueOf(ctrlresultauto),Toast.LENGTH_SHORT).show();
+        for(int j = 0 ; j<2 ;j++){
+            CtrlpageAsynctask ctrlpageAsynctaskauto = new CtrlpageAsynctask(this);
+            ctrlresultauto = ctrlpageAsynctaskauto.execute(ctrltype,URL[j]).get().toString();
+        }
+       // Toast.makeText(airb505left.this,String.valueOf(ctrlresultauto),Toast.LENGTH_SHORT).show();
     }
-
 
 
 
@@ -484,7 +517,7 @@ if (ModeStr.equals("cold")|ModeStr.equals("wet")|ModeStr.equals("wind")){
         @Override
         protected String doInBackground(String... params) {
             String ctrltype = params[0];
-            String login_url = "http://163.18.57.42:92/b505leftv2.php" ; //http://192.168.0.102/b505left_v2.php /*"http://163.18.58.95:8888/b451-post.php"*/;
+            String login_url = params[1] ; //http://192.168.0.102/b505left_v2.php /*"http://163.18.58.95:8888/b451-post.php"*/;
 
             try {
                 URL url = new URL(login_url);

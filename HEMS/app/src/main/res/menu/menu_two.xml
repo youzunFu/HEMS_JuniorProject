@@ -4,9 +4,8 @@
 
     <item
         android:id="@+id/ItemHistory"
-        android:icon="@drawable/toolbar_point"
+        android:title="@string/toolbarabout"
         android:orderInCategory="20"
-        android:title="@string/favorite"
         app:showAsAction="always" />
 
 </menu>
