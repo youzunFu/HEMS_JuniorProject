@@ -11,6 +11,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.Activity;
 import android.os.CountDownTimer;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -58,11 +59,29 @@ public class Lightinfo extends AppCompatActivity {
     private CountDownTimer counterdowntimer ;
     private String PickDate_Time[] ,Date_Time;
     private Toolbar toolbarlight;
+    private SwipeRefreshLayout mSwipeRefreshLayout ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lightinfo);
+
+        mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.refresh_lightinfo);
+        mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+
+                try {
+                    InitialLight3();
+                    InitialLight4();
+                } catch (ExecutionException e) {
+                    e.printStackTrace();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                mSwipeRefreshLayout.setRefreshing(false);
+            }
+        });
 
         toolbarlight = (Toolbar) findViewById(R.id.ToolBarLight);
         toolbarlight.setTitle("　　　智　慧　燈　具");
@@ -70,8 +89,6 @@ public class Lightinfo extends AppCompatActivity {
         setSupportActionBar(toolbarlight);
         try {
             InitialComponents();  // InitialComponents()＆＆＆InitialLight()
-            InitialLight1();
-            InitialLight2();
             InitialLight3();
             InitialLight4();
         }
@@ -113,38 +130,23 @@ public class Lightinfo extends AppCompatActivity {
 
     //initial compents
     public void InitialComponents() throws ExecutionException, InterruptedException {
-        imageL1 = (ImageView) findViewById(R.id.ItemImageL1);
-        imageL2 = (ImageView) findViewById(R.id.ItemImageL2);
         imageL3 = (ImageView) findViewById(R.id.ItemImageL3);
         imageL4 = (ImageView) findViewById(R.id.ItemImageL4);
-        lightname1 = (TextView) findViewById(R.id.ItemNameL1);
-        lightname2 = (TextView) findViewById(R.id.ItemNameL2);
         lightname3 = (TextView) findViewById(R.id.ItemNameL3);
         lightname4 = (TextView) findViewById(R.id.ItemNameL4);
-        lampinfo1 = (TextView) findViewById(R.id.ItemInfoL1);
-        lampinfo2 = (TextView) findViewById(R.id.ItemInfoL2);
         lampinfo3 = (TextView) findViewById(R.id.ItemInfoL3);
         lampinfo4 = (TextView) findViewById(R.id.ItemInfoL4);
-        swL1 = (Switch) findViewById(R.id.ItemSwitchL1);
-        swL2 = (Switch) findViewById(R.id.ItemSwitchL2);
         swL3 = (Switch) findViewById(R.id.ItemSwitchL3);
         swL4 = (Switch) findViewById(R.id.ItemSwitchL4);
-        btn_scheduleL1 = (Button) findViewById(R.id.ItemButtonL1);
-        btn_scheduleL2 = (Button) findViewById(R.id.ItemButtonL2);
         btn_scheduleL3 = (Button) findViewById(R.id.ItemButtonL3);
         btn_scheduleL4 = (Button) findViewById(R.id.ItemButtonL4);
-        btn_historyL1 = (Button) findViewById(R.id.ItemButtonL5);
-        btn_historyL2 = (Button) findViewById(R.id.ItemButtonL6);
         btn_historyL3 = (Button) findViewById(R.id.ItemButtonL7);
         btn_historyL4 = (Button) findViewById(R.id.ItemButtonL8);
 
-/*
-        InitialLight1();
-        InitialLight2();
         InitialLight3();
         InitialLight4();
-*/
     }
+
 /* 計時器
     private void start(){
       // timer1.setText("2");
@@ -173,50 +175,7 @@ public class Lightinfo extends AppCompatActivity {
         counterdowntimer.start();
     }
 */
-    public void InitialLight1() throws ExecutionException, InterruptedException {
-            lightname = "001";
-            lightstatus  = "2"; //meaningless :Don't send wrong status to php
-            ControlLightStatusAsynctask ctrlLightStatusAsynctask = new ControlLightStatusAsynctask(Lightinfo.this);
-            lightall = ctrlLightStatusAsynctask.execute(lightname,lightstatus).get().toString();
-            String plugresultSplit[] =lightall.split(" ");
-             lightstatus = plugresultSplit[1] ;
-            switch (plugresultSplit[1]){
-                case "0" :
-                    imageL1.setImageResource(R.drawable.lightoff);
-                    lampinfo1.setText("即時用電量 : " + plugresultSplit[4] +" W");
-                    swL1.setChecked(false);
-                    break;
-                case "1" :
-                    imageL1.setImageResource(R.drawable.lighton);
-                    lampinfo1.setText("即時用電量 : " + plugresultSplit[4] +" W");
-                    swL1.setChecked(true);
-                    break;
-                default:
-                    break;
-            }
-    }
-    public void InitialLight2() throws ExecutionException, InterruptedException {
-        lightname = "002";
-        lightstatus = "2"; //meaningless :Don't send wrong status to php
-        ControlLightStatusAsynctask ctrlLightStatusAsynctask = new ControlLightStatusAsynctask(Lightinfo.this);
-        lightall = ctrlLightStatusAsynctask.execute(lightname,lightstatus).get().toString();
-        String plugresultSplit[] =lightall.split(" ");
-        lightstatus = plugresultSplit[1];
-        switch (plugresultSplit[1]) {
-            case "0":
-                imageL2.setImageResource(R.drawable.lightoff);
-                lampinfo2.setText("即時用電量 : " + plugresultSplit[4] + " W");
-                swL2.setChecked(false);
-                break;
-            case "1":
-                imageL2.setImageResource(R.drawable.lighton);
-                lampinfo2.setText("即時用電量 : " + plugresultSplit[4] + " W");
-                swL2.setChecked(true);
-                break;
-            default:
-                break;
-        }
-    }
+
     public void InitialLight3() throws ExecutionException, InterruptedException {
         lightname = "003";
         lightstatus = "2"; //meaningless :Don't send wrong status to php
@@ -263,27 +222,11 @@ public class Lightinfo extends AppCompatActivity {
     }
 
     //schedule
-    public void sendLightNumber1(View view){
-        Intent intent = new Intent(Lightinfo.this,PlugSetActivity.class);
-        Bundle bundle = new Bundle();
-        bundle.putString("Num","001");
-        bundle.putString("Equipment","Light");
-        intent.putExtras(bundle);
-        startActivity(intent);
-    }
-    public void sendLightNumber2(View view){
-        Intent intent = new Intent(this,PlugSetActivity.class);
-        Bundle bundle = new Bundle();
-        bundle.putString("Num","002");
-        bundle.putString("Equipment","Light");
-        intent.putExtras(bundle);
-        startActivity(intent);
-    }
     public void sendLightNumber3(View view){
         Intent intent = new Intent(this,PlugSetActivity.class);
         Bundle bundle = new Bundle();
         bundle.putString("Num","003");
-        bundle.putString("Equipment","Light");
+        bundle.putString("Equipment","Plug");
         intent.putExtras(bundle);
         startActivity(intent);
     }
@@ -291,28 +234,12 @@ public class Lightinfo extends AppCompatActivity {
         Intent intent = new Intent(this,PlugSetActivity.class);
         Bundle bundle = new Bundle();
         bundle.putString("Num","004");
-        bundle.putString("Equipment","Light");
+        bundle.putString("Equipment","Plug");
         intent.putExtras(bundle);
         startActivity(intent);
     }
 
     //history chart
-    public void sendLightNumberChart1(View view ){
-        Intent intent = new Intent(Lightinfo.this,MPchartActivity.class);
-        Bundle bundle = new Bundle();
-        bundle.putString("Num","001");
-        bundle.putString("Equipment","Light");
-        intent.putExtras(bundle);
-        startActivity(intent);
-    }
-    public void sendLightNumberChart2(View view ){
-        Intent intent = new Intent(Lightinfo.this,MPchartActivity.class);
-        Bundle bundle = new Bundle();
-        bundle.putString("Num","002");
-        bundle.putString("Equipment","Light");
-        intent.putExtras(bundle);
-        startActivity(intent);
-    }
     public void sendLightNumberChart3(View view ){
         Intent intent = new Intent(Lightinfo.this,MPchartActivity.class);
         Bundle bundle = new Bundle();
@@ -330,137 +257,14 @@ public class Lightinfo extends AppCompatActivity {
         startActivity(intent);
     }
 
-    //btnSchedule1 set YYYY-MM-DD HH:mm:ss
-    /*
-    public void pick_DateTime1(View v){
-        Date_Time = "";
-        final Calendar c = Calendar.getInstance();
-        int years = c.get(Calendar.YEAR);
-        int months = c.get(Calendar.MONTH);
-        int days = c.get(Calendar.DAY_OF_MONTH);
-        int hours = c.get(Calendar.HOUR_OF_DAY);
-        int minute = c.get(Calendar.MINUTE);
-
-        new TimePickerDialog(Pluginfo.this, new TimePickerDialog.OnTimeSetListener() {
-            @Override
-            public void onTimeSet(TimePicker timePicker, int hour, int minute) {
-                // if-else statement set calender data ex:2017-1-1 5:5  ---->2017-01-01 05:05:00 YYYY-MM-DD HH:mm:ss  Y-year M-month D-DAY H-hour m-minute s-second
-                if(hour < 10){Date_Time = Date_Time + "0" +String.valueOf(hour)+ " ";}
-                else{Date_Time = Date_Time + String.valueOf(hour)+ " ";}
-                if(minute < 10){Date_Time = Date_Time + "0" +String.valueOf(minute)+ " ";}
-                else{Date_Time = Date_Time + String.valueOf(minute)+ "  " ;}
-                Toast.makeText(Pluginfo.this,"First Toast"+Date_Time,Toast.LENGTH_SHORT).show();
-                PickDate_Time = Date_Time.split(" ");
-                Date_Time = PickDate_Time[0] + "-" + PickDate_Time[1] + "-" + PickDate_Time[2] +
-                        " " +PickDate_Time[3] +":"+ PickDate_Time[4] + ":" + "00";
-                Toast.makeText(Pluginfo.this,"Secon Toast"+Date_Time,Toast.LENGTH_SHORT).show();
-            }
-        }, hours, minute,true).show();
-
-        new DatePickerDialog(Pluginfo.this, new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
-                month = month +1 ;
-                // if-else statement set calender data ex:2017-1-1 5:5  ---->2017-01-01 05:05:00 YYYY-MM-DD HH:mm:ss  Y-year M-month D-DAY H-hour m-minute s-second
-                if(year < 10){Date_Time = Date_Time + "000" +String.valueOf(year)+ " ";}
-                else{Date_Time = Date_Time + String.valueOf(year)+ " ";}
-                if(month < 10){Date_Time = Date_Time + "0" +String.valueOf(month)+ " ";}
-                else{Date_Time = Date_Time + String.valueOf(month)+ " ";}
-                if(day < 10){Date_Time = Date_Time + "0" +String.valueOf(day)+ " ";}
-                else{Date_Time = Date_Time + String.valueOf(day)+ " ";}
-
-            }
-        }, years, months, days).show();
-
-    }
-*/
-
     //PlugSwitchClick 1 2 3 4
     public void SwitchClick(){
-        swL1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (swL1.isChecked()) {
-                    imageL1.setImageResource(R.drawable.lighton);
-                    lightname = "001";
-                    lightstatus = "1" ;
-                    lightall = null;
-                    try {
-                        ControlLightStatusAsynctask ctrlLightStatusAsynctask = new ControlLightStatusAsynctask(Lightinfo.this);
-                        lightall = ctrlLightStatusAsynctask.execute(lightname,lightstatus).get().toString();
-                        String plugresultSplit[] =lightall.split(" ");
-                        lightstatus = plugresultSplit[1] ;
-                        //plugresultSplit[0]->name～plugresultSplit[1]->status～plugresultSplit[2]->～
-                        lampinfo1.setText("即時用電量 : " + plugresultSplit[4] +" W");
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    } catch (ExecutionException e) {
-
-                        e.printStackTrace();
-                    }
-                } else {
-                    lightname = "001";
-                    lightstatus = "0" ;
-                    lightall = null;
-                    imageL1.setImageResource(R.drawable.lightoff);
-                    try {
-                        ControlLightStatusAsynctask ctrlLightStatusAsynctask = new ControlLightStatusAsynctask(Lightinfo.this);
-                        lightall = ctrlLightStatusAsynctask.execute(lightname,lightstatus).get().toString();
-                        String plugresultSplit[] =lightall.split(" ");
-                            lampinfo1.setText("即時用電量 : " + plugresultSplit[4] +" W");
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    } catch (ExecutionException e) {
-                        e.printStackTrace();
-                    }
-
-                }
-            }
-        });
-
-        swL2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (swL2.isChecked()) {
-                    imageL2.setImageResource(R.drawable.lighton);
-                    lightname2.setText("插座002");
-                    lightname = "002";
-                    lightstatus = "1" ;
-                    try {
-                        ControlLightStatusAsynctask ctrlLightStatusAsynctask = new ControlLightStatusAsynctask(Lightinfo.this);
-                        lightall = ctrlLightStatusAsynctask.execute(lightname,lightstatus).get().toString();
-                        String plugresultSplit[] =lightall.split(" ");
-                        lampinfo2.setText("即時用電量 : " + plugresultSplit[4] +" W");
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    } catch (ExecutionException e) {
-                        e.printStackTrace();
-                    }
-                } else {
-                    lightname = "002";
-                    lightstatus = "0" ;
-                    imageL2.setImageResource(R.drawable.lightoff);
-                    try {
-                        ControlLightStatusAsynctask ctrlLightStatusAsynctask = new ControlLightStatusAsynctask(Lightinfo.this);
-                        lightall = ctrlLightStatusAsynctask.execute(lightname,lightstatus).get().toString();
-                        String plugresultSplit[] =lightall.split(" ");
-                        lampinfo2.setText("即時用電量 : " + plugresultSplit[4] +" W");
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    } catch (ExecutionException e) {
-                        e.printStackTrace();
-                    }
-
-                }
-            }
-        });
-
         swL3.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (swL3.isChecked()) {
                     imageL3.setImageResource(R.drawable.lighton);
-                    lightname3.setText("插座003");
+                    //lightname3.setText("插座003");
                     lightname = "003";
                     lightstatus = "1" ;
                     try {
@@ -498,7 +302,7 @@ public class Lightinfo extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (swL4.isChecked()) {
                     imageL4.setImageResource(R.drawable.lighton);
-                    lightname4.setText("插座004");
+                   // lightname4.setText("插座004");
                     lightname = "004";
                     lightstatus = "1" ;
                     try {
@@ -540,7 +344,7 @@ public class Lightinfo extends AppCompatActivity {
         @Override
         protected String doInBackground(String... params) {
 
-            String login_url = "http://163.18.57.43/HEMSphp/lightopen.php";
+            String login_url = "http://163.18.57.43/HEMSphp/plugopen.php";
 
             try {
                 String lightname = params[0];
@@ -553,8 +357,8 @@ public class Lightinfo extends AppCompatActivity {
                 httpURLConnection.setDoInput(true);
                 OutputStream outputStream = httpURLConnection.getOutputStream();
                 BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
-                String post_data = URLEncoder.encode("lightname", "UTF-8") + "=" + URLEncoder.encode(lightname, "UTF-8")
-                       +"&"+ URLEncoder.encode("lightstatus", "UTF-8") + "=" + URLEncoder.encode(lightstatus, "UTF-8");
+                String post_data = URLEncoder.encode("plugname", "UTF-8") + "=" + URLEncoder.encode(lightname, "UTF-8")
+                       +"&"+ URLEncoder.encode("plugstatus", "UTF-8") + "=" + URLEncoder.encode(lightstatus, "UTF-8");
                 bufferedWriter.write(post_data);
                 bufferedWriter.flush();
                 bufferedWriter.close();

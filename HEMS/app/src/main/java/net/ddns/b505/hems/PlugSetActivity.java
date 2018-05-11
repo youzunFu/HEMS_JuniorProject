@@ -107,7 +107,7 @@ public class PlugSetActivity extends AppCompatActivity {
             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
                 String date = edstart.getText().toString();
                 edstart.setText(date + " " + hourOfDay
-                        + ":" + minute);
+                        + ":" + minute + ":00");
             }
         }, calendar.get(Calendar.HOUR_OF_DAY), calendar.get(calendar.MINUTE),
                 false);
@@ -118,7 +118,7 @@ public class PlugSetActivity extends AppCompatActivity {
             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
                 String date = edend.getText().toString();
                 edend.setText(date + " " + hourOfDay
-                        + ":" + minute);
+                        + ":" + minute+ ":00");
             }
         }, calendar.get(Calendar.HOUR_OF_DAY), calendar.get(calendar.MINUTE),
                 false);
@@ -152,7 +152,8 @@ public class PlugSetActivity extends AppCompatActivity {
         String start = edstart.getText().toString();
         String end = edend.getText().toString();
         setPlugSchedule(PlugNum, "1", start, end);
-//        new PlugSetActivity.Save().execute("http://192.168.1.100/sl_demo_api/plugschedule.php", "1", start, end);
+        Toast.makeText(PlugSetActivity.this, PlugNum+"\n " +start +"\n"+end, Toast.LENGTH_SHORT).show();
+        //        new PlugSetActivity.Save().execute("http://192.168.1.100/sl_demo_api/plugschedule.php", "1", start, end);
         finish();
     }
     public void StartTimeset(View view) {

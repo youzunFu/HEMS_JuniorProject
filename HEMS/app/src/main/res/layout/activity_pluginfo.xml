@@ -1,13 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+
+<android.support.v4.widget.SwipeRefreshLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/refresh_pluginfo">
+<ScrollView
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:orientation="vertical"
     android:descendantFocusability="blocksDescendants"
-
     >
+
+
 
 
 <LinearLayout
@@ -187,172 +194,9 @@
 
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="120dp"
-        android:descendantFocusability="blocksDescendants">
-
-        <ImageView
-            android:id="@+id/ItemImage3"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_marginTop="20dp"
-            android:contentDescription="@string/adapter_btnText"
-            app:srcCompat="@drawable/icon_plugoff" />
-
-        <LinearLayout
-
-            android:layout_width="wrap_content"
-            android:layout_height="80dp"
-            android:layout_alignParentTop="true"
-            android:layout_weight="7"
-            android:layout_marginTop="20dp"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/ItemName3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="3"
-                android:layout_marginTop="5dp"
-                android:text="@string/plugname3"
-                android:textSize="20sp" />
-
-            <TextView
-                android:id="@+id/ItemInfo3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textSize="18sp" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="80dp"
-            android:layout_marginTop="20dp"
-            android:orientation="vertical">
-
-            <Switch
-                android:id="@+id/ItemSwitch3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingLeft="40dp"
-                android:paddingBottom="20dp"
-                android:paddingRight="15dp"
-                android:text="" />
-
-                    <Button
-                        android:id="@+id/ItemButton3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginRight="10dp"
-                        android:contentDescription="@string/adapter_btnText"
-                        android:onClick="sendPlugNumber3"
-                        android:text="排程"
-                        android:background="@drawable/round_plug"
-                        android:textSize="18dp" />
-
-                    <!--> hide<-->
-                    <Button
-                        android:id="@+id/ItemButton7"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="1dp"
-                        android:onClick="sendPlugNumberChart3"
-                        android:text="歷史"
-                        android:visibility="invisible"
-                    android:textSize="24dp" />
-
-        </LinearLayout>
-
-    </LinearLayout>
-
-    <LinearLayout
-    android:layout_width="match_parent"
-        android:layout_height="120dp"
-    android:descendantFocusability="blocksDescendants"
-    >
-
-        <ImageView
-            android:id="@+id/ItemImage4"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_marginTop="20dp"
-            android:contentDescription="@string/adapter_btnText"
-            app:srcCompat="@drawable/icon_plugoff" />
-
-        <LinearLayout
-
-        android:layout_width="wrap_content"
-        android:layout_height="80dp"
-        android:orientation="vertical"
-            android:layout_marginTop="20dp"
-            android:layout_weight="7"
-        android:layout_alignParentTop="true">
-
-        <TextView
-            android:id="@+id/ItemName4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="3"
-            android:layout_marginTop="5dp"
-            android:text="@string/plugname4"
-            android:textSize="20sp" />
-
-            <TextView
-                android:id="@+id/ItemInfo4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textSize="18sp" />
-
-        </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="80dp"
-        android:layout_marginTop="20dp"
-        android:orientation="vertical">
-
-        <Switch
-            android:id="@+id/ItemSwitch4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingLeft="40dp"
-            android:paddingBottom="20dp"
-            android:paddingRight="15dp"
-            android:text="" />
-
-                <Button
-                    android:id="@+id/ItemButton4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginRight="10dp"
-                    android:contentDescription="@string/adapter_btnText"
-                    android:onClick="sendPlugNumber4"
-                    android:text="排程"
-                    android:background="@drawable/round_plug"
-                    android:textSize="18dp" />
-
-                <!--> hide<-->
-                <Button
-                    android:id="@+id/ItemButton8"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="1dp"
-                    android:onClick="sendPlugNumberChart4"
-                    android:text="歷史"
-                    android:visibility="invisible"
-                android:textSize="24dp" />
-
-
-    </LinearLayout>
-
 </LinearLayout>
 
-</LinearLayout>
 
 </ScrollView>
+
+</android.support.v4.widget.SwipeRefreshLayout>
