@@ -173,48 +173,12 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int item_id = item.getItemId();
 
         switch (item_id) {
-            //air about
-            case R.id.ItemControlAir:
-                FragmentTransaction ft1 = getFragmentManager().beginTransaction();
-                android.app.Fragment prev1 = getFragmentManager().findFragmentByTag("ItemControlAir");
-                if (prev1 != null) {
-                    ft1.remove(prev1);
-                }
-                ft1.addToBackStack(null);
-                // Create and show the dialog.
-                DialogFragment newFragment1 = new ControlAirAboutFragment();
-                newFragment1.show(ft1, "ItemControlAir");
-                break;
-
-            //plug about
-            case R.id.ItemControlPlug:
-                FragmentTransaction ft2 = getFragmentManager().beginTransaction();
-                android.app.Fragment prev2 = getFragmentManager().findFragmentByTag("ItemControlPlug");
-                if (prev2 != null) {
-                    ft2.remove(prev2);
-                }
-                ft2.addToBackStack(null);
-                // Create and show the dialog.
-                DialogFragment newFragment2 = new ControlPlugAboutFragment();
-                newFragment2.show(ft2, "ItemControlPlug");
-                break;
-            //Light about
-            case R.id.ItemControlLight:
-                FragmentTransaction ft3 = getFragmentManager().beginTransaction();
-                android.app.Fragment prev3 = getFragmentManager().findFragmentByTag("ItemControlLight");
-                if (prev3 != null) {
-                    ft3.remove(prev3);
-                }
-                ft3.addToBackStack(null);
-                // Create and show the dialog.
-                DialogFragment newFragment3 = new ControlLightAboutFragment();
-                newFragment3.show(ft3, "ItemControlLight");
-                break;
             //History about
             case R.id.ItemHistory:
                 FragmentTransaction ft4 = getFragmentManager().beginTransaction();
@@ -244,4 +208,6 @@ public class MainActivity extends AppCompatActivity {
         }
         return true;
     }
+
+
 }

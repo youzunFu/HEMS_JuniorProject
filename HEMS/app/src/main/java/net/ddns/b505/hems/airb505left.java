@@ -3,9 +3,11 @@ package net.ddns.b505.hems;
 import android.app.DialogFragment;
 import android.app.FragmentTransaction;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
@@ -45,6 +47,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeoutException;
 
 public class airb505left extends AppCompatActivity {
 
@@ -56,11 +59,10 @@ public class airb505left extends AppCompatActivity {
     private String FanStr, ModeStr, TempStr,TimeSetStr,m = "1";
     private int i = 1, on_off = 0,TimeSetNum = 0,TempNum = 28 ; //switch case variable
      public  String ctrltype,ctrlresultonoff,ctrlresultup,ctrlresultdown,ctrlresultauto;
-    // private Toolbar toolbarair;
+    private Toolbar toolbarair;
 
-    public String  URL[] = {"http://192.168.0.102/b505leftv2.php","http://163.18.57.43/HEMSphp/WINb505left.php"};
+    public String  URL[] = {"http://163.18.57.42:92/b505leftv2.php","http://163.18.57.43/HEMSphp/WINb505left.php"};
 
-ㄒ　
     //163.18.57.42:92 固定ip Raspberry Pi (加try catch 解決 網路問題)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,6 +84,10 @@ public class airb505left extends AppCompatActivity {
         tvAirFan  = (TextView) findViewById(R.id.tvAirFan);
         tvAirTimeSet  = (TextView) findViewById(R.id.tvAirTimeSet);
         tvTempStr = (TextView) findViewById(R.id.tvTempStr); //TemperatureTextView
+        toolbarair = (Toolbar) findViewById(R.id.ToolBarAir);
+        toolbarair.setTitle("　　　冷　氣　控　制");
+        toolbarair.setTitleTextColor(Color.WHITE);
+        setSupportActionBar(toolbarair);
 
 
         //toolbarair.setclic
@@ -104,30 +110,40 @@ public class airb505left extends AppCompatActivity {
         tvTempStr.setText("");
 
     }
-/*
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        int item_id = item.getItemId();
+        int id = item.getItemId();
 
-                FragmentTransaction ft1 = getFragmentManager().beginTransaction();
-                android.app.Fragment prev1 = getFragmentManager().findFragmentByTag("AirAbout");
-                if (prev1 != null) {
-                    ft1.remove(prev1);
-                }
-                ft1.addToBackStack(null);
-                // Create and show the dialog.
-                DialogFragment newFragment1 = new ControlAirAboutFragment();
-                newFragment1.show(ft1, "AirAbout");
+        // 依照id判斷點了哪個項目並做相應事件
+        if (id == R.id.ItemAir) {
+            FragmentTransaction ft1 = getFragmentManager().beginTransaction();
+            android.app.Fragment prev1 = getFragmentManager().findFragmentByTag("ItemAir");
+            if (prev1 != null) {
+                ft1.remove(prev1);
+            }
+            ft1.addToBackStack(null);
+            // Create and show the dialog.
+            DialogFragment newFragment1 = new ControlAirAboutFragment();
+            newFragment1.show(ft1, "ItemAir");
 
-        return true;
+            return true;
+        }else if(id == R.id.ItemAirExit){
+            Intent intent = new Intent(airb505left.this, MainActivity.class);
+            startActivity(intent);
+            return true;
     }
+
+        return false;
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_one, menu);
+        getMenuInflater().inflate(R.menu.menu_air, menu);
         return true;
     }
-*/
+
 
     // set image Roundcorner
     public static Bitmap getRoundedCornerBitmap(Bitmap bitmap, float roundPx)
@@ -206,20 +222,20 @@ public class airb505left extends AppCompatActivity {
                 btnTempSub.setTextColor(getResources().getColor(R.color.darker_gray));
 
             }
+
             for(int j = 0 ; j<2 ;j++){
                 CtrlpageAsynctask ctrlpageAsynctaskonoff = new CtrlpageAsynctask(airb505left.this);
                 ctrlresultonoff = ctrlpageAsynctaskonoff.execute(ctrltype,URL[j]).get().toString();
             }
            //Toast.makeText(airb505left.this, ctrltype, Toast.LENGTH_SHORT).show();
 
-            //ctrlresultonoff = ctrlpageAsynctaskonoff.execute(ctrltype).get().toString();
-            //Toast.makeText(airb505left.this,String.valueOf(ctrlresultonoff),Toast.LENGTH_SHORT);
+
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public void ModeBtnClick(View v) throws ExecutionException, InterruptedException {
+    public void ModeBtnClick(View v) throws ExecutionException, InterruptedException ,TimeoutException{
         try {
 
         if (on_off == 1) { //要修
@@ -271,7 +287,7 @@ public class airb505left extends AppCompatActivity {
         }
     }
 
-    public void FansetClick(View v) throws ExecutionException, InterruptedException {
+    public void FansetClick(View v) throws ExecutionException, InterruptedException,TimeoutException {
 try{
 if (ModeStr.equals("cold")|ModeStr.equals("wet")|ModeStr.equals("wind")){
         if (on_off == 1) { //要修
@@ -308,7 +324,7 @@ if (ModeStr.equals("cold")|ModeStr.equals("wet")|ModeStr.equals("wind")){
     }
 
     //時間設定待修正  wet /cold 分開
-    public void TimeSetBtnClick(View v) throws ExecutionException, InterruptedException {
+    public void TimeSetBtnClick(View v) throws ExecutionException, InterruptedException ,TimeoutException{
         try{
         if (ModeStr.equals("cold")) {
 
@@ -412,7 +428,7 @@ if (ModeStr.equals("cold")|ModeStr.equals("wet")|ModeStr.equals("wind")){
     }
 
 
-    public void callDatabase() throws ExecutionException, InterruptedException {
+    public void callDatabase() throws ExecutionException, InterruptedException,TimeoutException {
         switch (ModeStr) {
 
             case "auto":
@@ -490,25 +506,30 @@ if (ModeStr.equals("cold")|ModeStr.equals("wet")|ModeStr.equals("wind")){
                 break;
         }
 
-        //ctrltype = ModeStr + TempStr + FanStr ;
-        for(int j = 0 ; j<2 ;j++){
-            CtrlpageAsynctask ctrlpageAsynctaskauto = new CtrlpageAsynctask(this);
-            ctrlresultauto = ctrlpageAsynctaskauto.execute(ctrltype,URL[j]).get().toString();
-        }
+        try{
+            for(int j = 0 ; j<2 ;j++){
+                CtrlpageAsynctask ctrlpageAsynctaskauto = new CtrlpageAsynctask(this);
+                ctrlresultauto = ctrlpageAsynctaskauto.execute(ctrltype,URL[j]).get().toString();
        // Toast.makeText(airb505left.this,"ctrltype :" + ctrltype,Toast.LENGTH_SHORT).show();
-
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
     }
 
-    public void autoclick(View v)throws ExecutionException, InterruptedException{
+    public void autoclick(View v)throws ExecutionException, InterruptedException,TimeoutException{
+        try{
         ctrltype = "auto";
         for(int j = 0 ; j<2 ;j++){
             CtrlpageAsynctask ctrlpageAsynctaskauto = new CtrlpageAsynctask(this);
-            ctrlresultauto = ctrlpageAsynctaskauto.execute(ctrltype,URL[j]).get().toString();
+            ctrlresultauto = ctrlpageAsynctaskauto.execute(ctrltype,URL[j]).get().toString() ;
         }
        // Toast.makeText(airb505left.this,String.valueOf(ctrlresultauto),Toast.LENGTH_SHORT).show();
+        }catch(Exception e){
+        e.printStackTrace();
+
+        }
     }
-
-
 
     //AirControl Asynctask
     public static class CtrlpageAsynctask extends AsyncTask<String,Void,String> {;
@@ -543,7 +564,8 @@ if (ModeStr.equals("cold")|ModeStr.equals("wet")|ModeStr.equals("wind")){
                 inputStream.close();
                 httpURLConnection.disconnect();
                 return result;
-            } catch (MalformedURLException e) {
+            }
+            catch (MalformedURLException e) {
                 e.printStackTrace();
             } catch (IOException e) {
                 e.printStackTrace();

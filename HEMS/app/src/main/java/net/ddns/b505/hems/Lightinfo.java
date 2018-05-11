@@ -1,17 +1,33 @@
 package net.ddns.b505.hems;
 
-import android.app.Activity;
+import android.app.DatePickerDialog;
+import android.app.DialogFragment;
+import android.app.FragmentTransaction;
+import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.app.Activity;
 import android.os.CountDownTimer;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
+import android.widget.DatePicker;
 import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.TimePicker;
+import android.widget.Toast;
+
+import net.ddns.b505.hems.AboutFragment.ControlAirAboutFragment;
+import net.ddns.b505.hems.AboutFragment.ControlLightAboutFragment;
+import net.ddns.b505.hems.AboutFragment.ControlPlugAboutFragment;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -24,9 +40,14 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.util.Calendar;
 import java.util.concurrent.ExecutionException;
+import java.util.logging.Handler;
+import java.util.logging.LogRecord;
 
-public class Lightinfo extends Activity {
+import static net.ddns.b505.hems.R.id.start;
+
+public class Lightinfo extends AppCompatActivity {
     private ImageView imageL1, imageL2, imageL3, imageL4;
     private Switch swL1, swL2, swL3, swL4;
     private TextView lightname1, lightname2, lightname3, lightname4, lampinfo1, lampinfo2, lampinfo3, lampinfo4;
@@ -36,27 +57,59 @@ public class Lightinfo extends Activity {
    //private String lightname = null,pluginfo = null,plugstatus = null,lightall = null;
     private CountDownTimer counterdowntimer ;
     private String PickDate_Time[] ,Date_Time;
-
+    private Toolbar toolbarlight;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lightinfo);
+
+        toolbarlight = (Toolbar) findViewById(R.id.ToolBarLight);
+        toolbarlight.setTitle("　　　智　慧　燈　具");
+        toolbarlight.setTitleTextColor(Color.WHITE);
+        setSupportActionBar(toolbarlight);
         try {
             InitialComponents();  // InitialComponents()＆＆＆InitialLight()
             InitialLight1();
             InitialLight2();
             InitialLight3();
             InitialLight4();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
         }
+        catch (ExecutionException e) {e.printStackTrace(); }
+        catch (InterruptedException e) {e.printStackTrace(); }
          SwitchClick();
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
 
+        // 依照id判斷點了哪個項目並做相應事件
+        if (id == R.id.ItemLight) {
+                FragmentTransaction ft3 = getFragmentManager().beginTransaction();
+                android.app.Fragment prev3 = getFragmentManager().findFragmentByTag("ItemLight");
+                if (prev3 != null) {
+                    ft3.remove(prev3);
+                }
+                ft3.addToBackStack(null);
+                // Create and show the dialog.
+                DialogFragment newFragment3 = new ControlLightAboutFragment();
+                newFragment3.show(ft3, "ItemLight");
+
+            return true;
+        }else if(id == R.id.ItemLightExit){
+            Intent intent = new Intent(Lightinfo.this, MainActivity.class);
+            startActivity(intent);
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_light, menu);
+        return true;
+    }
 
     //initial compents
     public void InitialComponents() throws ExecutionException, InterruptedException {

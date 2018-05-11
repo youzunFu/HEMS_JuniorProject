@@ -32,7 +32,7 @@
             android:name=".Pluginfo"
             android:label="@string/title_activity_pluginfo"/>
         <activity android:name=".Lightinfo"
-                android:label="Lightinfo"/>
+                android:label="@string/title_activity_lightinfo"/>
         <activity android:name=".PlugSetActivity" />
         <activity android:name=".MPchartActivity" />
         <activity android:name=".PluginfoV2"/>

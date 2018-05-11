@@ -51,7 +51,7 @@ public class IndexFragment extends Fragment {
                                 startActivity(intent);
                                 break;
                             case R.drawable.icon_plug:
-                                intent = new Intent(getActivity(), PluginfoV2.class);
+                                intent = new Intent(getActivity(), Pluginfo.class);
                                 startActivity(intent);
                                 break;
                             case R.drawable.icon_light:

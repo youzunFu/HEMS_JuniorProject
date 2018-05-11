@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/ItemPlug"
+        android:orderInCategory="20"
+        android:title="@string/toolbarabout"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/ItemPlugExit"
+        android:orderInCategory="20"
+        android:icon="@drawable/logout"
+        android:title=""
+        app:showAsAction="always"
+        />
+
+
+</menu>

@@ -10,6 +10,9 @@
     <!-- Customize your theme here. -->
     <style name="CustomToolbarStyle" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:background">#2894FF</item>
+        <item name="android:textSize">18sp</item>
     </style>
+
+
 
 </resources>

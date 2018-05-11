@@ -1,13 +1,20 @@
 package net.ddns.b505.hems;
 
 import android.app.DatePickerDialog;
+import android.app.DialogFragment;
+import android.app.FragmentTransaction;
 import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.Activity;
 import android.os.CountDownTimer;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
@@ -17,6 +24,9 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
+
+import net.ddns.b505.hems.AboutFragment.ControlAirAboutFragment;
+import net.ddns.b505.hems.AboutFragment.ControlPlugAboutFragment;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -36,7 +46,7 @@ import java.util.logging.LogRecord;
 
 import static net.ddns.b505.hems.R.id.start;
 
-public class Pluginfo extends Activity {
+public class Pluginfo extends AppCompatActivity {
     private ImageView image1,image2,image3,image4;
     private Switch sw1,sw2,sw3,sw4;
     private TextView plugname1,plugname2,plugname3,plugname4,pluginfo1,pluginfo2,pluginfo3,pluginfo4;
@@ -45,26 +55,29 @@ public class Pluginfo extends Activity {
     public String plugname = null,pluginfo = null,plugstatus = null,plugall = null;
     private CountDownTimer counterdowntimer ;
     private String PickDate_Time[] ,Date_Time;
-
+    private Toolbar toolbarplug;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pluginfo);
+
+        toolbarplug = (Toolbar) findViewById(R.id.ToolBarPlug);
+        toolbarplug.setTitle("　　　智　慧　插　座");
+        toolbarplug.setTitleTextColor(Color.WHITE);
+        setSupportActionBar(toolbarplug);
+
+
         try {
             InitialComponents();  // InitialComponents()＆＆＆InitialPlug()
             InitialPlug1();
             InitialPlug2();
-            InitialPlug3();
-            InitialPlug4();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+            //InitialPlug3();
+            //InitialPlug4();
         }
+        catch (ExecutionException e) {e.printStackTrace(); }
+        catch (InterruptedException e) {e.printStackTrace(); }
         SwitchClick();
-
-
     }
 /* 計時器
    private void start(){
@@ -94,6 +107,39 @@ public class Pluginfo extends Activity {
         counterdowntimer.start();
     }
 */
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        // 依照id判斷點了哪個項目並做相應事件
+        if (id == R.id.ItemPlug) {
+                FragmentTransaction ft2 = getFragmentManager().beginTransaction();
+                android.app.Fragment prev2 = getFragmentManager().findFragmentByTag("ItemPlug");
+                if (prev2 != null) {
+                    ft2.remove(prev2);
+                }
+                ft2.addToBackStack(null);
+                // Create and show the dialog.
+                DialogFragment newFragment2 = new ControlPlugAboutFragment();
+                newFragment2.show(ft2, "ItemPlug");
+
+            return true;
+        }else if(id == R.id.ItemPlugExit){
+            Intent intent = new Intent(Pluginfo.this, MainActivity.class);
+            startActivity(intent);
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_plug, menu);
+        return true;
+    }
+
     //initial compents
     public void InitialComponents() throws ExecutionException, InterruptedException {
         image1 = (ImageView) findViewById(R.id.ItemImage1);
