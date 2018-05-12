@@ -88,7 +88,6 @@ public class DrSetFragment extends DialogFragment {
     }
     public void findviewbyid() {
         tvCtrl1total = (TextView) getView().findViewById(R.id.tv_ctrl1_total);
-        tvCtrl1ac1 = (TextView) getView().findViewById(R.id.tv_Ctrl1_ac1);
         tvCtrl1light1 = (TextView) getView().findViewById(R.id.tv_Ctrl1_light1);
         tvCtrl1light2 = (TextView) getView().findViewById(R.id.tv_Ctrl1_light2);
         tvCtrl1light3 = (TextView) getView().findViewById(R.id.tv_Ctrl1_plug1);
@@ -108,12 +107,10 @@ public class DrSetFragment extends DialogFragment {
         tvCtrl3light4 = (TextView) getView().findViewById(R.id.tv_Ctrl3_light4);
         tvCtrl3light5 = (TextView) getView().findViewById(R.id.tv_Ctrl3_light5);
         tvCtrl3light6 = (TextView) getView().findViewById(R.id.tv_Ctrl3_light6);
-        swChe1_ac1 = (Switch) getView().findViewById(R.id.sw_Che1_ac1);
         swChe1_light1 = (Switch) getView().findViewById(R.id.sw_Che1_light1);
         swChe1_light2 = (Switch) getView().findViewById(R.id.sw_Che1_light2);
         swChe1_light3 = (Switch) getView().findViewById(R.id.sw_Che1_plug1);
         swChe1_light4 = (Switch) getView().findViewById(R.id.sw_Che1_plug2);
-        swRec1_ac1 = (Switch) getView().findViewById(R.id.sw_Rec1_ac1);
         swRec1_light1 = (Switch) getView().findViewById(R.id.sw_Rec1_light1);
         swRec1_light2 = (Switch) getView().findViewById(R.id.sw_Rec1_light2);
         swRec1_light3 = (Switch) getView().findViewById(R.id.sw_Rec1_plug1);

@@ -27,22 +27,9 @@ public class FragmentList_Two extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragmentlist_two, container, false);
 
-       /* tvHistoryPlug1 = (TextView) view.findViewById(R.id.HistoryPlug1);
-        tvHistoryPlug2 = (TextView) view.findViewById(R.id.HistoryPlug2);
-        tvHistoryPlug3 = (TextView) view.findViewById(R.id.HistoryPlug3);
-        tvHistoryPlug4 = (TextView) view.findViewById(R.id.HistoryPlug4);
-        tvHistoryLight1 = (TextView) view.findViewById(R.id.HistoryLight1);
-        tvHistoryLight2 = (TextView) view.findViewById(R.id.HistoryLight2);
-        tvHistoryLight3 = (TextView) view.findViewById(R.id.HistoryLight3);
-        tvHistoryLight4 = (TextView) view.findViewById(R.id.HistoryLight4);
-*/
 
         LayoutHistoryPlug1=(LinearLayout) view.findViewById(R.id.LayoutHistoryPlug1);
         LayoutHistoryPlug2=(LinearLayout) view.findViewById(R.id.LayoutHistoryPlug2);
-        LayoutHistoryPlug3=(LinearLayout) view.findViewById(R.id.LayoutHistoryPlug3);
-        LayoutHistoryPlug4=(LinearLayout) view.findViewById(R.id.LayoutHistoryPlug4);
-        LayoutHistoryLight1=(LinearLayout) view.findViewById(R.id.LayoutHistoryLight1);
-        LayoutHistoryLight2=(LinearLayout) view.findViewById(R.id.LayoutHistoryLight2);
         LayoutHistoryLight3=(LinearLayout) view.findViewById(R.id.LayoutHistoryLight3);
         LayoutHistoryLight4=(LinearLayout) view.findViewById(R.id.LayoutHistoryLight4);
 
@@ -61,34 +48,7 @@ public class FragmentList_Two extends Fragment {
             }
         });
 
-        LayoutHistoryPlug3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                HistoryPlug3Click(view);
-            }
-        });
-
-        LayoutHistoryPlug4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                HistoryPlug4Click(view);
-            }
-        });
-
-
-        //Light Click
-        LayoutHistoryLight1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                HistoryLight1Click(view);
-            }
-        });
-        LayoutHistoryLight2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                HistoryLight2Click(view);
-            }
-        });
+//Light Click
         LayoutHistoryLight3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -159,40 +119,7 @@ public class FragmentList_Two extends Fragment {
         intent.putExtras(bundle);
         startActivity(intent);
     }
-    public void HistoryPlug3Click(View view) {
-        Intent intent = new Intent(getActivity(),MPchartActivity.class);
-        Bundle bundle = new Bundle();
-        bundle.putString("Num","003");
-        bundle.putString("Equipment","Plug");
-        intent.putExtras(bundle);
-        startActivity(intent);
-    }
-    public void HistoryPlug4Click(View view) {
-        Intent intent = new Intent(getActivity(),MPchartActivity.class);
-        Bundle bundle = new Bundle();
-        bundle.putString("Num","004");
-        bundle.putString("Equipment","Plug");
-        intent.putExtras(bundle);
-        startActivity(intent);
-    }
 
-
-    public  void HistoryLight1Click(View view) {
-        Intent intent = new Intent(getActivity(),MPchartActivity.class);
-        Bundle bundle = new Bundle();
-        bundle.putString("Num","001");
-        bundle.putString("Equipment","Light");
-        intent.putExtras(bundle);
-        startActivity(intent);
-    }
-    public  void HistoryLight2Click(View view) {
-        Intent intent = new Intent(getActivity(),MPchartActivity.class);
-        Bundle bundle = new Bundle();
-        bundle.putString("Num","002");
-        bundle.putString("Equipment","Light");
-        intent.putExtras(bundle);
-        startActivity(intent);
-    }
     public  void HistoryLight3Click(View view) {
         Intent intent = new Intent(getActivity(),MPchartActivity.class);
         Bundle bundle = new Bundle();

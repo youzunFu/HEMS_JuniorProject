@@ -41,7 +41,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:paddingTop="33dp"
-                        android:text="插座1"
+                        android:text="二樓插座"
                         android:textSize="25sp" />
             </LinearLayout>
 
@@ -63,49 +63,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:paddingTop="33dp"
-                    android:text="插座2"
-                    android:textSize="25sp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/LayoutHistoryPlug3"
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:descendantFocusability="blocksDescendants"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="80dp"
-                    android:layout_height="match_parent"
-                    android:contentDescription="@string/adapter_btnText"
-                    app:srcCompat="@drawable/icon_plugoff" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:paddingTop="33dp"
-                    android:text="插座3"
-                    android:textSize="25sp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/LayoutHistoryPlug4"
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:descendantFocusability="blocksDescendants"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="80dp"
-                    android:layout_height="match_parent"
-                    android:contentDescription="@string/adapter_btnText"
-                    app:srcCompat="@drawable/icon_plugoff" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:paddingTop="33dp"
-                    android:text="插座4"
+                    android:text="一樓插座"
                     android:textSize="25sp" />
             </LinearLayout>
 
@@ -116,48 +74,6 @@
                 android:layout_height="25dp"
                 android:background="@color/gray"
                 android:text="" />
-
-            <LinearLayout
-                android:id="@+id/LayoutHistoryLight1"
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:descendantFocusability="blocksDescendants"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="80dp"
-                    android:layout_height="match_parent"
-                    android:contentDescription="@string/adapter_btnText"
-                    app:srcCompat="@drawable/lighton" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:paddingTop="33dp"
-                    android:text="燈具1"
-                    android:textSize="25sp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/LayoutHistoryLight2"
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:descendantFocusability="blocksDescendants"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="80dp"
-                    android:layout_height="match_parent"
-                    android:contentDescription="@string/adapter_btnText"
-                    app:srcCompat="@drawable/lighton" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:paddingTop="33dp"
-                    android:text="燈具2"
-                    android:textSize="25sp" />
-            </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/LayoutHistoryLight3"
@@ -176,7 +92,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:paddingTop="33dp"
-                    android:text="燈具3"
+                    android:text="二樓燈具"
                     android:textSize="25sp" />
             </LinearLayout>
 
@@ -197,7 +113,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:paddingTop="33dp"
-                    android:text="燈具4"
+                    android:text="一樓燈具"
                     android:textSize="25sp" />
             </LinearLayout>
 

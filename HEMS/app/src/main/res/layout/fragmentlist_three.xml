@@ -172,7 +172,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1.37"
                                     android:gravity="end"
-                                    android:text="預計抑低負載量 (kW)："
+                                    android:text="節電量 (kW)："
                                     android:textAlignment="viewEnd"
                                     android:textColor="@android:color/black"
                                     android:textSize="15sp" />
@@ -198,7 +198,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1.37"
                                     android:gravity="end"
-                                    android:text="抑低負載量時間長度："
+                                    android:text="持續時間："
                                     android:textAlignment="viewEnd"
                                     android:textColor="@android:color/black"
                                     android:textSize="15sp" />
@@ -214,32 +214,6 @@
                                     android:textSize="15sp" />
                             </LinearLayout>
 
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="5dp"
-                                android:background="@color/darker_gray">
-
-                                <TextView
-                                    android:layout_width="50sp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1.37"
-                                    android:gravity="end"
-                                    android:text="預估補償金額："
-                                    android:textAlignment="viewEnd"
-                                    android:textColor="@android:color/black"
-                                    android:textSize="15sp" />
-
-                                <TextView
-                                    android:id="@+id/tv_now_cost"
-                                    android:layout_width="50sp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:text=""
-                                    android:textAlignment="center"
-                                    android:textColor="@color/colorPrimaryDark"
-                                    android:textSize="15sp" />
-                            </LinearLayout>
                         </LinearLayout>
                     </LinearLayout>
 
@@ -367,33 +341,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1.37"
                                     android:gravity="end"
-                                    android:text="預計抑低負載量 (kW)："
-                                    android:textAlignment="viewEnd"
-                                    android:textColor="@android:color/black"
-                                    android:textSize="15sp" />
-
-                                <TextView
-                                    android:id="@+id/tv_future_p"
-                                    android:layout_width="50sp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:text=""
-                                    android:textAlignment="center"
-                                    android:textColor="@color/colorPrimaryDark"
-                                    android:textSize="15sp" />
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="5dp">
-
-                                <TextView
-                                    android:layout_width="50sp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1.37"
-                                    android:gravity="end"
-                                    android:text="抑低負載量時間長度："
+                                    android:text="持續時間："
                                     android:textAlignment="viewEnd"
                                     android:textColor="@android:color/black"
                                     android:textSize="15sp" />
@@ -409,32 +357,6 @@
                                     android:textSize="15sp" />
                             </LinearLayout>
 
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="5dp"
-                                android:background="@color/vieww_gray">
-
-                                <TextView
-                                    android:layout_width="50sp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1.37"
-                                    android:gravity="end"
-                                    android:text="預估補償金額："
-                                    android:textAlignment="viewEnd"
-                                    android:textColor="@android:color/black"
-                                    android:textSize="15sp" />
-
-                                <TextView
-                                    android:id="@+id/tv_future_cost"
-                                    android:layout_width="50sp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:text=""
-                                    android:textAlignment="center"
-                                    android:textColor="@color/colorPrimaryDark"
-                                    android:textSize="15sp" />
-                            </LinearLayout>
                         </LinearLayout>
                     </LinearLayout>
 

@@ -72,103 +72,7 @@
                     android:textColor="@android:color/holo_red_dark"
                     android:textSize="17sp" />
             </LinearLayout>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="4dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:background="@drawable/shadow"/>
 
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:descendantFocusability="blocksDescendants"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:id="@+id/ItemImage1"
-                    android:layout_width="0dp"
-                    android:layout_height="80dp"
-                    android:layout_weight="1"
-                    android:layout_marginTop="15dp"
-                    android:contentDescription="@string/adapter_btnText"
-                    app:srcCompat="@drawable/air_large" />
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="80dp"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginTop="20dp"
-                    android:layout_weight="3"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/ItemName1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAlignment="center"
-                        android:textColor="@android:color/black"
-                        android:layout_marginTop="5dp"
-                        android:text="冷氣1"
-                        android:textSize="20sp" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="15dp"
-                        android:orientation="horizontal"
-                        >
-                    <TextView
-                        android:id="@+id/tv_Ctrl1_ac1"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="6"
-                        android:text="0"
-                        android:textAlignment="center"
-                        android:layout_gravity="center"
-                        android:textColor="@color/colorPrimaryDark"
-                        android:textSize="18sp"/>
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="2"
-                        android:textAlignment="center"
-                        android:layout_gravity="center"
-                        android:textColor="@android:color/black"
-                        android:text="kW"
-                        android:textSize="18sp"
-                        />
-                        </LinearLayout>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="80dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_weight="2"
-                    android:orientation="vertical">
-
-                    <Switch
-                        android:id="@+id/sw_Rec1_ac1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:textSize="18sp"
-                        android:text="復電：" />
-
-                    <Switch
-                        android:id="@+id/sw_Che1_ac1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="15dp"
-                        android:textSize="18sp"
-                        android:text="需量：" />
-
-                </LinearLayout>
-
-            </LinearLayout>
 
             <View
                 android:layout_width="match_parent"
@@ -203,7 +107,7 @@
                         android:textAlignment="center"
                         android:textColor="@android:color/black"
                         android:layout_marginTop="5dp"
-                        android:text="插座1"
+                        android:text="二樓插座"
                         android:textSize="20sp" />
 
                     <LinearLayout
@@ -296,7 +200,7 @@
                         android:textAlignment="center"
                         android:textColor="@android:color/black"
                         android:layout_marginTop="5dp"
-                        android:text="插座2"
+                        android:text="一樓插座"
                         android:textSize="20sp" />
 
                     <LinearLayout
@@ -388,7 +292,7 @@
                         android:textAlignment="center"
                         android:textColor="@android:color/black"
                         android:layout_marginTop="5dp"
-                        android:text="燈具1"
+                        android:text="二樓燈具"
                         android:textSize="20sp" />
 
                     <LinearLayout
@@ -481,7 +385,7 @@
                         android:textAlignment="center"
                         android:textColor="@android:color/black"
                         android:layout_marginTop="5dp"
-                        android:text="燈具2"
+                        android:text="一樓燈具"
                         android:textSize="20sp" />
 
                     <LinearLayout
@@ -542,6 +446,7 @@
             </LinearLayout>
 
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

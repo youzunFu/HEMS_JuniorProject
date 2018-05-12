@@ -113,13 +113,11 @@ public class FragmentList_Three extends Fragment {
         tv_now_stop = (TextView)getView().findViewById(R.id.tv_now_stop);
         tv_now_p1 = (TextView)getView().findViewById(R.id.tv_now_p);
         tv_now_time = (TextView)getView().findViewById(R.id.tv_now_time);
-        tv_now_cost = (TextView)getView().findViewById(R.id.tv_now_cost);
+        //tv_now_cost = (TextView)getView().findViewById(R.id.tv_now_cost);
         tv_fu_date = (TextView)getView().findViewById(R.id.tv_future_date);
         tv_fu_start = (TextView)getView().findViewById(R.id.tv_future_start);
         tv_fu_stop = (TextView)getView().findViewById(R.id.tv_future_stop);
-        tv_fu_p1 = (TextView)getView().findViewById(R.id.tv_future_p);
         tv_fu_time = (TextView)getView().findViewById(R.id.tv_future_time);
-        tv_fu_cost = (TextView)getView().findViewById(R.id.tv_future_cost);
         btn_drequipment = (Button)getView().findViewById(R.id.btn_drequipment);
         lvProduct = (ListView) getView().findViewById(R.id.lv_products);
 
@@ -220,16 +218,16 @@ public class FragmentList_Three extends Fragment {
                                 tv_fu_date.setText(start[0]);
                                 tv_fu_start.setText(start[1]);
                                 tv_fu_stop.setText(end[1]);
-                                tv_fu_p1.setText(response.getJSONObject(i).getString("pre_p"));
+                               // tv_fu_p1.setText(response.getJSONObject(i).getString("pre_p"));
                                 tv_fu_time.setText(response.getJSONObject(i).getString("duration"));
-                                tv_fu_cost.setText(response.getJSONObject(i).getString("expected_reward"));
+                               // tv_fu_cost.setText(response.getJSONObject(i).getString("expected_reward"));
                             } else {  //開始時間小於現在時間，把事件歸類到當前事件
                                 tv_now_date.setText(start[0]);
                                 tv_now_start.setText(start[1]);
                                 tv_now_stop.setText(end[1]);
                                 tv_now_p1.setText(response.getJSONObject(i).getString("pre_p"));
                                 tv_now_time.setText(response.getJSONObject(i).getString("duration"));
-                                tv_now_cost.setText(response.getJSONObject(i).getString("expected_reward"));
+                                //tv_now_cost.setText(response.getJSONObject(i).getString("expected_reward"));
                             }
                         } else {  //結束時間小於現在時間，把事件歸類到歷史事件
 

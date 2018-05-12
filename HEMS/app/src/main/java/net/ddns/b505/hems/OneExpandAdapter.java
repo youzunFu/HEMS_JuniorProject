@@ -56,16 +56,6 @@ public class OneExpandAdapter extends BaseAdapter {
                     .findViewById(R.id.tv_history_p);
             holder.tv_history_time = (TextView) convertView
                     .findViewById(R.id.tv_history_time);
-            holder.tv_history_p2 = (TextView) convertView
-                    .findViewById(R.id.tv_history_p2);
-            holder.tv_history_result = (TextView) convertView
-                    .findViewById(R.id.tv_history_result);
-            holder.tv_history_cost = (TextView) convertView
-                    .findViewById(R.id.tv_history_cost);
-            holder.tv_history_cost2 = (TextView) convertView
-                    .findViewById(R.id.tv_history_cost2);
-            holder.tv_history_p3 = (TextView) convertView
-                    .findViewById(R.id.tv_history_p3);
             holder.hideArea = (LinearLayout) convertView.findViewById(R.id.layout_hideArea);
 
             convertView.setTag(holder);
@@ -85,11 +75,11 @@ public class OneExpandAdapter extends BaseAdapter {
         holder.tv_history_stop.setText(item.get("history_stop"));
         holder.tv_history_p1.setText(item.get("history_p1"));
         holder.tv_history_time.setText(item.get("history_time"));
-        holder.tv_history_p2.setText(item.get("history_p2"));
-        holder.tv_history_result.setText(item.get("history_result"));
-        holder.tv_history_cost.setText(item.get("history_cost"));
-        holder.tv_history_cost2.setText(item.get("history_cost2"));
-        holder.tv_history_p3.setText(item.get("history_p3"));
+        //holder.tv_history_p2.setText(item.get("history_p2"));
+        //holder.tv_history_result.setText(item.get("history_result"));
+        //holder.tv_history_cost.setText(item.get("history_cost"));
+        //holder.tv_history_cost2.setText(item.get("history_cost2"));
+        //holder.tv_history_p3.setText(item.get("history_p3"));
 
         //根據 currentItem 紀錄的剪輯位置來設置"相應Item"的可見姓
         if (currentItem == position) {

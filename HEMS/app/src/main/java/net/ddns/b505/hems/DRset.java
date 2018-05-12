@@ -88,7 +88,6 @@ public class DRset extends AppCompatActivity {
 
     public void findviewbyid() {
         tvCtrl1total = (TextView) findViewById(R.id.tv_ctrl1_total);
-        tvCtrl1ac1 = (TextView) findViewById(R.id.tv_Ctrl1_ac1);
         tvCtrl1light1 = (TextView) findViewById(R.id.tv_Ctrl1_light1);
         tvCtrl1light2 = (TextView) findViewById(R.id.tv_Ctrl1_light2);
         tvCtrl1plug1 = (TextView) findViewById(R.id.tv_Ctrl1_plug1);
@@ -108,12 +107,10 @@ public class DRset extends AppCompatActivity {
         tvCtrl3light4 = (TextView) findViewById(R.id.tv_Ctrl3_light4);
         tvCtrl3light5 = (TextView) findViewById(R.id.tv_Ctrl3_light5);
         tvCtrl3light6 = (TextView) findViewById(R.id.tv_Ctrl3_light6);
-        swChe1_ac1 = (Switch) findViewById(R.id.sw_Che1_ac1);
         swChe1_light1 = (Switch) findViewById(R.id.sw_Che1_light1);
         swChe1_light2 = (Switch) findViewById(R.id.sw_Che1_light2);
         swChe1_plug1 = (Switch) findViewById(R.id.sw_Che1_plug1);
         swChe1_plug2 = (Switch) findViewById(R.id.sw_Che1_plug2);
-        swRec1_ac1 = (Switch) findViewById(R.id.sw_Rec1_ac1);
         swRec1_light1 = (Switch) findViewById(R.id.sw_Rec1_light1);
         swRec1_light2 = (Switch) findViewById(R.id.sw_Rec1_light2);
         swRec1_plug1 = (Switch) findViewById(R.id.sw_Rec1_plug1);
