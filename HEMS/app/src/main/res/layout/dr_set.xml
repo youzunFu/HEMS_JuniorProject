@@ -1,17 +1,24 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.SwipeRefreshLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    android:id="@+id/Layout_dr_set"
+    android:id="@+id/refresh_drset"
     tools:context=".DRset">
 
-
-
-<ScrollView
+<LinearLayout
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/Layout_dr_set"
+    >
+
+
+    <include
+        layout="@layout/toolbardrset"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -29,6 +36,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
+
                 <TextView
                     android:layout_width="50sp"
                     android:layout_height="wrap_content"
@@ -36,7 +44,8 @@
                     android:text="電器即時用電量"
                     android:textAlignment="center"
                     android:textColor="@android:color/black"
-                    android:textSize="25sp" />
+                    android:textSize="25sp"
+                    android:visibility="gone" />
             </LinearLayout>
             <View
                 android:layout_width="match_parent"
@@ -104,39 +113,38 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textAlignment="center"
-                        android:textColor="@android:color/black"
                         android:layout_marginTop="5dp"
                         android:text="二樓插座"
+                        android:textAlignment="center"
+                        android:textColor="@android:color/black"
                         android:textSize="20sp" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginTop="15dp"
-                        android:orientation="horizontal"
-                        >
+                        android:orientation="horizontal">
+
                         <TextView
                             android:id="@+id/tv_Ctrl1_plug1"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center"
                             android:layout_weight="6"
                             android:text="0"
                             android:textAlignment="center"
-                            android:layout_gravity="center"
                             android:textColor="@color/colorPrimaryDark"
-                            android:textSize="18sp"/>
+                            android:textSize="18sp" />
 
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_weight="2"
-                            android:textAlignment="center"
                             android:layout_gravity="center"
-                            android:textColor="@android:color/black"
+                            android:layout_weight="2"
                             android:text="kW"
-                            android:textSize="18sp"
-                            />
+                            android:textAlignment="center"
+                            android:textColor="@android:color/black"
+                            android:textSize="18sp" />
                     </LinearLayout>
                 </LinearLayout>
 
@@ -152,16 +160,16 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:textSize="18sp"
-                        android:text="復電：" />
+                        android:text="復電："
+                        android:textSize="18sp" />
 
                     <Switch
                         android:id="@+id/sw_Che1_plug1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:textSize="18sp"
-                        android:text="需量：" />
+                        android:text="需量："
+                        android:textSize="18sp" />
 
                 </LinearLayout>
 
@@ -447,755 +455,7 @@
 
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:id="@+id/control2"
-            android:visibility="gone">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_width="50sp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1.37"
-                    android:text="電器即時用電量"
-                    android:textAlignment="center"
-                    android:textColor="@android:color/black"
-                    android:textSize="25sp" />
-            </LinearLayout>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="4dp"
-                android:background="@drawable/shadow"/>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_width="50sp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1.37"
-                    android:text="總可卸載量："
-                    android:textAlignment="center"
-                    android:textColor="@android:color/holo_red_dark"
-                    android:textSize="20sp" />
-                <TextView
-                    android:id="@+id/tv_ctrl2_total"
-                    android:layout_width="50sp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="0"
-                    android:textAlignment="center"
-                    android:textColor="@android:color/holo_red_dark"
-                    android:textSize="17sp" />
-                <TextView
-                    android:layout_width="50sp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.08"
-                    android:text="kW"
-                    android:textAlignment="center"
-                    android:textColor="@android:color/holo_red_dark"
-                    android:textSize="17sp" />
-            </LinearLayout>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="4dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:background="@drawable/shadow"/>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_width="50sp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.5"
-                    android:text="冷氣1："
-                    android:textAlignment="center"
-                    android:layout_gravity="center"
-                    android:textColor="@android:color/black"
-                    android:textSize="17sp" />
-                <TextView
-                    android:id="@+id/tv_Ctrl2_ac1"
-                    android:layout_width="50sp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.01"
-                    android:text="0"
-                    android:textAlignment="center"
-                    android:layout_gravity="center"
-                    android:textColor="@color/colorPrimaryDark"
-                    android:textSize="17sp" />
-                <TextView
-                    android:layout_width="50sp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.01"
-                    android:text="kW"
-                    android:textAlignment="center"
-                    android:layout_gravity="center"
-                    android:textColor="@android:color/black"
-                    android:textSize="17sp" />
-                <Switch
-                    android:id="@+id/sw_Rec2_ac1"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_gravity="center"
-                    android:text="復電:" />
-                <Switch
-                    android:id="@+id/sw_Che2_ac1"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_gravity="center"
-                    android:text="需量:" />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_width="50sp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.5"
-                    android:text="燈具1："
-                    android:textAlignment="center"
-                    android:layout_gravity="center"
-                    android:textColor="@android:color/black"
-                    android:textSize="17sp" />
-                <TextView
-                    android:id="@+id/tv_Ctrl2_light1"
-                    android:layout_width="50sp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.01"
-                    android:text="0"
-                    android:textAlignment="center"
-                    android:layout_gravity="center"
-                    android:textColor="@color/colorPrimaryDark"
-                    android:textSize="17sp" />
-                <TextView
-                    android:layout_width="50sp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.01"
-                    android:text="kW"
-                    android:textAlignment="center"
-                    android:layout_gravity="center"
-                    android:textColor="@android:color/black"
-                    android:textSize="17sp" />
-
-                <Switch
-                    android:id="@+id/sw_Rec2_light1"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
-                    android:text="復電:" />
-
-                <Switch
-                    android:id="@+id/sw_Che2_light1"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_gravity="center"
-                    android:text="需量:" />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_width="50sp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.5"
-                    android:text="燈具2："
-                    android:textAlignment="center"
-                    android:layout_gravity="center"
-                    android:textColor="@android:color/black"
-                    android:textSize="17sp" />
-                <TextView
-                    android:id="@+id/tv_Ctrl2_light2"
-                    android:layout_width="50sp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.01"
-                    android:text="0"
-                    android:textAlignment="center"
-                    android:layout_gravity="center"
-                    android:textColor="@color/colorPrimaryDark"
-                    android:textSize="17sp" />
-                <TextView
-                    android:layout_width="50sp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.01"
-                    android:text="kW"
-                    android:textAlignment="center"
-                    android:layout_gravity="center"
-                    android:textColor="@android:color/black"
-                    android:textSize="17sp" />
-                <Switch
-                    android:id="@+id/sw_Rec2_light2"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_gravity="center"
-                    android:text="復電:" />
-                <Switch
-                    android:id="@+id/sw_Che2_light2"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_gravity="center"
-                    android:text="需量:" />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_width="50sp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.5"
-                    android:text="燈具3："
-                    android:textAlignment="center"
-                    android:layout_gravity="center"
-                    android:textColor="@android:color/black"
-                    android:textSize="17sp" />
-                <TextView
-                    android:id="@+id/tv_Ctrl2_light3"
-                    android:layout_width="50sp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.01"
-                    android:text="0"
-                    android:textAlignment="center"
-                    android:layout_gravity="center"
-                    android:textColor="@color/colorPrimaryDark"
-                    android:textSize="17sp" />
-                <TextView
-                    android:layout_width="50sp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.01"
-                    android:text="kW"
-                    android:textAlignment="center"
-                    android:layout_gravity="center"
-                    android:textColor="@android:color/black"
-                    android:textSize="17sp" />
-                <Switch
-                    android:id="@+id/sw_Rec2_light3"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_gravity="center"
-                    android:text="復電:" />
-                <Switch
-                    android:id="@+id/sw_Che2_light3"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_gravity="center"
-                    android:text="需量:" />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_width="50sp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.5"
-                    android:text="燈具4："
-                    android:textAlignment="center"
-                    android:layout_gravity="center"
-                    android:textColor="@android:color/black"
-                    android:textSize="17sp" />
-                <TextView
-                    android:id="@+id/tv_Ctrl2_light4"
-                    android:layout_width="50sp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.01"
-                    android:text="0"
-                    android:textAlignment="center"
-                    android:layout_gravity="center"
-                    android:textColor="@color/colorPrimaryDark"
-                    android:textSize="17sp" />
-                <TextView
-                    android:layout_width="50sp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.01"
-                    android:text="kW"
-                    android:textAlignment="center"
-                    android:layout_gravity="center"
-                    android:textColor="@android:color/black"
-                    android:textSize="17sp" />
-                <Switch
-                    android:id="@+id/sw_Rec2_light4"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_gravity="center"
-                    android:text="復電:" />
-                <Switch
-                    android:id="@+id/sw_Che2_light4"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_gravity="center"
-                    android:text="需量:" />
-            </LinearLayout>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:id="@+id/control3"
-            android:visibility="gone">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/textView4"
-                    android:layout_width="50sp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1.37"
-                    android:text="電器即時用電量"
-                    android:textAlignment="center"
-                    android:textColor="@android:color/black"
-                    android:textSize="25sp" />
-            </LinearLayout>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="4dp"
-                android:background="@drawable/shadow"/>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_width="50sp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1.37"
-                    android:text="總可卸載量："
-                    android:textAlignment="center"
-                    android:textColor="@android:color/holo_red_dark"
-                    android:textSize="20sp" />
-                <TextView
-                    android:id="@+id/tv_ctrl3_total"
-                    android:layout_width="50sp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="0"
-                    android:textAlignment="center"
-                    android:textColor="@android:color/holo_red_dark"
-                    android:textSize="17sp" />
-                <TextView
-                    android:layout_width="50sp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.08"
-                    android:text="kW"
-                    android:textAlignment="center"
-                    android:textColor="@android:color/holo_red_dark"
-                    android:textSize="17sp" />
-            </LinearLayout>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="4dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:background="@drawable/shadow"/>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_width="50sp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.5"
-                    android:text="冷氣1："
-                    android:textAlignment="center"
-                    android:layout_gravity="center"
-                    android:textColor="@android:color/black"
-                    android:textSize="17sp" />
-                <TextView
-                    android:id="@+id/tv_Ctrl3_ac1"
-                    android:layout_width="50sp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.01"
-                    android:text="0"
-                    android:textAlignment="center"
-                    android:layout_gravity="center"
-                    android:textColor="@color/colorPrimaryDark"
-                    android:textSize="17sp" />
-                <TextView
-                    android:layout_width="50sp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.01"
-                    android:text="kW"
-                    android:textAlignment="center"
-                    android:layout_gravity="center"
-                    android:textColor="@android:color/black"
-                    android:textSize="17sp" />
-                <Switch
-                    android:id="@+id/sw_Rec3_ac1"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_gravity="center"
-                    android:text="復電:" />
-                <Switch
-                    android:id="@+id/sw_Che3_ac1"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_gravity="center"
-                    android:text="需量:" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_width="50sp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.5"
-                    android:text="冷氣2："
-                    android:textAlignment="center"
-                    android:layout_gravity="center"
-                    android:textColor="@android:color/black"
-                    android:textSize="17sp" />
-                <TextView
-                    android:id="@+id/tv_Ctrl3_ac2"
-                    android:layout_width="50sp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.01"
-                    android:text="0"
-                    android:textAlignment="center"
-                    android:layout_gravity="center"
-                    android:textColor="@color/colorPrimaryDark"
-                    android:textSize="17sp" />
-                <TextView
-                    android:layout_width="50sp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.01"
-                    android:text="kW"
-                    android:textAlignment="center"
-                    android:layout_gravity="center"
-                    android:textColor="@android:color/black"
-                    android:textSize="17sp" />
-                <Switch
-                    android:id="@+id/sw_Rec3_ac2"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_gravity="center"
-                    android:text="復電:" />
-                <Switch
-                    android:id="@+id/sw_Che3_ac2"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_gravity="center"
-                    android:text="需量:" />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_width="50sp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.5"
-                    android:text="燈具1："
-                    android:textAlignment="center"
-                    android:layout_gravity="center"
-                    android:textColor="@android:color/black"
-                    android:textSize="17sp" />
-                <TextView
-                    android:id="@+id/tv_Ctrl3_light1"
-                    android:layout_width="50sp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.01"
-                    android:text="0"
-                    android:textAlignment="center"
-                    android:layout_gravity="center"
-                    android:textColor="@color/colorPrimaryDark"
-                    android:textSize="17sp" />
-                <TextView
-                    android:layout_width="50sp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.01"
-                    android:text="kW"
-                    android:textAlignment="center"
-                    android:layout_gravity="center"
-                    android:textColor="@android:color/black"
-                    android:textSize="17sp" />
-                <Switch
-                    android:id="@+id/sw_Rec3_light1"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_gravity="center"
-                    android:text="復電:" />
-                <Switch
-                    android:id="@+id/sw_Che3_light1"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_gravity="center"
-                    android:text="需量:" />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_width="50sp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.5"
-                    android:text="燈具2："
-                    android:textAlignment="center"
-                    android:layout_gravity="center"
-                    android:textColor="@android:color/black"
-                    android:textSize="17sp" />
-                <TextView
-                    android:id="@+id/tv_Ctrl3_light2"
-                    android:layout_width="50sp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.01"
-                    android:text="0"
-                    android:textAlignment="center"
-                    android:layout_gravity="center"
-                    android:textColor="@color/colorPrimaryDark"
-                    android:textSize="17sp" />
-                <TextView
-                    android:layout_width="50sp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.01"
-                    android:text="kW"
-                    android:textAlignment="center"
-                    android:layout_gravity="center"
-                    android:textColor="@android:color/black"
-                    android:textSize="17sp" />
-                <Switch
-                    android:id="@+id/sw_Rec3_light2"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_gravity="center"
-                    android:text="復電:" />
-                <Switch
-                    android:id="@+id/sw_Che3_light2"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_gravity="center"
-                    android:text="需量:" />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_width="50sp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.5"
-                    android:text="燈具3："
-                    android:textAlignment="center"
-                    android:layout_gravity="center"
-                    android:textColor="@android:color/black"
-                    android:textSize="17sp" />
-                <TextView
-                    android:id="@+id/tv_Ctrl3_light3"
-                    android:layout_width="50sp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.01"
-                    android:text="0"
-                    android:textAlignment="center"
-                    android:layout_gravity="center"
-                    android:textColor="@color/colorPrimaryDark"
-                    android:textSize="17sp" />
-                <TextView
-                    android:layout_width="50sp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.01"
-                    android:text="kW"
-                    android:textAlignment="center"
-                    android:layout_gravity="center"
-                    android:textColor="@android:color/black"
-                    android:textSize="17sp" />
-                <Switch
-                    android:id="@+id/sw_Rec3_light3"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_gravity="center"
-                    android:text="復電:" />
-                <Switch
-                    android:id="@+id/sw_Che3_light3"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_gravity="center"
-                    android:text="需量:" />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_width="50sp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.5"
-                    android:text="燈具4："
-                    android:textAlignment="center"
-                    android:layout_gravity="center"
-                    android:textColor="@android:color/black"
-                    android:textSize="17sp" />
-                <TextView
-                    android:id="@+id/tv_Ctrl3_light4"
-                    android:layout_width="50sp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.01"
-                    android:text="0"
-                    android:textAlignment="center"
-                    android:layout_gravity="center"
-                    android:textColor="@color/colorPrimaryDark"
-                    android:textSize="17sp" />
-                <TextView
-                    android:layout_width="50sp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.01"
-                    android:text="kW"
-                    android:textAlignment="center"
-                    android:layout_gravity="center"
-                    android:textColor="@android:color/black"
-                    android:textSize="17sp" />
-                <Switch
-                    android:id="@+id/sw_Rec3_light4"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_gravity="center"
-                    android:text="復電:" />
-                <Switch
-                    android:id="@+id/sw_Che3_light4"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_gravity="center"
-                    android:text="需量:" />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_width="50sp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.5"
-                    android:text="燈具5："
-                    android:textAlignment="center"
-                    android:layout_gravity="center"
-                    android:textColor="@android:color/black"
-                    android:textSize="17sp" />
-                <TextView
-                    android:id="@+id/tv_Ctrl3_light5"
-                    android:layout_width="50sp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.01"
-                    android:text="0"
-                    android:textAlignment="center"
-                    android:layout_gravity="center"
-                    android:textColor="@color/colorPrimaryDark"
-                    android:textSize="17sp" />
-                <TextView
-                    android:layout_width="50sp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.01"
-                    android:text="kW"
-                    android:textAlignment="center"
-                    android:layout_gravity="center"
-                    android:textColor="@android:color/black"
-                    android:textSize="17sp" />
-                <Switch
-                    android:id="@+id/sw_Rec3_light5"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_gravity="center"
-                    android:text="復電:" />
-                <Switch
-                    android:id="@+id/sw_Che3_light5"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_gravity="center"
-                    android:text="需量:" />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_width="50sp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.5"
-                    android:text="燈具6："
-                    android:textAlignment="center"
-                    android:layout_gravity="center"
-                    android:textColor="@android:color/black"
-                    android:textSize="17sp" />
-                <TextView
-                    android:id="@+id/tv_Ctrl3_light6"
-                    android:layout_width="50sp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.01"
-                    android:text="0"
-                    android:textAlignment="center"
-                    android:layout_gravity="center"
-                    android:textColor="@color/colorPrimaryDark"
-                    android:textSize="17sp" />
-                <TextView
-                    android:layout_width="50sp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.01"
-                    android:text="kW"
-                    android:textAlignment="center"
-                    android:layout_gravity="center"
-                    android:textColor="@android:color/black"
-                    android:textSize="17sp" />
-                <Switch
-                    android:id="@+id/sw_Rec3_light6"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_gravity="center"
-                    android:text="復電:" />
-                <Switch
-                    android:id="@+id/sw_Che3_light6"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_gravity="center"
-                    android:text="需量:" />
-            </LinearLayout>
-        </LinearLayout>
     </LinearLayout>
-</ScrollView>
+
 </LinearLayout>
+</android.support.v4.widget.SwipeRefreshLayout>

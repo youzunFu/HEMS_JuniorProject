@@ -64,7 +64,7 @@ public class Pluginfo extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pluginfo);
 
-
+//private SwipeRefreshLayout mSwipeRefreshLayout ;
         mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.refresh_pluginfo);
         mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override

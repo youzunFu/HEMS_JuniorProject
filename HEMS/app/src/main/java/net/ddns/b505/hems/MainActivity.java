@@ -1,8 +1,10 @@
 package net.ddns.b505.hems;
 
+import android.app.AlertDialog;
 import android.app.DialogFragment;
 import android.app.FragmentTransaction;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -84,15 +86,7 @@ public class MainActivity extends AppCompatActivity {
                 int id = item.getItemId();
 
                 // 依照id判斷點了哪個項目並做相應事件
-                if (id == R.id.action_home) {
-                    // 按下「首頁」要做的事
-                    Toast.makeText(MainActivity.this, "首頁", Toast.LENGTH_SHORT).show();
-                    return true;
-                } else if (id == R.id.action_help) {
-                    // 按下「使用說明」要做的事
-                    Toast.makeText(MainActivity.this, "使用說明", Toast.LENGTH_SHORT).show();
-                    return true;
-                } else if (id == R.id.action_logout) {
+                    if (id == R.id.action_logout) {
                     {
                         Intent intent = new Intent(MainActivity.this, LoginActivity.class);
                         SharedPreferences pref = getSharedPreferences("PREF_NFC", Context.MODE_PRIVATE);
@@ -180,6 +174,37 @@ public class MainActivity extends AppCompatActivity {
 
         switch (item_id) {
             //History about
+
+            //登出按鈕
+            case R.id.ItemMainActivityExit:
+                AlertDialog.Builder dialog = new AlertDialog.Builder(MainActivity.this);
+                dialog.setTitle("提示訊息");
+                dialog.setMessage("確定要登出嗎？");
+                dialog.setPositiveButton("確定",new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface arg0, int arg1) {
+                        Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                        SharedPreferences pref = getSharedPreferences("PREF_NFC", Context.MODE_PRIVATE);
+                        SharedPreferences.Editor editor = pref.edit();
+                        boolean autoisRemember = pref.getBoolean("auto_check", false);  //判斷LoginInfo內記錄的自動登入是否有被勾選
+                        boolean memoryisRemember = pref.getBoolean("login_check", false);  //查看app中是否已經儲存過帳號密碼
+                        editor.putBoolean("logout", true);
+                        editor.putBoolean("auto_check", autoisRemember);
+                        editor.putBoolean("login_check", memoryisRemember);
+                        editor.commit();
+
+                        startActivity(intent);
+                    }
+                });
+                dialog.setNeutralButton("取消",new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface arg0, int arg1) { }
+                });
+                dialog.show();
+
+
+                    break;
+        //歷史用量說明
             case R.id.ItemHistory:
                 FragmentTransaction ft4 = getFragmentManager().beginTransaction();
                 android.app.Fragment prev4 = getFragmentManager().findFragmentByTag("ItemHistory");

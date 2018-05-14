@@ -15,6 +15,7 @@ import android.graphics.Rect;
 import android.graphics.RectF;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -60,8 +61,9 @@ public class airb505left extends AppCompatActivity {
     private int i = 1, on_off = 0,TimeSetNum = 0,TempNum = 28 ; //switch case variable
      public  String ctrltype,ctrlresultonoff,ctrlresultup,ctrlresultdown,ctrlresultauto;
     private Toolbar toolbarair;
-
+    public String acall = "";
     public String  URL[] = {"http://163.18.57.42:92/b505leftv2.php","http://163.18.57.43/HEMSphp/WINb505left.php"};
+    private SwipeRefreshLayout mSwipeRefreshLayout ;
 
     //163.18.57.42:92 固定ip Raspberry Pi (加try catch 解決 網路問題)
     @Override
@@ -106,8 +108,25 @@ public class airb505left extends AppCompatActivity {
         BackgroundAirconditioner.setBackgroundColor(0x808080);
         //tvAirMode.setTextColor(0xaaa);
 
-
         tvTempStr.setText("");
+
+
+        mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.refresh_airb505left);
+       /*
+        mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                try {
+                    initalac();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } catch (ExecutionException e) {
+                    e.printStackTrace();
+                }
+                mSwipeRefreshLayout.setRefreshing(false);
+            }
+        });
+        */
 
     }
 
@@ -590,5 +609,73 @@ if (ModeStr.equals("cold")|ModeStr.equals("wet")|ModeStr.equals("wind")){
 
     }
 
+
+    public void initalac() throws InterruptedException,ExecutionException{
+
+        getacAsyncTask ctrlPlugnameAsynctask = new getacAsyncTask(airb505left.this);
+        acall = ctrlPlugnameAsynctask .execute().get().toString();
+        String acresultSplit[] =acall.split(" ");
+
+        tvAirMode.setText("模式 : " + acresultSplit[3] );
+        tvAirFan.setText("風量 : " + acresultSplit[5]);
+        tvAirTimeSet.setText("定時  : " + acresultSplit[6]);
+        tvTempStr.setText(acresultSplit[4] + " ℃");
+
+    }
+    public static class getacAsyncTask extends AsyncTask<String,Void,String> {;
+        Context context;
+        getacAsyncTask (Context ctx) {context = ctx ;}
+        @Override
+        protected String doInBackground(String... params) {
+            try {
+                String acname = "b505left";
+                String login_url = "http://163.18.57.43/HEMSphp/plugopen.php";
+                URL url = new URL(login_url);
+                HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+                httpURLConnection.setRequestMethod("POST");
+                httpURLConnection.setDoOutput(true);
+                httpURLConnection.setDoInput(true);
+                OutputStream outputStream = httpURLConnection.getOutputStream();
+                BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
+                String post_data = URLEncoder.encode("acname", "UTF-8") + "=" + URLEncoder.encode(acname, "UTF-8");
+                bufferedWriter.write(post_data);
+                bufferedWriter.flush();
+                bufferedWriter.close();
+                outputStream.close();
+                InputStream inputStream = httpURLConnection.getInputStream();
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "iso-8859-1"));
+                String result="";
+                String line = "";
+                while ((line = bufferedReader.readLine()) != null) {
+                    result = line;
+                }
+                bufferedReader.close();
+                inputStream.close();
+                httpURLConnection.disconnect();
+                return result;
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            return null;
+        }
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+        @Override
+        protected void onPostExecute(String result) {
+//            Toast.makeText(context,String.valueOf(result),Toast.LENGTH_SHORT).show();
+        }
+        @Override
+        protected void onProgressUpdate(Void... values) {
+            super.onProgressUpdate(values);
+        }
+
+
+
+    }
 
 }

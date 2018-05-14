@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.InputType;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
@@ -81,6 +82,7 @@ public class MPchartActivity extends AppCompatActivity implements OnChartGesture
 
         powerChart = (LineChart) findViewById(R.id.chart_sch_power);
         txtTime = (EditText) findViewById(R.id.tv_w_time);
+        txtTime.setInputType(InputType.TYPE_NULL);
         TextView kwh = (TextView) findViewById(R.id.kwh);
         RotateAnimation ranim = (RotateAnimation) AnimationUtils.loadAnimation(this, R.anim.rotate_anim);
         ranim.setFillAfter(true); //For the button to remain at the same place after the rotation
@@ -244,6 +246,8 @@ public class MPchartActivity extends AppCompatActivity implements OnChartGesture
                     }
                     loadLineChartData(powerChart, "Power", num, w, array);
                 } catch (JSONException e) {
+                    e.printStackTrace();
+                }catch(Exception e){
                     e.printStackTrace();
                 }
             }

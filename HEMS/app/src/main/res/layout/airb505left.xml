@@ -1,13 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.SwipeRefreshLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/refresh_airb505left"
+    tools:context=".airb505left">
+
+<LinearLayout
     android:id="@+id/BackgroundAirconditioner"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/holo_blue_bright"
-    android:orientation="vertical"
-    tools:context=".airb505left">
+    android:orientation="vertical">
 
 
     <include
@@ -222,3 +228,4 @@
 </LinearLayout>
 
 
+</android.support.v4.widget.SwipeRefreshLayout>

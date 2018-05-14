@@ -1,13 +1,22 @@
 package net.ddns.b505.hems;
 
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
+import android.app.DialogFragment;
+import android.app.FragmentTransaction;
 import android.app.TimePickerDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.text.InputType;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
@@ -26,6 +35,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
 
+import net.ddns.b505.hems.AboutFragment.ControlAirAboutFragment;
 import net.ddns.b505.hems.JsonStr;
 import net.ddns.b505.hems.R;
 
@@ -61,6 +71,7 @@ public class PlugSetActivity extends AppCompatActivity {
     private DatePickerDialog datePickerDialog;
     private TimePickerDialog sttimePickerDialog, endtimePickerDialog;
     private TextView txtRemind;
+    private  Toolbar toolbarplugset ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -83,12 +94,20 @@ public class PlugSetActivity extends AppCompatActivity {
 
         edstart = (EditText) findViewById(R.id.ed_starttime);
         edend = (EditText) findViewById(R.id.ed_endtime);
+        edstart.setInputType(InputType.TYPE_NULL);
+        edend.setInputType(InputType.TYPE_NULL);
         txtRemind = (TextView) findViewById(R.id.tv_remind);
         Bundle bundle = getIntent().getExtras();
         PlugNum = bundle.getString("Num");
         Equipment = bundle.getString("Equipment");
         Toast.makeText(this, "插座編號"+PlugNum, Toast.LENGTH_LONG).show();
         GregorianCalendar calendar = new GregorianCalendar();
+
+
+        toolbarplugset = (Toolbar) findViewById(R.id.ToolBarPlugSet);
+        toolbarplugset.setTitle("　　　排　程　設　定");
+        toolbarplugset.setTitleTextColor(Color.WHITE);
+        setSupportActionBar(toolbarplugset);
 
         // 實作DatePickerDialog的onDateSet方法，設定日期後將所設定的日期show在textDate上
         /*datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
@@ -127,6 +146,35 @@ public class PlugSetActivity extends AppCompatActivity {
 
 
     }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        // 依照id判斷點了哪個項目並做相應事件
+            if(id == R.id.ItemPlugSetExit){
+                    if(PlugNum.equals("001") ||PlugNum.equals("002")){
+                        Intent intent = new Intent(PlugSetActivity.this, Pluginfo.class);
+                        startActivity(intent);
+                        return true;
+                    }else if(PlugNum.equals("003") ||PlugNum.equals("004")){
+                        Intent intent = new Intent(PlugSetActivity.this,Lightinfo.class);
+                        startActivity(intent);
+                        return true;
+                    }
+
+        }
+        return false;
+    }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_plugset, menu);
+        return true;
+    }
+
+    /*
     //ActionBar返回鍵功能
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -138,7 +186,7 @@ public class PlugSetActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
+*/
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         // TODO Auto-generated method stub
 
@@ -151,10 +199,37 @@ public class PlugSetActivity extends AppCompatActivity {
     public void Saveset(View view) {
         String start = edstart.getText().toString();
         String end = edend.getText().toString();
-        setPlugSchedule(PlugNum, "1", start, end);
-        Toast.makeText(PlugSetActivity.this, PlugNum+"\n " +start +"\n"+end, Toast.LENGTH_SHORT).show();
+        boolean now_start =  CompareDateTime.isDateOneBigger(start);
+        boolean start_end =  CompareDateTime.isDateOneBigger(start,end);
+        if(now_start==false && start_end==false)
+        {
+            setPlugSchedule(PlugNum, "1", start, end);
+            finish();
+        }else if(now_start==true)
+        {
+            AlertDialog.Builder dialog = new AlertDialog.Builder(PlugSetActivity.this);
+            dialog.setTitle("提示訊息");
+            dialog.setMessage("排程開始及結束請選擇未來 ");
+            dialog.setPositiveButton("確定",new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface arg0, int arg1) { }
+            });
+            dialog.show();
+        }else if(now_start==false && start_end==true ){
+            AlertDialog.Builder dialog1 = new AlertDialog.Builder(PlugSetActivity.this);
+            dialog1.setTitle("提示訊息");
+            dialog1.setMessage("請設定 結束時間發生於開始時間之後");
+            dialog1.setPositiveButton("確定",new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface arg0, int arg1) { }
+            });
+            dialog1.show();
+
+        }
+
+        //Toast.makeText(PlugSetActivity.this, PlugNum+"\n " +start +"\n"+end, Toast.LENGTH_SHORT).show();
         //        new PlugSetActivity.Save().execute("http://192.168.1.100/sl_demo_api/plugschedule.php", "1", start, end);
-        finish();
+
     }
     public void StartTimeset(View view) {
         final Calendar c = Calendar.getInstance();
@@ -196,8 +271,19 @@ public class PlugSetActivity extends AppCompatActivity {
         String start = edstart.getText().toString();
         String end = edend.getText().toString();
         setPlugSchedule(PlugNum, "0", start, end);
+        edstart.setText("");
+        edend.setText("");
+
+        AlertDialog.Builder dialog2 = new AlertDialog.Builder(PlugSetActivity.this);
+        dialog2.setTitle("提示訊息");
+        dialog2.setMessage("取消完成");
+        dialog2.setNegativeButton("確定",new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface arg0, int arg1) { }
+        });
+        dialog2.show();
 //        new PlugSetActivity.Save().execute("http://192.168.1.100/sl_demo_api/plugschedule.php", "0", "", "");
-        finish();
+      //  finish();
     }
 
     public void getPlug(final String name){
