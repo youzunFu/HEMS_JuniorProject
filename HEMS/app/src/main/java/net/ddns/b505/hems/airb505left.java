@@ -111,13 +111,20 @@ public class airb505left extends AppCompatActivity {
         tvTempStr.setText("");
 
 
+        try {
+           initialac();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+
         mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.refresh_airb505left);
-       /*
         mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
                 try {
-                    initalac();
+                    initialac();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 } catch (ExecutionException e) {
@@ -126,7 +133,7 @@ public class airb505left extends AppCompatActivity {
                 mSwipeRefreshLayout.setRefreshing(false);
             }
         });
-        */
+
 
     }
 
@@ -155,15 +162,11 @@ public class airb505left extends AppCompatActivity {
 
         return false;
     }
-
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_air, menu);
         return true;
     }
-
-
     // set image Roundcorner
     public static Bitmap getRoundedCornerBitmap(Bitmap bitmap, float roundPx)
     {
@@ -253,7 +256,6 @@ public class airb505left extends AppCompatActivity {
             e.printStackTrace();
         }
     }
-
     public void ModeBtnClick(View v) throws ExecutionException, InterruptedException ,TimeoutException{
         try {
 
@@ -305,10 +307,9 @@ public class airb505left extends AppCompatActivity {
             e.printStackTrace();
         }
     }
-
     public void FansetClick(View v) throws ExecutionException, InterruptedException,TimeoutException {
-try{
-if (ModeStr.equals("cold")|ModeStr.equals("wet")|ModeStr.equals("wind")){
+try{    //&&(TimeSetStr.equals("0"))
+if ((ModeStr.equals("cold")) |ModeStr.equals("wet")|ModeStr.equals("wind")){
         if (on_off == 1) { //要修
             switch (i % 4) {
                 case 1:
@@ -341,7 +342,6 @@ if (ModeStr.equals("cold")|ModeStr.equals("wet")|ModeStr.equals("wind")){
     }
 
     }
-
     //時間設定待修正  wet /cold 分開
     public void TimeSetBtnClick(View v) throws ExecutionException, InterruptedException ,TimeoutException{
         try{
@@ -449,7 +449,6 @@ if (ModeStr.equals("cold")|ModeStr.equals("wet")|ModeStr.equals("wind")){
 
     public void callDatabase() throws ExecutionException, InterruptedException,TimeoutException {
         switch (ModeStr) {
-
             case "auto":
                 //mode:a uto ,wind:Auto ;
                 if (FanStr != "Auto") {
@@ -457,23 +456,23 @@ if (ModeStr.equals("cold")|ModeStr.equals("wet")|ModeStr.equals("wind")){
                     i = 1;
                 }
                 ctrltype = "autoAuto";
-                tvAirMode.setText("模式 : " + "自動" );
-                tvAirFan.setText("風量 : " + FanStr);
-                tvAirTimeSet.setText("定時  : " + "無");
+                tvAirMode.setText(getModeStr(ModeStr));
+                tvAirTimeSet.setText(getTimerStr(TimeSetStr));
+                tvAirFan.setText(getWindStr(FanStr));
                 break;
 
             case "cold":   //still need to check
                 if (TimeSetStr.equals("0")) {
                     ctrltype = ModeStr + TempStr + FanStr;
-                    tvAirMode.setText("模式 : " + "冷氣" );
-                    tvAirFan.setText("風量 : " + FanStr);
-                    tvAirTimeSet.setText("定時  : " + "無");
+                    tvAirMode.setText(getModeStr(ModeStr));
+                    tvAirTimeSet.setText(getTimerStr(TimeSetStr));
+                    tvAirFan.setText(getWindStr(FanStr));
                 } else {
                     ctrltype = ModeStr + TempStr + FanStr + TimeSetStr + "Close";
 
-                    tvAirMode.setText("模式 : " + "冷氣" );
-                    tvAirFan.setText("風量 : " + FanStr);
-                    tvAirTimeSet.setText("定時  : " + TimeSetStr + "小時");
+                    tvAirMode.setText(getModeStr(ModeStr));
+                    tvAirTimeSet.setText(getTimerStr(TimeSetStr));
+                    tvAirFan.setText(getWindStr(FanStr));
                 }
                 break;
 
@@ -487,15 +486,15 @@ if (ModeStr.equals("cold")|ModeStr.equals("wet")|ModeStr.equals("wind")){
                         i = 0 ;
                     }
                     ctrltype = ModeStr + "null" + FanStr;
-                    tvAirMode.setText("模式 : " + "除濕" );
-                    tvAirFan.setText("風量 : " + FanStr);
-                    tvAirTimeSet.setText("定時  : " + "無");
+                    tvAirMode.setText(getModeStr(ModeStr));
+                    tvAirTimeSet.setText(getTimerStr(TimeSetStr));
+                    tvAirFan.setText(getWindStr(FanStr));
                 } else {
                     ctrltype = ModeStr + TimeSetStr + "Open";
+                    tvAirMode.setText(getModeStr(ModeStr));
+                    tvAirTimeSet.setText(getTimerStr(TimeSetStr));
+                    tvAirFan.setText(getWindStr(FanStr));
 
-                    tvAirMode.setText("模式 : " + "除濕" );
-                    tvAirFan.setText("風量 : " + FanStr);
-                    tvAirTimeSet.setText("定時  : " + TimeSetStr + "小時");
                 }
 
                 break;
@@ -505,9 +504,9 @@ if (ModeStr.equals("cold")|ModeStr.equals("wet")|ModeStr.equals("wind")){
                     i = 2;
                 }
                 ctrltype = ModeStr + FanStr;
-                tvAirMode.setText("模式 : " + "送風" );
-                tvAirFan.setText("風量 : " + FanStr);
-                tvAirTimeSet.setText("定時  : " + "無");
+                tvAirMode.setText(getModeStr(ModeStr));
+                tvAirTimeSet.setText(getTimerStr(TimeSetStr));
+                tvAirFan.setText(getWindStr(FanStr));
                 break;
             case "warm":
                 if (FanStr != "Auto") {
@@ -515,15 +514,17 @@ if (ModeStr.equals("cold")|ModeStr.equals("wet")|ModeStr.equals("wind")){
                     i = 1;
                 }
                 ctrltype = ModeStr + TempStr + FanStr;
-                tvAirMode.setText("模式 : " + "暖氣" );
-                tvAirFan.setText("風量 : " + FanStr);
-                tvAirTimeSet.setText("定時  : " + "無");
+                tvAirMode.setText(getModeStr(ModeStr));
+                tvAirTimeSet.setText(getTimerStr(TimeSetStr));
+                tvAirFan.setText(getWindStr(FanStr));
                 break;
 
             default:
                 Log.d("ModeStr:", ModeStr);
                 break;
         }
+
+
 
         try{
             for(int j = 0 ; j<2 ;j++){
@@ -548,6 +549,94 @@ if (ModeStr.equals("cold")|ModeStr.equals("wet")|ModeStr.equals("wind")){
         e.printStackTrace();
 
         }
+    }
+
+    /*
+    public String getModeStr(String mode){
+        String ModeChinese = "";
+        switch(mode) {
+            case "auto": ModeChinese = "自動";break;
+            case "cold": ModeChinese = "冷氣";break;
+            case "wet":  ModeChinese = "除濕";break;
+            case "wind": ModeChinese = "送風";break;
+            case "warm": ModeChinese = "暖氣";break;
+        }
+        return ModeChinese;
+    }
+    public String getTimerStr(String timer){
+        String TimerChinese = "";
+        switch(timer) {
+            case "no":TimerChinese = "無";break;
+            case "1":TimerChinese = "1 小時";break;
+            case "2":TimerChinese = "2 小時";break;
+            case "3":TimerChinese = "3 小時";break;
+            case "4":TimerChinese = "4 小時";break;
+            case "5":TimerChinese = "5 小時";break;
+            case "6":TimerChinese = "6 小時";break;
+            case "7":TimerChinese = "7 小時";break;
+            case "8":TimerChinese = "8 小時";break;
+
+        }
+        return TimerChinese;
+    }
+    public String getWindStr(String wind){
+        String WindChinese = "";
+        switch(wind) {
+            case "Small": WindChinese  = "小";break;
+            case "Middle": WindChinese  = "中";break;
+            case "Big": WindChinese  = "大";break;
+        }
+        return WindChinese;
+    }
+*/
+
+    public String getModeStr(String mode){
+        String ModeChinese = "";
+        switch(mode) {
+            case "auto": ModeChinese = "模式 : 自動";break;
+            case "Auto": ModeChinese = "模式 : 自動";break;
+            case "cold": ModeChinese = "模式 : 冷氣";break;
+            case "wet":  ModeChinese = "模式 : 除濕";break;
+            case "wind": ModeChinese = "模式 : 送風";break;
+            case "warm": ModeChinese = "模式 : 暖氣";break;
+            case "no":ModeChinese = "模式 : 自動";break;
+            default: ModeChinese = "模式 : 自動"; break;
+        }
+        return ModeChinese;
+    }
+    public String getTimerStr(String timer){
+        String TimerChinese = "";
+        switch(timer) {
+            case "no":TimerChinese = "定時 : 無";break;
+            case "0":TimerChinese = "定時 : 無";break;
+            case "null":TimerChinese = "定時 : 無";break;
+            case "1":TimerChinese = "定時 : 1 小時";break;
+            case "2":TimerChinese = "定時 : 2 小時";break;
+            case "3":TimerChinese = "定時 : 3 小時";break;
+            case "4":TimerChinese = "定時 : 4 小時";break;
+            case "5":TimerChinese = "定時 : 5 小時";break;
+            case "6":TimerChinese = "定時 : 6 小時";break;
+            case "7":TimerChinese = "定時 : 7 小時";break;
+            case "8":TimerChinese = "定時 : 8 小時";break;
+            case "9":TimerChinese = "定時 : 9 小時";break;
+            case "10":TimerChinese = "定時 : 10 小時";break;
+            case "11":TimerChinese = "定時 : 11 小時";break;
+            case "12":TimerChinese = "定時 : 12 小時";break;
+            default: TimerChinese = "定時 : 無"; break;
+        }
+        return TimerChinese;
+    }
+    public String getWindStr(String wind){
+        String WindChinese = "";
+        switch(wind) {
+            case "no":WindChinese = "風量 : 自動";break;
+            case "Auto": WindChinese  = "風量 : 自動";break;
+            case "Small": WindChinese  = "風量 : 小";break;
+            case "Middle": WindChinese  = "風量 : 中";break;
+            case "Big": WindChinese  = "風量 : 大";break;
+            default: WindChinese = "風量 : 自動"; break;
+        }
+        return WindChinese;
     }
 
     //AirControl Asynctask
@@ -610,26 +699,83 @@ if (ModeStr.equals("cold")|ModeStr.equals("wet")|ModeStr.equals("wind")){
     }
 
 
-    public void initalac() throws InterruptedException,ExecutionException{
+    public void initialac() throws InterruptedException,ExecutionException{
 
-        getacAsyncTask ctrlPlugnameAsynctask = new getacAsyncTask(airb505left.this);
-        acall = ctrlPlugnameAsynctask .execute().get().toString();
+        getacAsyncTask getacasync = new getacAsyncTask(airb505left.this);
+        acall = getacasync.execute("b505left").get().toString();
         String acresultSplit[] =acall.split(" ");
+        if(acresultSplit[1].equals("On")){
+            on_off = 1;
+            airicon.setImageResource(R.drawable.airicon2);
+            btnOnoff.setImageResource(R.drawable.icon_poweron);
 
-        tvAirMode.setText("模式 : " + acresultSplit[3] );
-        tvAirFan.setText("風量 : " + acresultSplit[5]);
-        tvAirTimeSet.setText("定時  : " + acresultSplit[6]);
-        tvTempStr.setText(acresultSplit[4] + " ℃");
+            btnMode.setBackgroundResource(R.drawable.round_air);
+            btnWindSpeed.setBackgroundResource(R.drawable.round_air);
+            btnTimeSet.setBackgroundResource(R.drawable.round_air);
+
+            if(acresultSplit[3].equals("no")){ModeStr = "auto";
+            }else if(!(acresultSplit[3].equals(null))){ModeStr = acresultSplit[3];
+            }else{ModeStr = "auto";}
+
+            if(acresultSplit[5].equals("no")){FanStr = "Auto";
+            }else if(!(acresultSplit[5].equals(null))){FanStr = acresultSplit[5];
+            }else{FanStr = "auto";}
+
+            if(acresultSplit[6].equals("no")){TimeSetStr = "0";
+            }else if(!(acresultSplit[6].equals(null))){TimeSetStr = acresultSplit[6];
+            }else{TimeSetStr = "auto";}
+
+            if(acresultSplit[4].equals("no")){TempNum = Integer.valueOf(28);
+            }else if(!(acresultSplit[4].equals(null))){TempNum = Integer.valueOf(acresultSplit[4]);
+            }else{TempNum = Integer.valueOf(28);}
+
+           // TempNum = Integer.valueOf(acresultSplit[4]);
+
+            tvAirMode.setText(getModeStr(ModeStr));
+            tvAirTimeSet.setText(getTimerStr(TimeSetStr));
+            tvAirFan.setText(getWindStr(FanStr));
+            tvTempStr.setText(TempNum + " ℃");
+
+            BackgroundAirconditioner.setBackgroundColor(getResources().getColor(R.color.brightblue));
+            tvAirMode.setTextColor(getResources().getColor(R.color.black));
+            tvAirFan.setTextColor(getResources().getColor(R.color.black));
+            tvAirTimeSet.setTextColor(getResources().getColor(R.color.black));
+
+            btnTempAdd.setTextColor(getResources().getColor(R.color.black));
+            btnTempSub.setTextColor(getResources().getColor(R.color.black));
+        }else if(acresultSplit[1].equals("Off")) {
+
+            tvTempStr.setText("");
+            tvTempStr.setText(null);
+            on_off = 0;
+
+            airicon.setImageResource(R.drawable.airicon2);
+            btnOnoff.setImageResource(R.drawable.icon_poweroff);
+            BackgroundAirconditioner.setBackgroundColor(getResources().getColor(R.color.darker_gray));
+
+            tvAirMode.setText(null);
+            tvAirFan.setText(null);
+            tvAirTimeSet.setText(null);
+            tvTempStr.setText(null);
+            btnMode.setBackgroundResource(R.drawable.round_airoff);
+            btnWindSpeed.setBackgroundResource(R.drawable.round_airoff);
+            btnTimeSet.setBackgroundResource(R.drawable.round_airoff);
+
+            btnTempAdd.setTextColor(getResources().getColor(R.color.darker_gray));
+            btnTempSub.setTextColor(getResources().getColor(R.color.darker_gray));
+
+        }
+
 
     }
     public static class getacAsyncTask extends AsyncTask<String,Void,String> {;
-        Context context;
-        getacAsyncTask (Context ctx) {context = ctx ;}
+        Context context2;
+        getacAsyncTask (Context ctx) {context2 = ctx ;}
         @Override
         protected String doInBackground(String... params) {
             try {
-                String acname = "b505left";
-                String login_url = "http://163.18.57.43/HEMSphp/plugopen.php";
+                String acname = params[0];
+                String login_url = "http://163.18.57.43/HEMSphp/acpost.php";
                 URL url = new URL(login_url);
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                 httpURLConnection.setRequestMethod("POST");
